@@ -1,0 +1,971 @@
+{
+    "tiles": [
+        {
+            "tileID": "1",
+            "coordinate": 10,
+            "resourceType": "Ore",
+            "isBandit": false
+        },
+        {
+            "tileID": "2",
+            "coordinate": 2,
+            "resourceType": "Wool",
+            "isBandit": false
+        },
+        {
+            "tileID": "3",
+            "coordinate": 9,
+            "resourceType": "Lumber",
+            "isBandit": false
+        },
+        {
+            "tileID": "4",
+            "coordinate": 12,
+            "resourceType": "Grain",
+            "isBandit": false
+        },
+        {
+            "tileID": "5",
+            "coordinate": 6,
+            "resourceType": "Brick",
+            "isBandit": false
+        },
+        {
+            "tileID": "6",
+            "coordinate": 4,
+            "resourceType": "Wool",
+            "isBandit": false
+        },
+        {
+            "tileID": "7",
+            "coordinate": 10,
+            "resourceType": "Brick",
+            "isBandit": false
+        },
+        {
+            "tileID": "8",
+            "coordinate": 9,
+            "resourceType": "Grain",
+            "isBandit": false
+        },
+        {
+            "tileID": "9",
+            "coordinate": 11,
+            "resourceType": "Lumber",
+            "isBandit": false
+        },
+        {
+            "tileID": "10",
+            "coordinate": 7,
+            "resourceType": "Nothing",
+            "isBandit": true
+        },
+        {
+            "tileID": "11",
+            "coordinate": 3,
+            "resourceType": "Lumber",
+            "isBandit": false
+        },
+        {
+            "tileID": "12",
+            "coordinate": 8,
+            "resourceType": "Ore",
+            "isBandit": false
+        },
+        {
+            "tileID": "13",
+            "coordinate": 8,
+            "resourceType": "Lumber",
+            "isBandit": false
+        },
+        {
+            "tileID": "14",
+            "coordinate": 3,
+            "resourceType": "Ore",
+            "isBandit": false
+        },
+        {
+            "tileID": "15",
+            "coordinate": 4,
+            "resourceType": "Grain",
+            "isBandit": false
+        },
+        {
+            "tileID": "16",
+            "coordinate": 5,
+            "resourceType": "Wool",
+            "isBandit": false
+        },
+        {
+            "tileID": "17",
+            "coordinate": 5,
+            "resourceType": "Brick",
+            "isBandit": false
+        },
+        {
+            "tileID": "18",
+            "coordinate": 6,
+            "resourceType": "Grain",
+            "isBandit": false
+        },
+        {
+            "tileID": "19",
+            "coordinate": 11,
+            "resourceType": "Wool",
+            "isBandit": false
+        }
+    ],
+    
+    "settlement": [
+        {
+            "settlementID": "1",
+            "tiles": ["-1", "-1", "1"],
+            "roads": ["-1", "1", "2"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "2",
+            "tiles": ["-1", "-1", "1"],
+            "roads": ["-1", "2", "3"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "3",
+            "tiles": ["-1", "1", "2"],
+            "roads": ["3", "4", "5"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "4",
+            "tiles": ["-1", "-1", "2"],
+            "roads": ["-1", "5", "6"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "5",
+            "tiles": ["-1", "2", "3"],
+            "roads": ["6", "7", "8"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "6",
+            "tiles": ["-1", "-1", "3"],
+            "roads": ["-1", "8", "9"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "7",
+            "tiles": ["-1", "-1", "3"],
+            "roads": ["-1", "9", "10"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "8",
+            "tiles": ["-1", "-1", "4"],
+            "roads": ["-1", "11", "12"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "9",
+            "tiles": ["-1", "1", "4"],
+            "roads": ["1", "12", "13"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "10",
+            "tiles": ["1", "4", "5"],
+            "roads": ["13", "14", "15"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "11",
+            "tiles": ["1", "2", "5"],
+            "roads": ["4", "15", "16"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "Red"
+        },
+        {
+            "settlementID": "12",
+            "tiles": ["2", "5", "6"],
+            "roads": ["16", "17", "18"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "13",
+            "tiles": ["2", "3", "6"],
+            "roads": ["7", "18", "19"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "14",
+            "tiles": ["3", "6", "7"],
+            "roads": ["19", "20", "21"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "Orange"
+        },
+        {
+            "settlementID": "15",
+            "tiles": ["-1", "3", "7"],
+            "roads": ["10", "21", "22"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "16",
+            "tiles": ["-1", "-1", "7"],
+            "roads": ["-1", "22", "23"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "17",
+            "tiles": ["-1", "-1", "8"],
+            "roads": ["-1", "24", "25"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "18",
+            "tiles": ["-1", "4", "8"],
+            "roads": ["11", "25", "26"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "19",
+            "tiles": ["4", "8", "9"],
+            "roads": ["26", "27", "28"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "20",
+            "tiles": ["4", "5", "9"],
+            "roads": ["14", "28", "29"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "White"
+        },
+        {
+            "settlementID": "21",
+            "tiles": ["5", "9", "10"],
+            "roads": ["29", "30", "31"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "22",
+            "tiles": ["5", "6", "10"],
+            "roads": ["17", "31", "32"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "23",
+            "tiles": ["6", "10", "11"],
+            "roads": ["32", "33", "34"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "24",
+            "tiles": ["6", "7", "11"],
+            "roads": ["20", "34", "35"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "25",
+            "tiles": ["7", "11", "12"],
+            "roads": ["35", "36", "37"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "26",
+            "tiles": ["-1", "7", "12"],
+            "roads": ["23", "37", "38"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "27",
+            "tiles": ["-1", "-1", "12"],
+            "roads": ["-1", "38", "39"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "28",
+            "tiles": ["-1", "-1", "8"],
+            "roads": ["-1", "24", "40"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "29",
+            "tiles": ["-1", "8", "13"],
+            "roads": ["40", "41", "50"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "30",
+            "tiles": ["8", "9", "13"],
+            "roads": ["27", "41", "42"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "Red"
+        },
+        {
+            "settlementID": "31",
+            "tiles": ["9", "13", "14"],
+            "roads": ["42", "43", "53"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "32",
+            "tiles": ["9", "10", "14"],
+            "roads": ["30", "43", "44"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "33",
+            "tiles": ["10", "14", "15"],
+            "roads": ["44", "45", "56"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "34",
+            "tiles": ["10", "11", "15"],
+            "roads": ["33", "45", "46"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "35",
+            "tiles": ["11", "15", "16"],
+            "roads": ["46", "47", "59"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "36",
+            "tiles": ["11", "12", "16"],
+            "roads": ["36", "47", "48"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "White"
+        },
+        {
+            "settlementID": "37",
+            "tiles": ["-1", "12", "16"],
+            "roads": ["48", "49", "62"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "38",
+            "tiles": ["-1", "-1", "12"],
+            "roads": ["-1", "39", "49"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "39",
+            "tiles": ["-1", "-1", "13"],
+            "roads": ["-1", "50", "51"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "40",
+            "tiles": ["-1", "13", "17"],
+            "roads": ["51", "52", "63"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "41",
+            "tiles": ["13", "14", "17"],
+            "roads": ["52", "53", "54"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "Blue"
+        },
+        {
+            "settlementID": "42",
+            "tiles": ["14", "17", "18"],
+            "roads": ["54", "55", "66"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "43",
+            "tiles": ["14", "15", "18"],
+            "roads": ["55", "56", "57"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "Orange"
+        },
+        {
+            "settlementID": "44",
+            "tiles": ["15", "18", "19"],
+            "roads": ["57", "58", "69"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "45",
+            "tiles": ["15", "16", "19"],
+            "roads": ["58", "59", "60"],
+            "hasPort": false,
+            "isActive": true,
+            "isCity": false,
+            "color": "Blue"
+        },
+        {
+            "settlementID": "46",
+            "tiles": ["-1", "16", "19"],
+            "roads": ["60", "61", "72"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "47",
+            "tiles": ["-1", "-1", "16"],
+            "roads": ["-1", "61", "62"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "48",
+            "tiles": ["-1", "-1", "17"],
+            "roads": ["-1", "63", "64"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "49",
+            "tiles": ["-1", "-1", "17"],
+            "roads": ["-1", "64", "65"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "50",
+            "tiles": ["-1", "17", "18"],
+            "roads": ["65", "66", "67"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "51",
+            "tiles": ["-1", "-1", "18"],
+            "roads": ["-1", "67", "68"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "52",
+            "tiles": ["-1", "18", "19"],
+            "roads": ["68", "69", "70"],
+            "hasPort": true,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "53",
+            "tiles": ["-1", "-1", "19"],
+            "roads": ["-1", "70", "71"],
+            "hasPort": false
+            ,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        },
+        {
+            "settlementID": "54",
+            "tiles": ["-1", "-1", "19"],
+            "roads": ["-1", "71", "72"],
+            "hasPort": false,
+            "isActive": false,
+            "isCity": false,
+            "color": "None"
+        }
+    ],
+    
+    "road": [
+        {
+            "roadID": "1",
+            "settlements": ["1", "9"],
+            "isRoad": false
+        },
+        {
+            "roadID": "2",
+            "settlements": ["1", "2"],
+            "isRoad": false
+        },
+        {
+            "roadID": "3",
+            "settlements": ["2", "3"],
+            "isRoad": false
+        },
+        {
+            "roadID": "4",
+            "settlements": ["3", "11"],
+            "isRoad": false
+        },
+        {
+            "roadID": "5",
+            "settlements": ["3", "4"],
+            "isRoad": false
+        },
+        {
+            "roadID": "6",
+            "settlements": ["4", "5"],
+            "isRoad": false
+        },
+        {
+            "roadID": "7",
+            "settlements": ["5", "13"],
+            "isRoad": false
+        },
+        {
+            "roadID": "8",
+            "settlements": ["5", "6"],
+            "isRoad": false
+        },
+        {
+            "roadID": "9",
+            "settlements": ["6", "7"],
+            "isRoad": false
+        },
+        {
+            "roadID": "10",
+            "settlements": ["7", "15"],
+            "isRoad": false
+        },
+        {
+            "roadID": "11",
+            "settlements": ["8", "18"],
+            "isRoad": false
+        },
+        {
+            "roadID": "12",
+            "settlements": ["8", "9"],
+            "isRoad": false
+        },
+        {
+            "roadID": "13",
+            "settlements": ["9", "10"],
+            "isRoad": false
+        },
+        {
+            "roadID": "14",
+            "settlements": ["10", "20"],
+            "isRoad": false
+        },
+        {
+            "roadID": "15",
+            "settlements": ["10", "11"],
+            "isRoad": false
+        },
+        {
+            "roadID": "16",
+            "settlements": ["11", "12"],
+            "isRoad": false
+        },
+        {
+            "roadID": "17",
+            "settlements": ["12", "22"],
+            "isRoad": false
+        },
+        {
+            "roadID": "18",
+            "settlements": ["12", "13"],
+            "isRoad": false
+        },
+        {
+            "roadID": "19",
+            "settlements": ["13", "14"],
+            "isRoad": false
+        },
+        {
+            "roadID": "20",
+            "settlements": ["14", "24"],
+            "isRoad": false
+        },
+        {
+            "roadID": "21",
+            "settlements": ["14", "15"],
+            "isRoad": false
+        },
+        {
+            "roadID": "22",
+            "settlements": ["15", "16"],
+            "isRoad": false
+        },
+        {
+            "roadID": "23",
+            "settlements": ["16", "26"],
+            "isRoad": false
+        },
+        {
+            "roadID": "24",
+            "settlements": ["17", "28"],
+            "isRoad": false
+        },
+        {
+            "roadID": "25",
+            "settlements": ["17", "18"],
+            "isRoad": false
+        },
+        {
+            "roadID": "26",
+            "settlements": ["18", "19"],
+            "isRoad": false
+        },
+        {
+            "roadID": "27",
+            "settlements": ["19", "30"],
+            "isRoad": false
+        },
+        {
+            "roadID": "28",
+            "settlements": ["19", "20"],
+            "isRoad": false
+        },
+        {
+            "roadID": "29",
+            "settlements": ["20", "21"],
+            "isRoad": false
+        },
+        {
+            "roadID": "30",
+            "settlements": ["21", "32"],
+            "isRoad": false
+        },
+        {
+            "roadID": "31",
+            "settlements": ["21", "22"],
+            "isRoad": false
+        },
+        {
+            "roadID": "32",
+            "settlements": ["22", "23"],
+            "isRoad": false
+        },
+        {
+            "roadID": "33",
+            "settlements": ["23", "34"],
+            "isRoad": false
+        },
+        {
+            "roadID": "34",
+            "settlements": ["23", "24"],
+            "isRoad": false
+        },
+        {
+            "roadID": "35",
+            "settlements": ["24", "25"],
+            "isRoad": false
+        },
+        {
+            "roadID": "36",
+            "settlements": ["25", "36"],
+            "isRoad": false
+        },
+        {
+            "roadID": "37",
+            "settlements": ["25", "26"],
+            "isRoad": false
+        },
+        {
+            "roadID": "38",
+            "settlements": ["26", "27"],
+            "isRoad": false
+        },
+        {
+            "roadID": "39",
+            "settlements": ["27", "38"],
+            "isRoad": false
+        },
+        {
+            "roadID": "40",
+            "settlements": ["28", "29"],
+            "isRoad": false
+        },
+        {
+            "roadID": "41",
+            "settlements": ["29", "30"],
+            "isRoad": false
+        },
+        {
+            "roadID": "42",
+            "settlements": ["30", "31"],
+            "isRoad": false
+        },
+        {
+            "roadID": "43",
+            "settlements": ["31", "32"],
+            "isRoad": false
+        },
+        {
+            "roadID": "44",
+            "settlements": ["32", "33"],
+            "isRoad": false
+        },
+        {
+            "roadID": "45",
+            "settlements": ["33", "34"],
+            "isRoad": false
+        },
+        {
+            "roadID": "46",
+            "settlements": ["34", "35"],
+            "isRoad": false
+        },
+        {
+            "roadID": "47",
+            "settlements": ["35", "36"],
+            "isRoad": false
+        },
+        {
+            "roadID": "48",
+            "settlements": ["36", "37"],
+            "isRoad": false
+        },
+        {
+            "roadID": "49",
+            "settlements": ["37", "38"],
+            "isRoad": false
+        },
+        {
+            "roadID": "50",
+            "settlements": ["29", "39"],
+            "isRoad": false
+        },
+        {
+            "roadID": "51",
+            "settlements": ["39", "40"],
+            "isRoad": false
+        },
+        {
+            "roadID": "52",
+            "settlements": ["40", "41"],
+            "isRoad": false
+        },
+        {
+            "roadID": "53",
+            "settlements": ["31", "41"],
+            "isRoad": false
+        },
+        {
+            "roadID": "54",
+            "settlements": ["41", "42"],
+            "isRoad": false
+        },
+        {
+            "roadID": "55",
+            "settlements": ["42", "43"],
+            "isRoad": false
+        },
+        {
+            "roadID": "56",
+            "settlements": ["33", "43"],
+            "isRoad": false
+        },
+        {
+            "roadID": "57",
+            "settlements": ["43", "44"],
+            "isRoad": false
+        },
+        {
+            "roadID": "58",
+            "settlements": ["44", "45"],
+            "isRoad": false
+        },
+        {
+            "roadID": "59",
+            "settlements": ["35", "45"],
+            "isRoad": false
+        },
+        {
+            "roadID": "60",
+            "settlements": ["45", "46"],
+            "isRoad": false
+        },
+        {
+            "roadID": "61",
+            "settlements": ["46", "47"],
+            "isRoad": false
+        },
+        {
+            "roadID": "62",
+            "settlements": ["37", "47"],
+            "isRoad": false
+        },
+        {
+            "roadID": "63",
+            "settlements": ["40", "48"],
+            "isRoad": false
+        },
+        {
+            "roadID": "64",
+            "settlements": ["48", "49"],
+            "isRoad": false
+        },
+        {
+            "roadID": "65",
+            "settlements": ["49", "50"],
+            "isRoad": false
+        },
+        {
+            "roadID": "66",
+            "settlements": ["42", "50"],
+            "isRoad": false
+        },
+        {
+            "roadID": "67",
+            "settlements": ["50", "51"],
+            "isRoad": false
+        },
+        {
+            "roadID": "68",
+            "settlements": ["51", "52"],
+            "isRoad": false
+        },
+        {
+            "roadID": "69",
+            "settlements": ["44", "52"],
+            "isRoad": false
+        },
+        {
+            "roadID": "70",
+            "settlements": ["52", "53"],
+            "isRoad": false
+        },
+        {
+            "roadID": "71",
+            "settlements": ["53", "54"],
+            "isRoad": false
+        },
+        {
+            "roadID": "72",
+            "settlements": ["46", "54"],
+            "isRoad": false
+        }
+    ]
+}
