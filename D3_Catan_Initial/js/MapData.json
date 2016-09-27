@@ -1,115 +1,115 @@
 {
     "tiles": [
         {
-            "tile_id":"tile_11",
+            "x":0, "y":2, "z":-2,
             "coordinates":10,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_12",
+            "x":1, "y":1, "z":-2,
             "coordinates":2,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_13",
+            "x":2, "y":0, "z":-2,
             "coordinates":9,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_21",
+            "x":-1, "y":2, "z":-1,
             "coordinates":12,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_22",
+            "x":0, "y":1, "z":-1,
             "coordinates":6,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_23",
+            "x":1, "y":0, "z":-1,
             "coordinates":4,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_24",
+            "x":2, "y":-1, "z":-1,
             "coordinates":10,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_31",
+            "x":-2, "y":2, "z":0,
             "coordinates":9,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_32",
+            "x":-1, "y":1, "z":0,
             "coordinates":11,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_33",
+            "x":0, "y":0, "z":0,
             "coordinates":7,
-            "resourceType": "",
+            "resourceType": "Nothing",
             "hasRobber": true
         },
         {
-            "tile_id":"tile_34",
+            "x":1, "y":-1, "z":0,
             "coordinates":3,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_35",
+            "x":2, "y":-2, "z":0,
             "coordinates":8,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_41",
+            "x":-2, "y":1, "z":1,
             "coordinates":8,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_42",
+            "x":-1, "y":0, "z":1,
             "coordinates":3,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_43",
+            "x":0, "y":-1, "z":1,
             "coordinates":4,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_44",
+            "x":1, "y":-2, "z":1,
             "coordinates":5,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_51",
+            "x":-2, "y":0, "z":2,
             "coordinates":5,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_52",
+            "x":-1, "y":-1, "z":2,
             "coordinates":6,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id":"tile_53",
+            "x":0, "y":-2, "z":2,
             "coordinates":11,
             "resourceType": "Wool",
             "hasRobber": false

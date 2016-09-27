@@ -1,14 +1,53 @@
+html {
+    background-image: url("../image/background.png");
+    background-color: antiquewhite;
+    background-size: cover;
+    background-position: center;
+}
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: auto;
 	position: relative;
-	width: 960px;
+	height: 100%;
+    width: 100%;
 }
 
-div.heads {
+.heads {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 15px;
 	text-align: center;
+}
+
+h1 {
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 40px;
+    margin: 0;
 }
 
 h3 {
 	font-style: italic;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    margin: 5px;
 }
+
+svg {
+    margin: auto;
+    display: block;
+}
+
+/*-- footer --*/
+.bottom {
+    width: 100%;
+    height: 20%;
+    text-align: center;
+}
+
+.bottom p{
+    position: relative;
+	font-size:15px;
+	color:ghostwhite;
+    margin-bottom: 10px;
+    font-family: 'Raleway', sans-serif;
+}
+/*-- //footer --*/
