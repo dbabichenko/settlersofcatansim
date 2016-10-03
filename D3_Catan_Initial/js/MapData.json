@@ -1,114 +1,133 @@
 {
     "tiles": [
         {
+            "tile_id": 11,
             "x":0, "y":2, "z":-2,
             "coordinates":10,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
+            "tile_id": 12,
             "x":1, "y":1, "z":-2,
             "coordinates":2,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
+            "tile_id": 13,
             "x":2, "y":0, "z":-2,
             "coordinates":9,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
+            "tile_id": 21,
             "x":-1, "y":2, "z":-1,
             "coordinates":12,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
+            "tile_id": 22,
             "x":0, "y":1, "z":-1,
             "coordinates":6,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
+            "tile_id": 23,
             "x":1, "y":0, "z":-1,
             "coordinates":4,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
+            "tile_id": 24,
             "x":2, "y":-1, "z":-1,
             "coordinates":10,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
+            "tile_id": 31,
             "x":-2, "y":2, "z":0,
             "coordinates":9,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
+            "tile_id": 32,
             "x":-1, "y":1, "z":0,
             "coordinates":11,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
+            "tile_id": 33,
             "x":0, "y":0, "z":0,
             "coordinates":7,
             "resourceType": "Nothing",
             "hasRobber": true
         },
         {
+            "tile_id": 34,
             "x":1, "y":-1, "z":0,
             "coordinates":3,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
+            "tile_id": 35,
             "x":2, "y":-2, "z":0,
             "coordinates":8,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
+            "tile_id": 41,
             "x":-2, "y":1, "z":1,
             "coordinates":8,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
+            "tile_id": 42,
             "x":-1, "y":0, "z":1,
             "coordinates":3,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
+            "tile_id": 43,
             "x":0, "y":-1, "z":1,
             "coordinates":4,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
+            "tile_id": 44,
             "x":1, "y":-2, "z":1,
             "coordinates":5,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
+            "tile_id": 51,
             "x":-2, "y":0, "z":2,
             "coordinates":5,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
+            "tile_id": 52,
             "x":-1, "y":-1, "z":2,
             "coordinates":6,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
+            "tile_id": 53,
             "x":0, "y":-2, "z":2,
             "coordinates":11,
             "resourceType": "Wool",
@@ -117,940 +136,994 @@
     ],
     "settlements": [
         {
-            "settle_id":"settle_101",
-            "tiles":[{"tile_id":"tile_11"}],
-            "roads":[{"road_id":"road_101"}, {"road_id":"road_201"}],
+            "settle_id":101,
+            "tiles":[11],
+            "roads":[101, 201],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_102",
-            "tiles":[{"tile_id":"tile_11"}],
-            "roads":[{"road_id":"road_101"}, {"road_id":"road_102"}],
+            "settle_id":102,
+            "tiles":[11],
+            "roads":[101, 102],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_103",
-            "tiles":[{"tile_id":"tile_11"},{"tile_id":"tile_12"}],
-            "roads":[{"road_id":"road_102"}, {"road_id":"road_103"}],
+            "settle_id":103,
+            "tiles":[11,12],
+            "roads":[102, 103],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_104",
-            "tiles":[{"tile_id":"tile_12"}],
-            "roads":[{"road_id":"road_103"}, {"road_id":"road_104"}],
+            "settle_id":104,
+            "tiles":[12],
+            "roads":[103, 104],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_105",
-            "tiles":[{"0":"tile_12"},{"1":"tile_13"}],
-            "roads":[{"road_id":"road_104"}, {"road_id":"road_105"}],
+            "settle_id":105,
+            "tiles":[12,13],
+            "roads":[104, 105],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_106",
-            "tiles":[{"tile_id":"tile_13"}],
-            "roads":[{"road_id":"road_105"}, {"road_id":"road_106"}],
+            "settle_id":106,
+            "tiles":[13],
+            "roads":[105, 106],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_107",
-            "tiles":[{"tile_id":"tile_13"}],
-            "roads":[{"road_id":"road_106"}, {"road_id":"road_204"}],
+            "settle_id":107,
+            "tiles":[13],
+            "roads":[106, 204],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_201",
-            "tiles":[{"tile_id":"tile_21"}],
-            "roads":[{"road_id":"road_301"}, {"road_id":"road_401"}],
+            "settle_id":201,
+            "tiles":[21],
+            "roads":[301, 401],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_202",
-            "tiles":[{"tile_id":"tile_11"},{"tile_id":"tile_21"}],
-            "roads":[{"road_id":"road_201"}, {"road_id":"road_301"}, {"road_id":"road_302"}],
+            "settle_id":202,
+            "tiles":[11,21],
+            "roads":[201, 301, 302],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_203",
-            "tiles":[{"tile_id":"tile_11"},{"tile_id":"tile_21"},{"tile_id":"tile_22"}],
-            "roads":[{"road_id":"road_302"}, {"road_id":"road_303"}, {"road_id":"road_402"}],
+            "settle_id":203,
+            "tiles":[11,21,22],
+            "roads":[302, 303, 402],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_204",
-            "tiles":[{"tile_id":"tile_11"},{"tile_id":"tile_12"},{"tile_id":"tile_22"}],
-            "roads":[{"road_id":"road_202"}, {"road_id":"road_303"}, {"road_id":"road_304"}],
+            "settle_id":204,
+            "tiles":[11,12,22],
+            "roads":[202, 303, 304],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_205",
-            "tiles":[{"tile_id":"tile_12"},{"tile_id":"tile_22"},{"tile_id":"tile_23"}],
-            "roads":[{"road_id":"road_304"}, {"road_id":"road_305"}, {"road_id":"road_403"}],
+            "settle_id":205,
+            "tiles":[12,22,23],
+            "roads":[304, 305, 403],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_206",
-            "tiles":[{"tile_id":"tile_12"},{"tile_id":"tile_13"},{"tile_id":"tile_23"}],
-            "roads":[{"road_id":"road_203"}, {"road_id":"road_305"}, {"road_id":"road_306"}],
+            "settle_id":206,
+            "tiles":[12,13,23],
+            "roads":[203, 305, 306],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_207",
-            "tiles":[{"tile_id":"tile_13"},{"tile_id":"tile_23"},{"tile_id":"tile_24"}],
-            "roads":[{"road_id":"road_306"}, {"road_id":"road_307"}, {"road_id":"road_404"}],
+            "settle_id":207,
+            "tiles":[13,23,24],
+            "roads":[306, 307, 404],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_208",
-            "tiles":[{"tile_id":"tile_13"},{"tile_id":"tile_24"}],
-            "roads":[{"road_id":"road_204"}, {"road_id":"road_307"}, {"road_id":"road_308"}],
+            "settle_id":208,
+            "tiles":[13,24],
+            "roads":[204, 307, 308],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_209",
-            "tiles":[{"tile_id":"tile_24"}],
-            "roads":[{"road_id":"road_308"}, {"road_id":"road_405"}],
+            "settle_id":209,
+            "tiles":[24],
+            "roads":[308, 405],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_301",
-            "tiles":[{"tile_id":"tile_31"}],
-            "roads":[{"road_id":"road_501"}, {"road_id":"road_601"}],
+            "settle_id":301,
+            "tiles":[31],
+            "roads":[501, 601],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_302",
-            "tiles":[{"tile_id":"tile_21"},{"tile_id":"tile_31"}],
-            "roads":[{"road_id":"road_401"}, {"road_id":"road_501"}, {"road_id":"road_502"}],
+            "settle_id":302,
+            "tiles":[21,31],
+            "roads":[401, 501, 502],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_303",
-            "tiles":[{"tile_id":"tile_21"},{"tile_id":"tile_31"},{"tile_id":"tile_32"}],
-            "roads":[{"road_id":"road_502"}, {"road_id":"road_503"}, {"road_id":"road_602"}],
+            "settle_id":303,
+            "tiles":[21,31,32],
+            "roads":[502, 503, 602],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_304",
-            "tiles":[{"tile_id":"tile_21"},{"tile_id":"tile_22"},{"tile_id":"tile_32"}],
-            "roads":[{"road_id":"road_402"}, {"road_id":"road_503"}, {"road_id":"road_504"}],
+            "settle_id":304,
+            "tiles":[21,22,32],
+            "roads":[402, 503, 504],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_305",
-            "tiles":[{"tile_id":"tile_22"},{"tile_id":"tile_32"},{"tile_id":"tile_33"}],
-            "roads":[{"road_id":"road_504"}, {"road_id":"road_505"}, {"road_id":"road_603"}],
+            "settle_id":305,
+            "tiles":[22,32,33],
+            "roads":[504, 505, 603],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_306",
-            "tiles":[{"tile_id":"tile_22"},{"tile_id":"tile_23"},{"tile_id":"tile_33"}],
-            "roads":[{"road_id":"road_403"}, {"road_id":"road_505"}, {"road_id":"road_506"}],
+            "settle_id":306,
+            "tiles":[22,23,33],
+            "roads":[403, 505, 506],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_307",
-            "tiles":[{"tile_id":"tile_23"},{"tile_id":"tile_33"},{"tile_id":"tile_34"}],
-            "roads":[{"road_id":"road_506"}, {"road_id":"road_507"}, {"road_id":"road_604"}],
+            "settle_id":307,
+            "tiles":[23,33,34],
+            "roads":[506, 507, 604],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_308",
-            "tiles":[{"tile_id":"tile_23"},{"tile_id":"tile_24"},{"tile_id":"tile_34"}],
-            "roads":[{"road_id":"road_404"}, {"road_id":"road_507"}, {"road_id":"road_508"}],
+            "settle_id":308,
+            "tiles":[23,24,34],
+            "roads":[404, 507, 508],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_309",
-            "tiles":[{"tile_id":"tile_24"},{"tile_id":"tile_34"},{"tile_id":"tile_35"}],
-            "roads":[{"road_id":"road_508"}, {"road_id":"road_509"}, {"road_id":"road_605"}],
+            "settle_id":309,
+            "tiles":[24,34,35],
+            "roads":[508, 509, 605],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_310",
-            "tiles":[{"tile_id":"tile_24"},{"tile_id":"tile_35"}],
-            "roads":[{"road_id":"road_405"}, {"road_id":"road_509"}, {"road_id":"road_510"}],
+            "settle_id":310,
+            "tiles":[24,35],
+            "roads":[405, 509, 510],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_311",
-            "tiles":[{"tile_id":"tile_35"}],
-            "roads":[{"road_id":"road_510"}, {"road_id":"road_606"}],
+            "settle_id":311,
+            "tiles":[35],
+            "roads":[510, 606],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_401",
-            "tiles":[{"tile_id":"tile_31"}],
-            "roads":[{"road_id":"road_601"}, {"road_id":"road_701"}],
+            "settle_id":401,
+            "tiles":[31],
+            "roads":[601, 701],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_402",
-            "tiles":[{"tile_id":"tile_31"}, {"tile_id":"tile_41"}],
-            "roads":[{"road_id":"road_701"}, {"road_id":"road_702"}, {"road_id":"road_801"}],
+            "settle_id":402,
+            "tiles":[31, 41],
+            "roads":[701, 702, 801],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_403",
-            "tiles":[{"tile_id":"tile_31"}, {"tile_id":"tile_32"}, {"tile_id":"tile_41"}],
-            "roads":[{"road_id":"road_602"}, {"road_id":"road_702"}, {"road_id":"road_703"}],
+            "settle_id":403,
+            "tiles":[31, 32, 41],
+            "roads":[602, 702, 703],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_404",
-            "tiles":[{"tile_id":"tile_32"}, {"tile_id":"tile_41"}, {"tile_id":"tile_42"}],
-            "roads":[{"road_id":"road_703"}, {"road_id":"road_704"}, {"road_id":"road_802"}],
+            "settle_id":404,
+            "tiles":[32, 41, 42],
+            "roads":[703, 704, 802],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_405",
-            "tiles":[{"tile_id":"tile_32"}, {"tile_id":"tile_33"}, {"tile_id":"tile_42"}],
-            "roads":[{"road_id":"road_603"}, {"road_id":"road_704"}, {"road_id":"road_705"}],
+            "settle_id":405,
+            "tiles":[32, 33, 42],
+            "roads":[603, 704, 705],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_406",
-            "tiles":[{"tile_id":"tile_33"}, {"tile_id":"tile_42"}, {"tile_id":"tile_43"}],
-            "roads":[{"road_id":"road_705"}, {"road_id":"road_706"}, {"road_id":"road_803"}],
+            "settle_id":406,
+            "tiles":[33, 42, 43],
+            "roads":[705, 706, 803],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_407",
-            "tiles":[{"tile_id":"tile_33"}, {"tile_id":"tile_34"}, {"tile_id":"tile_43"}],
-            "roads":[{"road_id":"road_604"}, {"road_id":"road_706"}, {"road_id":"road_707"}],
+            "settle_id":407,
+            "tiles":[33, 34, 43],
+            "roads":[604, 706, 707],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_408",
-            "tiles":[{"tile_id":"tile_34"}, {"tile_id":"tile_43"}, {"tile_id":"tile_44"}],
-            "roads":[{"road_id":"road_707"}, {"road_id":"road_708"}, {"road_id":"road_804"}],
+            "settle_id":408,
+            "tiles":[34, 43, 44],
+            "roads":[707, 708, 804],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_409",
-            "tiles":[{"tile_id":"tile_34"}, {"tile_id":"tile_35"}, {"tile_id":"tile_44"}],
-            "roads":[{"road_id":"road_605"}, {"road_id":"road_708"}, {"road_id":"road_709"}],
+            "settle_id":409,
+            "tiles":[34, 35, 44],
+            "roads":[605, 708, 709],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_410",
-            "tiles":[{"tile_id":"tile_35"}, {"tile_id":"tile_44"}],
-            "roads":[{"road_id":"road_709"}, {"road_id":"road_710"}, {"road_id":"road_805"}],
+            "settle_id":410,
+            "tiles":[35, 44],
+            "roads":[709, 710, 805],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_411",
-            "tiles":[{"tile_id":"tile_35"}],
-            "roads":[{"road_id":"road_606"}, {"road_id":"road_710"}],
+            "settle_id":411,
+            "tiles":[35],
+            "roads":[606, 710],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_501",
-            "tiles":[{"tile_id":"tile_41"}],
-            "roads":[{"road_id":"road_801"}, {"road_id":"road_901"}],
+            "settle_id":501,
+            "tiles":[41],
+            "roads":[801, 901],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_502",
-            "tiles":[{"tile_id":"tile_41"}, {"tile_id":"tile_51"}],
-            "roads":[{"road_id":"road_901"}, {"road_id":"road_902"}, {"road_id":"road_1001"}],
+            "settle_id":502,
+            "tiles":[41, 51],
+            "roads":[901, 902, 1001],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_503",
-            "tiles":[{"tile_id":"tile_41"}, {"tile_id":"tile_42"}, {"tile_id":"tile_51"}],
-            "roads":[{"road_id":"road_802"}, {"road_id":"road_902"}, {"road_id":"road_903"}],
+            "settle_id":503,
+            "tiles":[41, 42, 51],
+            "roads":[802, 902, 903],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_504",
-            "tiles":[{"tile_id":"tile_42"}, {"tile_id":"tile_51"}, {"tile_id":"tile_52"}],
-            "roads":[{"road_id":"road_903"}, {"road_id":"road_904"}, {"road_id":"road_1002"}],
+            "settle_id":504,
+            "tiles":[42, 51, 52],
+            "roads":[903, 904, 1002],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_505",
-            "tiles":[{"tile_id":"tile_42"}, {"tile_id":"tile_43"}, {"tile_id":"tile_52"}],
-            "roads":[{"road_id":"road_803"}, {"road_id":"road_904"}, {"road_id":"road_905"}],
+            "settle_id":505,
+            "tiles":[42, 43, 52],
+            "roads":[803, 904, 905],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_506",
-            "tiles":[{"tile_id":"tile_43"}, {"tile_id":"tile_52"}, {"tile_id":"tile_53"}],
-            "roads":[{"road_id":"road_905"}, {"road_id":"road_906"}, {"road_id":"road_1003"}],
+            "settle_id":506,
+            "tiles":[43, 52, 53],
+            "roads":[905, 906, 1003],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_507",
-            "tiles":[{"tile_id":"tile_43"}, {"tile_id":"tile_44"}, {"tile_id":"tile_53"}],
-            "roads":[{"road_id":"road_804"}, {"road_id":"road_906"}, {"road_id":"road_907"}],
+            "settle_id":507,
+            "tiles":[43, 44, 53],
+            "roads":[804, 906, 907],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_508",
-            "tiles":[{"tile_id":"tile_44"}, {"tile_id":"tile_53"}],
-            "roads":[{"road_id":"road_907"}, {"road_id":"road_908"}, {"road_id":"road_1004"}],
+            "settle_id":508,
+            "tiles":[44, 53],
+            "roads":[907, 908, 1004],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_509",
-            "tiles":[{"tile_id":"tile_44"}],
-            "roads":[{"road_id":"road_805"}, {"road_id":"road_908"}],
+            "settle_id":509,
+            "tiles":[44],
+            "roads":[805, 908],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_601",
-            "tiles":[{"tile_id":"tile_51"}],
-            "roads":[{"road_id":"road_1001"}, {"road_id":"road_1101"}],
+            "settle_id":601,
+            "tiles":[51],
+            "roads":[1001, 1101],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_602",
-            "tiles":[{"tile_id":"tile_51"}],
-            "roads":[{"road_id":"road_1101"}, {"road_id":"road_1102"}],
+            "settle_id":602,
+            "tiles":[51],
+            "roads":[1101, 1102],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_603",
-            "tiles":[{"tile_id":"tile_51"}, {"tile_id":"tile_52"}],
-            "roads":[{"road_id":"road_1002"}, {"road_id":"road_1102"}, {"road_id":"road_1103"}],
+            "settle_id":603,
+            "tiles":[51, 52],
+            "roads":[1002, 1102, 1103],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_604",
-            "tiles":[{"tile_id":"tile_52"}],
-            "roads":[{"road_id":"road_1003"}, {"road_id":"road_1104"}],
+            "settle_id":604,
+            "tiles":[52],
+            "roads":[1003, 1104],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_605",
-            "tiles":[{"tile_id":"tile_52"}, {"tile_id":"tile_53"}],
-            "roads":[{"road_id":"road_1003"}, {"road_id":"road_1104"}, {"road_id":"road_1105"}],
+            "settle_id":605,
+            "tiles":[52, 53],
+            "roads":[1003, 1104, 1105],
             "hasPort": true,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_606",
-            "tiles":[{"tile_id":"tile_53"}],
-            "roads":[{"road_id":"road_1005"}, {"road_id":"road_1106"}],
+            "settle_id":606,
+            "tiles":[53],
+            "roads":[1005, 1106],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         },
         {
-            "settle_id":"settle_607",
-            "tiles":["tile_53"],
-            "roads":["road_1004", "road_1106"],
+            "settle_id":607,
+            "tiles":[53],
+            "roads":[1004, 1106],
             "hasPort": false,
             "isActive": false,
-            "isCity": false
+            "isCity": false,
+            "color": "red"
         }
     ],
     "roads": [
         {
-            "road_id": "road_101",
-            "source":"settle_101",
-            "target":"settle_102",
+            "road_id": 101,
+            "source":101,
+            "target":102,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_102",
-            "source":"settle_102",
-            "target":"settle_103",
+            "road_id": 102,
+            "source":102,
+            "target":103,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_103",
-            "source":"settle_103",
-            "target":"settle_104",
+            "road_id": 103,
+            "source":103,
+            "target":104,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_104",
-            "source":"settle_104",
-            "target":"settle_105",
+            "road_id": 104,
+            "source":104,
+            "target":105,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_105",
-            "source":"settle_105",
-            "target":"settle_106",
+            "road_id": 105,
+            "source":105,
+            "target":106,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_106",
-            "source":"settle_106",
-            "target":"settle_107",
+            "road_id": 106,
+            "source":106,
+            "target":107,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_201",
-            "source":"settle_101",
-            "target":"settle_202",
+            "road_id": 201,
+            "source":101,
+            "target":202,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_202",
-            "source":"settle_103",
-            "target":"settle_204",
+            "road_id": 202,
+            "source":103,
+            "target":204,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_203",
-            "source":"settle_105",
-            "target":"settle_206",
+            "road_id": 203,
+            "source":105,
+            "target":206,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_204",
-            "source":"settle_107",
-            "target":"settle_208",
+            "road_id": 204,
+            "source":107,
+            "target":208,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_301",
-            "source":"settle_201",
-            "target":"settle_202",
+            "road_id": 301,
+            "source":201,
+            "target":202,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_302",
-            "source":"settle_202",
-            "target":"settle_203",
+            "road_id": 302,
+            "source":202,
+            "target":203,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_303",
-            "source":"settle_203",
-            "target":"settle_204",
+            "road_id": 303,
+            "source":203,
+            "target":204,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_304",
-            "source":"settle_204",
-            "target":"settle_205",
+            "road_id": 304,
+            "source":204,
+            "target":205,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_305",
-            "source":"settle_205",
-            "target":"settle_206",
+            "road_id": 305,
+            "source":205,
+            "target":206,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_306",
-            "source":"settle_206",
-            "target":"settle_207",
+            "road_id": 306,
+            "source":206,
+            "target":207,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_307",
-            "source":"settle_207",
-            "target":"settle_208",
+            "road_id": 307,
+            "source":207,
+            "target":208,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_308",
-            "source":"settle_208",
-            "target":"settle_209",
+            "road_id": 308,
+            "source":208,
+            "target":209,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_401",
-            "source":"settle_201",
-            "target":"settle_302",
+            "road_id": 401,
+            "source":201,
+            "target":302,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_402",
-            "source":"settle_203",
-            "target":"settle_304",
+            "road_id": 402,
+            "source":203,
+            "target":304,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_403",
-            "source":"settle_205",
-            "target":"settle_306",
+            "road_id": 403,
+            "source":205,
+            "target":306,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_404",
-            "source":"settle_207",
-            "target":"settle_308",
+            "road_id": 404,
+            "source":207,
+            "target":308,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_405",
-            "source":"settle_209",
-            "target":"settle_310",
+            "road_id": 405,
+            "source":209,
+            "target":310,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_501",
-            "source":"settle_301",
-            "target":"settle_302",
+            "road_id": 501,
+            "source":301,
+            "target":302,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_502",
-            "source":"settle_302",
-            "target":"settle_303",
+            "road_id": 502,
+            "source":302,
+            "target":303,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_503",
-            "source":"settle_303",
-            "target":"settle_304",
+            "road_id": 503,
+            "source":303,
+            "target":304,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_504",
-            "source":"settle_304",
-            "target":"settle_305",
+            "road_id": 504,
+            "source":304,
+            "target":305,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_505",
-            "source":"settle_305",
-            "target":"settle_306",
+            "road_id": 505,
+            "source":305,
+            "target":306,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_506",
-            "source":"settle_306",
-            "target":"settle_307",
+            "road_id": 506,
+            "source":306,
+            "target":307,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_507",
-            "source":"settle_307",
-            "target":"settle_308",
+            "road_id": 507,
+            "source":307,
+            "target":308,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_508",
-            "source":"settle_308",
-            "target":"settle_309",
+            "road_id": 508,
+            "source":308,
+            "target":309,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_509",
-            "source":"settle_309",
-            "target":"settle_310",
+            "road_id": 509,
+            "source":309,
+            "target":310,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_510",
-            "source":"settle_310",
-            "target":"settle_311",
+            "road_id": 510,
+            "source":310,
+            "target":311,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_601",
-            "source":"settle_301",
-            "target":"settle_402",
+            "road_id": 601,
+            "source":301,
+            "target":402,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_602",
-            "source":"settle_303",
-            "target":"settle_403",
+            "road_id": 602,
+            "source":303,
+            "target":403,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_603",
-            "source":"settle_305",
-            "target":"settle_405",
+            "road_id": 603,
+            "source":305,
+            "target":405,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_604",
-            "source":"settle_307",
-            "target":"settle_407",
+            "road_id": 604,
+            "source":307,
+            "target":407,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_605",
-            "source":"settle_309",
-            "target":"settle_409",
+            "road_id": 605,
+            "source":309,
+            "target":409,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_606",
-            "source":"settle_311",
-            "target":"settle_411",
+            "road_id": 606,
+            "source":311,
+            "target":411,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_701",
-            "source":"settle_401",
-            "target":"settle_402",
+            "road_id": 701,
+            "source":401,
+            "target":402,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_702",
-            "source":"settle_402",
-            "target":"settle_403",
+            "road_id": 702,
+            "source":402,
+            "target":403,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_703",
-            "source":"settle_403",
-            "target":"settle_404",
+            "road_id": 703,
+            "source":403,
+            "target":404,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_704",
-            "source":"settle_404",
-            "target":"settle_405",
+            "road_id": 704,
+            "source":404,
+            "target":405,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_705",
-            "source":"settle_405",
-            "target":"settle_406",
+            "road_id": 705,
+            "source":405,
+            "target":406,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_706",
-            "source":"settle_406",
-            "target":"settle_407",
+            "road_id": 706,
+            "source":406,
+            "target":407,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_707",
-            "source":"settle_407",
-            "target":"settle_408",
+            "road_id": 707,
+            "source":407,
+            "target":408,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_708",
-            "source":"settle_408",
-            "target":"settle_409",
+            "road_id": 708,
+            "source":408,
+            "target":409,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_709",
-            "source":"settle_409",
-            "target":"settle_410",
+            "road_id": 709,
+            "source":409,
+            "target":410,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_710",
-            "source":"settle_410",
-            "target":"settle_411",
+            "road_id": 710,
+            "source":410,
+            "target":411,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_801",
-            "source":"settle_402",
-            "target":"settle_501",
+            "road_id": 801,
+            "source":402,
+            "target":501,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_802",
-            "source":"settle_404",
-            "target":"settle_503",
+            "road_id": 802,
+            "source":404,
+            "target":503,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_803",
-            "source":"settle_406",
-            "target":"settle_505",
+            "road_id": 803,
+            "source":406,
+            "target":505,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_804",
-            "source":"settle_408",
-            "target":"settle_507",
+            "road_id": 804,
+            "source":408,
+            "target":507,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_805",
-            "source":"settle_410",
-            "target":"settle_509",
+            "road_id": 805,
+            "source":410,
+            "target":509,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_901",
-            "source":"settle_501",
-            "target":"settle_502",
+            "road_id": 901,
+            "source":501,
+            "target":502,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_902",
-            "source":"settle_502",
-            "target":"settle_503",
+            "road_id": 902,
+            "source":502,
+            "target":503,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_903",
-            "source":"settle_503",
-            "target":"settle_504",
+            "road_id": 903,
+            "source":503,
+            "target":504,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_904",
-            "source":"settle_504",
-            "target":"settle_505",
+            "road_id": 904,
+            "source":504,
+            "target":505,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_905",
-            "source":"settle_505",
-            "target":"settle_506",
+            "road_id": 905,
+            "source":505,
+            "target":506,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_906",
-            "source":"settle_506",
-            "target":"settle_507",
+            "road_id": 906,
+            "source":506,
+            "target":507,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_907",
-            "source":"settle_507",
-            "target":"settle_508",
+            "road_id": 907,
+            "source":507,
+            "target":508,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_908",
-            "source":"settle_508",
-            "target":"settle_509",
+            "road_id": 908,
+            "source":508,
+            "target":509,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1001",
-            "source":"settle_502",
-            "target":"settle_601",
+            "road_id": 1001,
+            "source":502,
+            "target":601,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1002",
-            "source":"settle_504",
-            "target":"settle_603",
+            "road_id": 1002,
+            "source":504,
+            "target":603,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1003",
-            "source":"settle_506",
-            "target":"settle_605",
+            "road_id": 1003,
+            "source":506,
+            "target":605,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1004",
-            "source":"settle_508",
-            "target":"settle_607",
+            "road_id": 1004,
+            "source":508,
+            "target":607,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1101",
-            "source":"settle_601",
-            "target":"settle_602",
+            "road_id": 1101,
+            "source":601,
+            "target":602,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1102",
-            "source":"settle_602",
-            "target":"settle_603",
+            "road_id": 1102,
+            "source":602,
+            "target":603,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1103",
-            "source":"settle_603",
-            "target":"settle_604",
+            "road_id": 1103,
+            "source":603,
+            "target":604,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1104",
-            "source":"settle_604",
-            "target":"settle_605",
+            "road_id": 1104,
+            "source":604,
+            "target":605,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1105",
-            "source":"settle_605",
-            "target":"settle_606",
+            "road_id": 1105,
+            "source":605,
+            "target":606,
             "isRoad": false,
             "weight": 1
         },
         {
-            "road_id": "road_1106",
-            "source":"settle_606",
-            "target":"settle_607",
+            "road_id": 1106,
+            "source":606,
+            "target":607,
             "isRoad": false,
             "weight": 1
         }

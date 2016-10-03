@@ -17,6 +17,7 @@ body {
     margin-top: 30px;
     margin-bottom: 15px;
 	text-align: center;
+    color: firebrick;
 }
 
 h1 {
@@ -36,6 +37,7 @@ svg {
     display: block;
 }
 
+
 /*-- footer --*/
 .bottom {
     width: 100%;
@@ -45,9 +47,9 @@ svg {
 
 .bottom p{
     position: relative;
-	font-size:15px;
-	color:ghostwhite;
+	font-size:14px;
+	color:lightyellow;
     margin-bottom: 10px;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 /*-- //footer --*/

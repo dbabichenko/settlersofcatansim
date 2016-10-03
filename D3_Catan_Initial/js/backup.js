@@ -48,7 +48,9 @@ function tile_paint(xn, yn, zn, value, resource, robber) {
     //Hexagon shape
     hexagon = g.append("path")
                     .attr("d", drawHexagon(hexagonData))
-                    .attr("fill", resource_color_map[resource]);
+                    .attr("fill", resource_color_map[resource])
+                    .attr("stroke", "grey")
+                    .attr("stroke-width", "2");
     
     //the coordinate value
     text = g.selectAll("text")
@@ -78,43 +80,10 @@ function tile_paint(xn, yn, zn, value, resource, robber) {
     }
 }
 
-//center node for every line. 
-//e.g. for the first line 104 is the center node
-var line_centerNode = {1:4, 2:5, 3:6, 4:6, 5:5, 6:4};
-var nodes = [];
-
-//add (x, y) coordinate to each settlement
-function produce_nodes(settleId, isActive, isCity, color) {
-    var i = (settleId/100) | 0,
-        j = settleId%100;
-    //calculate x
-    var xn = radius * (j - line_centerNode[i]) + center_x;
-    
-    //calculate y
-    var a = 1.5 * (i - 3.5) + 0.25;
-    if(i>3.5&&j%2!=0 || i<3.5&&j%2==0) {
-        a = 1.5 * (i - 3.5) - 0.25;
-    }
-    
-    var yn = center_y + a * radius/h;
-
-    var n_object = {"id": settleId, "x": xn, "y": yn, "isActive": isActive, "isCity": isCity, "color": color};
-    
-    nodes.push(n_object);
-}
-
 //load MapData JSON file & paint each tile
 d3.json("js/MapData.json", function(error, mapData) {
     tiles = mapData.tiles;
-    settlements = mapData.settlements;
-    roads = mapData.roads;
     for(var i=0; i<tiles.length; i++) {
         tile_paint(tiles[i].x, tiles[i].y, tiles[i].z, tiles[i].coordinates, tiles[i].resourceType, tiles[i].hasRobber);
     }
-    
-    for(var j=0; j<settlements.length; j++) {
-        produce_nodes(settlements[j].settle_id, settlements[j].isActive, settlements[j].isCity, settlements[j].color);
-    }
-    
-    console.log(nodes);
 });
