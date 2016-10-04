@@ -55,38 +55,29 @@ function tile_paint(xn, yn, zn, value, resource, robber) {
                 .data(textData)
                 .enter()
                 .append("text");
-    
-    if(robber) {
-        textLabels = text
-                .attr("x", function(d) {return d.x; })
-                .attr("y", function(d) {return d.y; })
-                .text( function (d) { return value; })
-                .attr("font-family", "sans-serif")
-                .attr("text-anchor", "middle")
-                .attr("font-size", "20px")
-                .attr("fill", "black");
+
+    textLabels = text
+            .attr("x", function(d) {return d.x; })
+            .attr("y", function(d) {return d.y; })
+            .text( function (d) { return value; })
+            .attr("font-family", "sans-serif")
+            .attr("text-anchor", "middle")
+            .attr("font-size", "20px")
+            .attr("fill", function(d) {if(robber) return "black"; else return "white"});
         
-    } else {
-        textLabels = text
-                .attr("x", function(d) {return d.x; })
-                .attr("y", function(d) {return d.y; })
-                .text( function (d) { return value; })
-                .attr("font-family", "sans-serif")
-                .attr("text-anchor", "middle")
-                .attr("font-size", "18px")
-                .attr("fill", "white");      
-    }
 }
 
 //center node for every line. 
 //e.g. for the first line 104 is the center node
 var line_centerNode = {1:4, 2:5, 3:6, 4:6, 5:5, 6:4};
-var nodes = [];
+var nodes = [],
+    links = {source:[], target:[]};
 
 //add (x, y) coordinate to each settlement
-function produce_nodes(settleId, isActive, isCity, color) {
+function generate_nodes(settleId, isActive, isCity, color) {
     var i = (settleId/100) | 0,
         j = settleId%100;
+    
     //calculate x
     var xn = radius * (j - line_centerNode[i]) + center_x;
     
@@ -105,16 +96,62 @@ function produce_nodes(settleId, isActive, isCity, color) {
 
 //load MapData JSON file & paint each tile
 d3.json("js/MapData.json", function(error, mapData) {
-    tiles = mapData.tiles;
+//    tiles = mapData.tiles;
+//    for(var i=0; i<tiles.length; i++) {
+//        tile_paint(tiles[i].x, tiles[i].y, tiles[i].z, tiles[i].coordinates, tiles[i].resourceType, tiles[i].hasRobber);
+//    }
+    
     settlements = mapData.settlements;
-    roads = mapData.roads;
-    for(var i=0; i<tiles.length; i++) {
-        tile_paint(tiles[i].x, tiles[i].y, tiles[i].z, tiles[i].coordinates, tiles[i].resourceType, tiles[i].hasRobber);
-    }
-    
     for(var j=0; j<settlements.length; j++) {
-        produce_nodes(settlements[j].settle_id, settlements[j].isActive, settlements[j].isCity, settlements[j].color);
+        generate_nodes(settlements[j].settle_id, settlements[j].isActive, settlements[j].isCity, settlements[j].color);
     }
     
-    console.log(nodes);
+    //transfer id to index
+    mapData.roads.forEach(function(e) {
+        var sourceN = nodes.filter(function(n) {return n.id === e.source; })[0],
+            targetN = nodes.filter(function(n) {return n.id === e.target; })[0];
+        
+        links.source.push(sourceN);
+        links.target.push(targetN);
+
+    });
+    
+    var force = d3.layout.force()
+        .size([width, height])
+        .nodes(nodes)
+        .links(links)
+        .linkDistance(radius/h);
+
+    //node
+    var node = svg.selectAll('.node')
+        .data(nodes)
+        .enter().append('circle')
+        .attr('class', 'node')
+        .attr('r', function(d) {if(d.isCity) return 6; else return 3;})
+        .attr('cx', function(d) { return d.x; })
+        .attr('cy', function(d) { return d.y; })
+        .style('stroke', "grey")
+        .style('fill', function(d) {
+           if(d.isActive) {
+               return d.color;
+           } else {
+               return "none";
+           }
+        });
+    
+    //link: 72 roads
+    var link = svg.selectAll('.link')
+        .data(links)
+        .enter().append('line')
+        .attr('class', 'link')
+        .attr('x1', function(d,i) { return nodes[d.source[i].index].x; })
+        .attr('y1', function(d,i) { return nodes[d.source[i].index].y; })
+        .attr('x2', function(d,i) { return nodes[d.target[i].index].x; })
+        .attr('y2', function(d,i) { return nodes[d.target[i].index].y; })
+        .style('stroke', "black")
+        .style('stroke-width', 3);
+    
+    force.start();
+    
+    
 });
