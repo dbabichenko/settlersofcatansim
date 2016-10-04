@@ -628,504 +628,576 @@
             "source":101,
             "target":102,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 102,
             "source":102,
             "target":103,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 103,
             "source":103,
             "target":104,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 104,
             "source":104,
             "target":105,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 105,
             "source":105,
             "target":106,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 106,
             "source":106,
             "target":107,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 201,
             "source":101,
             "target":202,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 202,
             "source":103,
             "target":204,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 203,
             "source":105,
             "target":206,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 204,
             "source":107,
             "target":208,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 301,
             "source":201,
             "target":202,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 302,
             "source":202,
             "target":203,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 303,
             "source":203,
             "target":204,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 304,
             "source":204,
             "target":205,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 305,
             "source":205,
             "target":206,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 306,
             "source":206,
             "target":207,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 307,
             "source":207,
             "target":208,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 308,
             "source":208,
             "target":209,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 401,
             "source":201,
             "target":302,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 402,
             "source":203,
             "target":304,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 403,
             "source":205,
             "target":306,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 404,
             "source":207,
             "target":308,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 405,
             "source":209,
             "target":310,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 501,
             "source":301,
             "target":302,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 502,
             "source":302,
             "target":303,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 503,
             "source":303,
             "target":304,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 504,
             "source":304,
             "target":305,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 505,
             "source":305,
             "target":306,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 506,
             "source":306,
             "target":307,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 507,
             "source":307,
             "target":308,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 508,
             "source":308,
             "target":309,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 509,
             "source":309,
             "target":310,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 510,
             "source":310,
             "target":311,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 601,
             "source":301,
             "target":402,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 602,
             "source":303,
             "target":403,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 603,
             "source":305,
             "target":405,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 604,
             "source":307,
             "target":407,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 605,
             "source":309,
             "target":409,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 606,
             "source":311,
             "target":411,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 701,
             "source":401,
             "target":402,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 702,
             "source":402,
             "target":403,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 703,
             "source":403,
             "target":404,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 704,
             "source":404,
             "target":405,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 705,
             "source":405,
             "target":406,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 706,
             "source":406,
             "target":407,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 707,
             "source":407,
             "target":408,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 708,
             "source":408,
             "target":409,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 709,
             "source":409,
             "target":410,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 710,
             "source":410,
             "target":411,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 801,
             "source":402,
             "target":501,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 802,
             "source":404,
             "target":503,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 803,
             "source":406,
             "target":505,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 804,
             "source":408,
             "target":507,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 805,
             "source":410,
             "target":509,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 901,
             "source":501,
             "target":502,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 902,
             "source":502,
             "target":503,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 903,
             "source":503,
             "target":504,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 904,
             "source":504,
             "target":505,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 905,
             "source":505,
             "target":506,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 906,
             "source":506,
             "target":507,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 907,
             "source":507,
             "target":508,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 908,
             "source":508,
             "target":509,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1001,
             "source":502,
             "target":601,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1002,
             "source":504,
             "target":603,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1003,
             "source":506,
             "target":605,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1004,
             "source":508,
             "target":607,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1101,
             "source":601,
             "target":602,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1102,
             "source":602,
             "target":603,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1103,
             "source":603,
             "target":604,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1104,
             "source":604,
             "target":605,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1105,
             "source":605,
             "target":606,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         },
         {
             "road_id": 1106,
             "source":606,
             "target":607,
             "isRoad": false,
-            "weight": 1
+            "weight": 1,
+            "color": "red"
         }
     ]
 }
