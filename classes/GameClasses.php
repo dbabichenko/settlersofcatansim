@@ -39,7 +39,9 @@
         }
         
         function rollingDice(){
-            
+            $diceA = mt_rand(0, 6);
+            $diceB = mt_rand(0, 6);
+            return ($diceA+$diceB);
         }
         
         function produceResource($sumOfDices){
@@ -52,6 +54,7 @@
         public $color;
         public $victoryPoints;
         public $settlements = array(); // stores indexes of settlement array
+        // Do we need stores road also?
         public $resCard = array();
         public $devCard = array();
         public $longestPath;
@@ -61,12 +64,106 @@
             $this->color = $color;
         }
         
-        function tradeWithBank($tradeInAmount, $tradeInType, $getType){
+        function tradeWithBank($tradeInAmount, $tradeInType, $getType, $resCard){
+            $ratio = 4; // Fixed ratio!!ratio varies!!
             
+            if($tradeInType==$getType) return false;
+            
+            $getAmount = floor($tradeInAmount / $ratio);
+            
+            $count = 0;
+            $i = -1;
+            $enoughRes = false;
+            $removeList = array();
+            
+            foreach($resCard as &$card){
+                $i++;
+                if($card->type==$getType){
+                    array_push($removeList, $i);
+                    $count++;
+                    if($count==$getAmount) {
+                        $enoughRes = true;
+                        break;
+                    }
+                }
+            }
+            
+            if(!$enoughRes)
+                return false;
+            
+            // remove resource from bank and add to player
+            foreach($removeList as &$index){
+                array_push($this->resCard, $resCard[$index]);
+                unset($resCard[$index]);
+            }
+            $resCard = array_values($resCard);
+            
+            //remove resource from player and add to bank
+            $i = -1;
+            $count = 0;
+            foreach($this->resCard as &$card){
+                $i++;
+                if($card->type = $tradeInType){
+                    array_push($resCard, $card);
+                    unset($this->resCard[$i]);
+                    $count++;
+                    if($count==$tradeInAmount) break;
+                }
+            }
+            $this->resCard = array_values($this->resCard);
+            
+            return true;
         }
         
-        function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio){
+        function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio, $other){
+            // assume player has accepted the trade
+            // no decision logic here
             
+            if($tradeInType==$getType) return false;
+            
+            $getAmount = floor($tradeInAmount / $askRatio);
+            
+            $count = 0;
+            $i = -1;
+            $enoughRes = false;
+            $removeList = array();
+            
+            foreach($other->resCard as &$card){
+                $i++;
+                if($card->type==$getType){
+                    array_push($removeList, $i);
+                    $count++;
+                    if($count==$getAmount) {
+                        $enoughRes = true;
+                        break;
+                    }
+                }
+            }
+            
+            if(!$enoughRes) return false;
+            
+            // remove resource from the other player and add to this player
+            foreach($removeList as &$index){
+                array_push($this->resCard, $other->resCard[$index]);
+                unset($other->resCard[$index]);
+            }
+            $other->resCard = array_values($other->resCard);
+            
+            //remove resource from this player and add to the other player
+            $i = -1;
+            $count = 0;
+            foreach($this->resCard as &$card){
+                $i++;
+                if($card->type = $tradeInType){
+                    array_push($other->resCard, $card);
+                    unset($this->resCard[$i]);
+                    $count++;
+                    if($count==$tradeInAmount) break;
+                }
+            }
+            $this->resCard = array_values($this->resCard);
+            
+            return true;   
         }
         
         
@@ -87,7 +184,7 @@
                 return false;
             
             $length = count($targetPlayer->resCard);
-            $index = mt_rand(0, length-1);
+            $index = mt_rand(0, $length-1);
             
             // add resource card to this player
             array_push($this->resCard, $targetPlayer->resCard[$index]);
@@ -138,6 +235,7 @@
 
     class Settlement{
         public $id;
+        public $index; // index of this object in the settlement array
         public $control; //Player.color if active, otherwise null
         public $terrain = array();
         public $road = array();
@@ -148,8 +246,9 @@
             $hex = $map['tiles'];
             $rds = $map['roads'];
                 
-            $this->id = sett[settle_id];
+            $this->id = $sett[settle_id];
             $this->control = null;
+            $this->index = $i;
             
             foreach($sett[tiles] as &$value){
                 for($j = 0; $j<37; $j++){
@@ -169,15 +268,79 @@
                 }
             }
             
-            $this->isCity = null;
+            $this->isCity = false;
         }
         
-        function build($intersectionID, $control){
+        /*
+        * @para $player is the player who is building the road
+        * @para $settlement is the settlement array
+        * @para $roads is the roads array
+        */
+        function build($player, $settlement, $roads){
+            if($this->control!=null) return false;
             
+            $i = -1;
+            $resRemoveList = array();
+            $requiredRes = array("Brick", "Lumber", "Wool", "Grain");
+            foreach($player->resCard as &$card){
+                $i++;
+                if(in_array($card->type, $requiredRes)){
+                    array_push($resRemoveList, $i);
+                    unset($requiredRes[array_search($card->type, $requiredRes)]);
+                }
+            }
+            
+            if(!empty($requiredRes)) return false;
+            
+            $hasAdjacency = false;
+            $hasRoad = false;
+            foreach($this->road as &$rdIndex){
+                foreach($roads[$rdIndex]->settlement as &$setIndex){
+                    if($settlement[$setIndex]->control!=null)
+                        $hasAdjacency = true;
+                }
+                if($roads[$rdIndex]->control==$player->control)
+                    $hasRoad = true;
+            }
+            
+            if((!$hasRoad)||($hasAdjacency)) return false;
+            
+            $this->control = $player->color;
+            array_push($player->settlement, $this->index);
+            
+            foreach($resRemoveList as &$index){
+                unset($player->resCard[$index]);
+            }
+            
+            $player->resCard = array_values($player->resCard);
+            
+            return true;
         }
         
-        function upgradeToCity($settlementID){
+        function upgradeToCity($player){
+            if($this->control==null) return false;
             
+            $i = -1;
+            $resRemoveList = array();
+            $requiredRes = array("Ore", "Ore", "Ore", "Grain", "Grain");
+            foreach($player->resCard as &$card){
+                $i++;
+                if(in_array($card->type, $requiredRes)){
+                    array_push($resRemoveList, $i);
+                    unset($requiredRes[array_search($card->type, $requiredRes)]);
+                }
+            }
+            
+            if(!empty($requiredRes)) return false;
+            
+            foreach($resRemoveList as &$index){
+                unset($player->resCard[$index]);
+            }
+            
+            $player->resCard = array_values($player->resCard);
+            
+            $this->isCity = true;
+            return true;
         }
     }
 
@@ -210,8 +373,49 @@
             array_push($this->settlement, $source, $target);
         }
         
-        function build($start, $end, $control){
+        function build($player, $settlement, $road){
+            if($this->control!=null) return false;
             
+            $i = -1;
+            $resRemoveList = array();
+            $requiredRes = array("Brick", "Lumber");
+            foreach($player->resCard as &$card){
+                $i++;
+                if(in_array($card->type, $requiredRes)){
+                    array_push($resRemoveList, $i);
+                    unset($requiredRes[array_search($card->type, $requiredRes)]);
+                }
+            }
+            
+            if(!empty($requiredRes)) return false;
+            
+            $hasRoad = false;
+            $hasSettlement = false;
+            
+            foreach($this->settlement as &$setIndex){
+                if($settlement[$setIndex]->control==$player->color) $hasSettlement = true;
+                foreach($settlement[$setIndex]->road as &$rdIndex){
+                    if($road[$rdIndex]->control==$player->color) $hasRoad = true;
+                }
+            }
+            
+            if((!$hasRoad)&&(!$hasSettlement)) return false;
+            
+            foreach($resRemoveList as &$index){
+                unset($player->resCard[$index]);
+            }
+            
+            $player->resCard = array_values($player->resCard);
+            
+            $this->control = $player->color;
+            return true;
+        }
+    }
+
+    class ResCard{
+        public $type;
+        function __construct($type){
+            $this->type = $type;
         }
     }
 
