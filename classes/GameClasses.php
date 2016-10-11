@@ -57,6 +57,7 @@
         // Do we need stores road also?
         public $resCard = array();
         public $devCard = array();
+        // public $portType
         public $longestPath;
         public $numKnights;
         
@@ -64,9 +65,12 @@
             $this->color = $color;
         }
         
-        function tradeWithBank($tradeInAmount, $tradeInType, $getType, $resCard){
-            $ratio = 4; // Fixed ratio!!ratio varies!!
-            
+        function tradeWithBank($tradeInAmount, $tradeInType, $getType, $resCard, $portType){
+            if($portType=="none") $ratio = 4;
+            else if($portType=="general") $ratio = 3;
+            else if($portType==$getType) $ratio = 2;
+            else return false;
+
             if($tradeInType==$getType) return false;
             
             $getAmount = floor($tradeInAmount / $ratio);
@@ -318,7 +322,7 @@
         }
         
         function upgradeToCity($player){
-            if($this->control==null) return false;
+            if($this->control!=$player->color) return false;
             
             $i = -1;
             $resRemoveList = array();
