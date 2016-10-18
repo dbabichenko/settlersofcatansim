@@ -2,299 +2,262 @@
     "tiles": [
         {
             "tile_id": "A",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "general"
+            "x":0, "y":3, "z":-3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "B",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":1, "y":2, "z":-3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "C",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "grain"
+            "x":2, "y":1, "z":-3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "D",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":3, "y":0, "z":-3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "E",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":-1, "y":3, "z":-2,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": 0,
             "x":0, "y":2, "z":-2,
-            "coordinates":10,
+            "diceValue":10,
             "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 1,
             "x":1, "y":1, "z":-2,
-            "coordinates":2,
+            "diceValue":2,
             "resourceType": "Wool",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 2,
             "x":2, "y":0, "z":-2,
-            "coordinates":9,
+            "diceValue":9,
             "resourceType": "Lumber",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": "F",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "Ore"
+            "x":3, "y":-1, "z":-2,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "G",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "lumber"
+            "x":-2, "y":3, "z":-1,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": 3,
             "x":-1, "y":2, "z":-1,
-            "coordinates":12,
+            "diceValue":12,
             "resourceType": "Grain",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 4,
             "x":0, "y":1, "z":-1,
-            "coordinates":6,
+            "diceValue":6,
             "resourceType": "Brick",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 5,
             "x":1, "y":0, "z":-1,
-            "coordinates":4,
+            "diceValue":4,
             "resourceType": "Wool",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 6,
             "x":2, "y":-1, "z":-1,
-            "coordinates":10,
+            "diceValue":10,
             "resourceType": "Brick",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": "H",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":3, "y":-2, "z":-1,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "I",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":-3, "y":3, "z":0,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": 7,
             "x":-2, "y":2, "z":0,
-            "coordinates":9,
+            "diceValue":9,
             "resourceType": "Grain",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 8,
             "x":-1, "y":1, "z":0,
-            "coordinates":11,
+            "diceValue":11,
             "resourceType": "Lumber",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 9,
             "x":0, "y":0, "z":0,
-            "coordinates":7,
+            "diceValue":7,
             "resourceType": "Nothing",
-            "hasRobber": true,
-            "portType": "none"        
+            "hasRobber": true
         },
         {
             "tile_id": 10,
             "x":1, "y":-1, "z":0,
-            "coordinates":3,
+            "diceValue":3,
             "resourceType": "Lumber",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 11,
             "x":2, "y":-2, "z":0,
-            "coordinates":8,
+            "diceValue":8,
             "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": "J",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "general"
+            "x":3, "y":-3, "z":0,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "K",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "brick"
+            "x":-3, "y":2, "z":1,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": 12,
             "x":-2, "y":1, "z":1,
-            "coordinates":8,
+            "diceValue":8,
             "resourceType": "Lumber",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 13,
             "x":-1, "y":0, "z":1,
-            "coordinates":3,
+            "diceValue":3,
             "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 14,
             "x":0, "y":-1, "z":1,
-            "coordinates":4,
+            "diceValue":4,
             "resourceType": "Grain",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 15,
             "x":1, "y":-2, "z":1,
-            "coordinates":5,
+            "diceValue":5,
             "resourceType": "Wool",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": "L",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":2, "y":-3, "z":1,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "M",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":-3, "y":1, "z":2,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": 16,
             "x":-2, "y":0, "z":2,
-            "coordinates":5,
+            "diceValue":5,
             "resourceType": "Brick",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 17,
             "x":-1, "y":-1, "z":2,
-            "coordinates":6,
+            "diceValue":6,
             "resourceType": "Grain",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": 18,
             "x":0, "y":-2, "z":2,
-            "coordinates":11,
+            "diceValue":11,
             "resourceType": "Wool",
-            "hasRobber": false,
-            "portType": "none"
+            "hasRobber": false
         },
         {
             "tile_id": "N",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "wool"
+            "x":1, "y":-3, "z":2,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "O",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":-3, "y":0, "z":3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "P",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "general"
+            "x":-2, "y":-1, "z":3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "Q",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "general"
+            "x":-1, "y":-2, "z":3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         },
         {
             "tile_id": "R",
-            "x":0, "y":2, "z":-2,
-            "coordinates":10,
-            "resourceType": "Ore",
-            "hasRobber": false,
-            "portType": "none"
+            "x":0, "y":-3, "z":3,
+            "diceValue":0,
+            "resourceType": "Ocean",
+            "hasRobber": false
         }
     ],
     "settlements": [
