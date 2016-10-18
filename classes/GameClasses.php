@@ -455,9 +455,7 @@
         }
 
         function knight($player,$destination){
-
-
-          Player::steal($player,$destination);
+          Player::moveBandit($destination);
           $player->knights++;
           if ($player->numKnights > $hasLongestRoad->numKnights){
             $hasLongestRoad = $player;
@@ -544,7 +542,7 @@
         }
     }
 
-  
+
 
 
 ?>
