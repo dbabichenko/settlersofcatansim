@@ -1,1131 +1,1059 @@
 {
     "tiles": [
         {
-            "tile_id": 11,
+            "tile_id": "A",
+            "x":0, "y":3, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "B",
+            "x":1, "y":2, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "C",
+            "x":2, "y":1, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "D",
+            "x":3, "y":0, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "E",
+            "x":-1, "y":3, "z":-2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 0,
             "x":0, "y":2, "z":-2,
-            "coordinates":10,
+            "diceValue":10,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
-            "tile_id": 12,
+            "tile_id": 1,
             "x":1, "y":1, "z":-2,
-            "coordinates":2,
+            "diceValue":2,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
-            "tile_id": 13,
+            "tile_id": 2,
             "x":2, "y":0, "z":-2,
-            "coordinates":9,
+            "diceValue":9,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id": 21,
+            "tile_id": "F",
+            "x":3, "y":-1, "z":-2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "G",
+            "x":-2, "y":3, "z":-1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 3,
             "x":-1, "y":2, "z":-1,
-            "coordinates":12,
+            "diceValue":12,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id": 22,
+            "tile_id": 4,
             "x":0, "y":1, "z":-1,
-            "coordinates":6,
+            "diceValue":6,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
-            "tile_id": 23,
+            "tile_id": 5,
             "x":1, "y":0, "z":-1,
-            "coordinates":4,
+            "diceValue":4,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
-            "tile_id": 24,
+            "tile_id": 6,
             "x":2, "y":-1, "z":-1,
-            "coordinates":10,
+            "diceValue":10,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
-            "tile_id": 31,
+            "tile_id": "H",
+            "x":3, "y":-2, "z":-1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "I",
+            "x":-3, "y":3, "z":0,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 7,
             "x":-2, "y":2, "z":0,
-            "coordinates":9,
+            "diceValue":9,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id": 32,
+            "tile_id": 8,
             "x":-1, "y":1, "z":0,
-            "coordinates":11,
+            "diceValue":11,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id": 33,
+            "tile_id": 9,
             "x":0, "y":0, "z":0,
-            "coordinates":7,
+            "diceValue":7,
             "resourceType": "Nothing",
             "hasRobber": true
         },
         {
-            "tile_id": 34,
+            "tile_id": 10,
             "x":1, "y":-1, "z":0,
-            "coordinates":3,
+            "diceValue":3,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id": 35,
+            "tile_id": 11,
             "x":2, "y":-2, "z":0,
-            "coordinates":8,
+            "diceValue":8,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
-            "tile_id": 41,
+            "tile_id": "J",
+            "x":3, "y":-3, "z":0,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "K",
+            "x":-3, "y":2, "z":1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 12,
             "x":-2, "y":1, "z":1,
-            "coordinates":8,
+            "diceValue":8,
             "resourceType": "Lumber",
             "hasRobber": false
         },
         {
-            "tile_id": 42,
+            "tile_id": 13,
             "x":-1, "y":0, "z":1,
-            "coordinates":3,
+            "diceValue":3,
             "resourceType": "Ore",
             "hasRobber": false
         },
         {
-            "tile_id": 43,
+            "tile_id": 14,
             "x":0, "y":-1, "z":1,
-            "coordinates":4,
+            "diceValue":4,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id": 44,
+            "tile_id": 15,
             "x":1, "y":-2, "z":1,
-            "coordinates":5,
+            "diceValue":5,
             "resourceType": "Wool",
             "hasRobber": false
         },
         {
-            "tile_id": 51,
+            "tile_id": "L",
+            "x":2, "y":-3, "z":1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "M",
+            "x":-3, "y":1, "z":2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 16,
             "x":-2, "y":0, "z":2,
-            "coordinates":5,
+            "diceValue":5,
             "resourceType": "Brick",
             "hasRobber": false
         },
         {
-            "tile_id": 52,
+            "tile_id": 17,
             "x":-1, "y":-1, "z":2,
-            "coordinates":6,
+            "diceValue":6,
             "resourceType": "Grain",
             "hasRobber": false
         },
         {
-            "tile_id": 53,
+            "tile_id": 18,
             "x":0, "y":-2, "z":2,
-            "coordinates":11,
+            "diceValue":11,
             "resourceType": "Wool",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "N",
+            "x":1, "y":-3, "z":2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "O",
+            "x":-3, "y":0, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "P",
+            "x":-2, "y":-1, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "Q",
+            "x":-1, "y":-2, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "R",
+            "x":0, "y":-3, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
             "hasRobber": false
         }
     ],
     "settlements": [
         {
-            "settle_id":101,
-            "tiles":[11],
+            "id":101,
+            "tiles":["A", "E", 0],
             "roads":[101, 201],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "red",
+            "portType": "General"
         },
         {
-            "settle_id":102,
-            "tiles":[11],
+            "id":102,
+            "tiles":["A", "B", 0],
             "roads":[101, 102],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":103,
-            "tiles":[11,12],
+            "id":103,
+            "tiles":["B",0,1],
             "roads":[102, 103],
-            "hasPort": false,
-            "isActive": false,
-            "isCity": false,
-            "color": "red"
+            "isCity": true,
+            "color": "red",
+            "portType": "none"
         },
         {
-            "settle_id":104,
-            "tiles":[12],
+            "id":104,
+            "tiles":["B", "C", 1],
             "roads":[103, 104],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Grain"
         },
         {
-            "settle_id":105,
-            "tiles":[12,13],
+            "id":105,
+            "tiles":["C", 1, 2],
             "roads":[104, 105],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Grain"
         },
         {
-            "settle_id":106,
-            "tiles":[13],
+            "id":106,
+            "tiles":["C", "D", 2],
             "roads":[105, 106],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":107,
-            "tiles":[13],
+            "id":107,
+            "tiles":["D", 2, "F"],
             "roads":[106, 204],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":201,
-            "tiles":[21],
+            "id":201,
+            "tiles":["E", "G", 3],
             "roads":[301, 401],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Lumber"
         },
         {
-            "settle_id":202,
-            "tiles":[11,21],
+            "id":202,
+            "tiles":["E", 0, 3],
             "roads":[201, 301, 302],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":203,
-            "tiles":[11,21,22],
+            "id":203,
+            "tiles":[0,3,4],
             "roads":[302, 303, 402],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":204,
-            "tiles":[11,12,22],
+            "id":204,
+            "tiles":[0, 1, 4],
             "roads":[202, 303, 304],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":205,
-            "tiles":[12,22,23],
+            "id":205,
+            "tiles":[1,4,5],
             "roads":[304, 305, 403],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":206,
-            "tiles":[12,13,23],
+            "id":206,
+            "tiles":[1,2,5],
             "roads":[203, 305, 306],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":207,
-            "tiles":[13,23,24],
+            "id":207,
+            "tiles":[2,5,6],
             "roads":[306, 307, 404],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":208,
-            "tiles":[13,24],
+            "id":208,
+            "tiles":[2, "F", 6],
             "roads":[204, 307, 308],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Ore"
         },
         {
-            "settle_id":209,
-            "tiles":[24],
+            "id":209,
+            "tiles":["F", 6, "H"],
             "roads":[308, 405],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Ore"
         },
         {
-            "settle_id":301,
-            "tiles":[31],
+            "id":301,
+            "tiles":["G", "I", 7],
             "roads":[501, 601],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":302,
-            "tiles":[21,31],
+            "id":302,
+            "tiles":["G",3,7],
             "roads":[401, 501, 502],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Lumber"
         },
         {
-            "settle_id":303,
-            "tiles":[21,31,32],
+            "id":303,
+            "tiles":[3,7,8],
             "roads":[502, 503, 602],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":304,
-            "tiles":[21,22,32],
+            "id":304,
+            "tiles":[3,4,8],
             "roads":[402, 503, 504],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":305,
-            "tiles":[22,32,33],
+            "id":305,
+            "tiles":[4,8,9],
             "roads":[504, 505, 603],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":306,
-            "tiles":[22,23,33],
+            "id":306,
+            "tiles":[4,5,9],
             "roads":[403, 505, 506],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":307,
-            "tiles":[23,33,34],
+            "id":307,
+            "tiles":[5,9,10],
             "roads":[506, 507, 604],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":308,
-            "tiles":[23,24,34],
+            "id":308,
+            "tiles":[5,6,10],
             "roads":[404, 507, 508],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":309,
-            "tiles":[24,34,35],
+            "id":309,
+            "tiles":[6,10,11],
             "roads":[508, 509, 605],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":310,
-            "tiles":[24,35],
+            "id":310,
+            "tiles":[6,"H",11],
             "roads":[405, 509, 510],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":311,
-            "tiles":[35],
+            "id":311,
+            "tiles":["H", 11, "J"],
             "roads":[510, 606],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":401,
-            "tiles":[31],
+            "id":401,
+            "tiles":["I", 7, "K"],
             "roads":[601, 701],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":402,
-            "tiles":[31, 41],
+            "id":402,
+            "tiles":[7, "K", 12],
             "roads":[701, 702, 801],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Brick"
         },
         {
-            "settle_id":403,
-            "tiles":[31, 32, 41],
+            "id":403,
+            "tiles":[7, 8, 12],
             "roads":[602, 702, 703],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":404,
-            "tiles":[32, 41, 42],
+            "id":404,
+            "tiles":[8, 12, 13],
             "roads":[703, 704, 802],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":405,
-            "tiles":[32, 33, 42],
+            "id":405,
+            "tiles":[8, 9, 13],
             "roads":[603, 704, 705],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":406,
-            "tiles":[33, 42, 43],
+            "id":406,
+            "tiles":[9, 13, 14],
             "roads":[705, 706, 803],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":407,
-            "tiles":[33, 34, 43],
+            "id":407,
+            "tiles":[9, 10, 14],
             "roads":[604, 706, 707],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":408,
-            "tiles":[34, 43, 44],
+            "id":408,
+            "tiles":[10, 14, 15],
             "roads":[707, 708, 804],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":409,
-            "tiles":[34, 35, 44],
+            "id":409,
+            "tiles":[10, 11, 15],
             "roads":[605, 708, 709],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":410,
-            "tiles":[35, 44],
+            "id":410,
+            "tiles":[11, 15, "L"],
             "roads":[709, 710, 805],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":411,
-            "tiles":[35],
+            "id":411,
+            "tiles":[11, "J", "L"],
             "roads":[606, 710],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":501,
-            "tiles":[41],
+            "id":501,
+            "tiles":["K", 12, "M"],
             "roads":[801, 901],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Brick"
         },
         {
-            "settle_id":502,
-            "tiles":[41, 51],
+            "id":502,
+            "tiles":[12, "M", 16],
             "roads":[901, 902, 1001],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":503,
-            "tiles":[41, 42, 51],
+            "id":503,
+            "tiles":[12, 13, 16],
             "roads":[802, 902, 903],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":504,
-            "tiles":[42, 51, 52],
+            "id":504,
+            "tiles":[13, 16, 17],
             "roads":[903, 904, 1002],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":505,
-            "tiles":[42, 43, 52],
+            "id":505,
+            "tiles":[13, 14, 17],
             "roads":[803, 904, 905],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":506,
-            "tiles":[43, 52, 53],
+            "id":506,
+            "tiles":[14, 17, 18],
             "roads":[905, 906, 1003],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":507,
-            "tiles":[43, 44, 53],
+            "id":507,
+            "tiles":[14, 15, 18],
             "roads":[804, 906, 907],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":508,
-            "tiles":[44, 53],
+            "id":508,
+            "tiles":[15, 18, "N"],
             "roads":[907, 908, 1004],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Wool"
         },
         {
-            "settle_id":509,
-            "tiles":[44],
+            "id":509,
+            "tiles":[15, "L", "N"],
             "roads":[805, 908],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "Wool"
         },
         {
-            "settle_id":601,
-            "tiles":[51],
+            "id":601,
+            "tiles":["M", 16, "O"],
             "roads":[1001, 1101],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":602,
-            "tiles":[51],
+            "id":602,
+            "tiles":[16, "O", "P"],
             "roads":[1101, 1102],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":603,
-            "tiles":[51, 52],
+            "id":603,
+            "tiles":[16, 17, "P"],
             "roads":[1002, 1102, 1103],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":604,
-            "tiles":[52],
+            "id":604,
+            "tiles":[17, "P", "Q"],
             "roads":[1003, 1104],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":605,
-            "tiles":[52, 53],
+            "id":605,
+            "tiles":[17, 18, "Q"],
             "roads":[1003, 1104, 1105],
-            "hasPort": true,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "General"
         },
         {
-            "settle_id":606,
-            "tiles":[53],
+            "id":606,
+            "tiles":[18, "Q", "R"],
             "roads":[1005, 1106],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         },
         {
-            "settle_id":607,
-            "tiles":[53],
+            "id":607,
+            "tiles":[18, "N", "R"],
             "roads":[1004, 1106],
-            "hasPort": false,
-            "isActive": false,
             "isCity": false,
-            "color": "red"
+            "color": "none",
+            "portType": "none"
         }
     ],
     "roads": [
         {
-            "road_id": 101,
             "source":101,
             "target":102,
-            "isRoad": false,
-            "weight": 1
+            "color": "red"
         },
         {
-            "road_id": 102,
             "source":102,
             "target":103,
-            "isRoad": false,
-            "weight": 1
+            "color": "red"
         },
         {
-            "road_id": 103,
             "source":103,
             "target":104,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 104,
             "source":104,
             "target":105,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 105,
             "source":105,
             "target":106,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 106,
             "source":106,
             "target":107,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 201,
             "source":101,
             "target":202,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 202,
             "source":103,
             "target":204,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 203,
             "source":105,
             "target":206,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 204,
             "source":107,
             "target":208,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 301,
             "source":201,
             "target":202,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 302,
             "source":202,
             "target":203,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 303,
             "source":203,
             "target":204,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 304,
             "source":204,
             "target":205,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 305,
             "source":205,
             "target":206,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 306,
             "source":206,
             "target":207,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 307,
             "source":207,
             "target":208,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 308,
             "source":208,
             "target":209,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 401,
             "source":201,
             "target":302,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 402,
             "source":203,
             "target":304,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 403,
             "source":205,
             "target":306,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 404,
             "source":207,
             "target":308,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 405,
             "source":209,
             "target":310,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 501,
             "source":301,
             "target":302,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 502,
             "source":302,
             "target":303,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 503,
             "source":303,
             "target":304,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 504,
             "source":304,
             "target":305,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 505,
             "source":305,
             "target":306,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 506,
             "source":306,
             "target":307,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 507,
             "source":307,
             "target":308,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 508,
             "source":308,
             "target":309,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 509,
             "source":309,
             "target":310,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 510,
             "source":310,
             "target":311,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 601,
             "source":301,
-            "target":402,
-            "isRoad": false,
-            "weight": 1
+            "target":401,
+            "color": "none"
         },
         {
-            "road_id": 602,
             "source":303,
             "target":403,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 603,
             "source":305,
             "target":405,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 604,
             "source":307,
             "target":407,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 605,
             "source":309,
             "target":409,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 606,
             "source":311,
             "target":411,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 701,
             "source":401,
             "target":402,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 702,
             "source":402,
             "target":403,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 703,
             "source":403,
             "target":404,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 704,
             "source":404,
             "target":405,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 705,
             "source":405,
             "target":406,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 706,
             "source":406,
             "target":407,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 707,
             "source":407,
             "target":408,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 708,
             "source":408,
             "target":409,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 709,
             "source":409,
             "target":410,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 710,
             "source":410,
             "target":411,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 801,
             "source":402,
             "target":501,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 802,
             "source":404,
             "target":503,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 803,
             "source":406,
             "target":505,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 804,
             "source":408,
             "target":507,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 805,
             "source":410,
             "target":509,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 901,
             "source":501,
             "target":502,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 902,
             "source":502,
             "target":503,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 903,
             "source":503,
             "target":504,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 904,
             "source":504,
             "target":505,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 905,
             "source":505,
             "target":506,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 906,
             "source":506,
             "target":507,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 907,
             "source":507,
             "target":508,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 908,
             "source":508,
             "target":509,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1001,
             "source":502,
             "target":601,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1002,
             "source":504,
             "target":603,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1003,
             "source":506,
             "target":605,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1004,
             "source":508,
             "target":607,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1101,
             "source":601,
             "target":602,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1102,
             "source":602,
             "target":603,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1103,
             "source":603,
             "target":604,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1104,
             "source":604,
             "target":605,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1105,
             "source":605,
             "target":606,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         },
         {
-            "road_id": 1106,
             "source":606,
             "target":607,
-            "isRoad": false,
-            "weight": 1
+            "color": "none"
         }
     ]
 }

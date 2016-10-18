@@ -37,6 +37,15 @@ svg {
     display: block;
 }
 
+g {
+    z-index: 1;
+    position: relative;
+}
+
+.link-node {
+    z-index: 1000;
+    position: relative;
+}
 
 /*-- footer --*/
 .bottom {
