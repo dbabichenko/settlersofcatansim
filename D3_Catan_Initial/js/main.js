@@ -71,8 +71,8 @@ d3.json("js/MapData.json", function(error, mapData) {
             .attr("y1", function(d) { return d.source.y; })
             .attr("x2", function(d) { return d.target.x; })
             .attr("y2", function(d) { return d.target.y; })
-            .style('stroke', function(d) { return d.color; })
-            .style('stroke-width', 3);
+            .style('stroke', function(d) { if(d.color == "none") return "black"; else return d.color; })
+            .style('stroke-width', 2);
     
     node = node
         .data(nodes)
