@@ -47,7 +47,7 @@
             $diceB = mt_rand(0, 6);
             $sumofDices = $diceA+$diceB
             if ($sumofDices == 7) {
-              for($j=0;$j<Game::$numPlayers;$j++){
+              for($j=0;$j<$numPlayers;$j++){
                 if $player[$j]->$resCard > 7 {
                   $returnAmount = floor($resCard/2);
                   //how to choose which card to discard ?
@@ -189,6 +189,10 @@
         * @para $targetPlayer is an instance of Player class
         * @para $destination is a index of settlement array
         **/
+        function moveBandit($destination){
+          Game::$banditLocation = $destination;
+          return steal($targetPlayer,$banditLocation);
+        }
         function steal($targetPlayer, $destination){
             $hasSettlement = false;
             foreach($targetPlayer->settlements as &$sett){
@@ -242,7 +246,7 @@
                 $hex = $sett[$j][tiles];
                 foreach($hex as &$value){
                     if($value==$terr[tile_id]){
-                        
+
                         array_push($this->settlement, $j);
                         break;
                     }
