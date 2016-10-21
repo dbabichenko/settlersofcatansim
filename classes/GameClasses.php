@@ -45,7 +45,19 @@
         function rollingDice(){
             $diceA = mt_rand(0, 6);
             $diceB = mt_rand(0, 6);
-            return ($diceA+$diceB);
+            $sumofDices = $diceA+$diceB
+            if ($sumofDices == 7) {
+              for($j=0;$j<Game::$numPlayers;$j++){
+                if $player[$j]->$resCard > 7 {
+                  $returnAmount = floor($resCard/2);
+                  //how to choose which card to discard ?
+                      }
+                  }
+              Player::moveBandit($destination);
+          }
+          else {
+          return produceResource($sumofDices);
+          }
         }
 
         function produceResource($sumOfDices){
@@ -380,7 +392,12 @@
             array_push($this->settlement, $source, $target);
         }
 
+<<<<<<< Updated upstream
         function build($player){
+=======
+        function build($player, $settlement, $road){
+            //Pushing the new road element into player's road array
+>>>>>>> Stashed changes
             if($this->control!=null) return false;
 
             $i = -1;
@@ -458,18 +475,17 @@
         }
 
         function knight($player,$destination){
-          Player::moveBandit($destination);
+          $player->moveBandit($destination);
           $player->knights++;
           if ($player->numKnights > $hasLongestRoad->numKnights){
             $hasLongestRoad = $player;
           }
         }
 
-
-        function roadBuilding($player){
+        function roadBuilding($player,$settlement,$firstRoad,$secondRoad){
           if($this->control!=$player->color) return false;
-          Road::build();
-          Road::build();
+          $firstRoad->build($player,$settlement);
+          $secondRoad->build($player,$settlement);
           return true;
         }
 
