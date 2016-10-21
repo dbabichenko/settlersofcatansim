@@ -9,11 +9,11 @@
     $resCard = array();
     $devCard = array();
     $numPlayers;
+    $banditLocation;
 
     class Game {
         public $color = array();
         public $currentPlayer;
-        public $banditLocation;
         public $hasLongestRoad;
         public $hasBiggestArmy;
 
@@ -42,7 +42,7 @@
             }
         }
 
-        function rollingDice(){
+        function rollingDice($player){
             $diceA = mt_rand(0, 6);
             $diceB = mt_rand(0, 6);
             $sumofDices = $diceA+$diceB
@@ -53,7 +53,7 @@
                   //how to choose which card to discard ?
                       }
                   }
-              Player::moveBandit($destination);
+              $player->moveBandit($destination);
           }
           else {
           return produceResource($sumofDices);
@@ -190,7 +190,7 @@
         * @para $destination is a index of settlement array
         **/
         function moveBandit($destination){
-          Game::$banditLocation = $destination;
+          $banditLocation = $destination;
           return steal($targetPlayer,$banditLocation);
         }
         function steal($targetPlayer, $destination){
