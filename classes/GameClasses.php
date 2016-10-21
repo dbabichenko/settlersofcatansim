@@ -1,15 +1,19 @@
+// global variables declaration here
+// write comments about each class and function, documentation
+
 <?php
+    $players = array();
+    $terrain = array();
+    $settlement = array();
+    $road =  array();
+    $resCard = array();
+    $devCard = array();
+    $numPlayers;
+
     class Game {
         public $color = array();
-        public $numPlayers;
-        public $players = array();
-        public $terrain = array();
-        public $settlement = array();
-        public $road =  array();
         public $currentPlayer;
         public $banditLocation;
-        public $resCard = array();
-        public $devCard = array();
         public $hasLongestRoad;
         public $hasBiggestArmy;
 
@@ -54,10 +58,8 @@
         public $color;
         public $victoryPoints;
         public $settlements = array(); // stores indexes of settlement array
-        // Do we need stores road also?
         public $resCard = array();
         public $devCard = array();
-        // public $portType
         public $longestPath;
         public $numKnights;
 
@@ -228,6 +230,7 @@
                 $hex = $sett[$j][tiles];
                 foreach($hex as &$value){
                     if($value==$terr[tile_id]){
+                        
                         array_push($this->settlement, $j);
                         break;
                     }
@@ -377,7 +380,7 @@
             array_push($this->settlement, $source, $target);
         }
 
-        function build($player, $settlement, $road){
+        function build($player){
             if($this->control!=null) return false;
 
             $i = -1;
