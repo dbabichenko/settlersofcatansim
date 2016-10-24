@@ -1,6 +1,3 @@
-// global variables declaration here
-// write comments about each class and function, documentation
-
 <?php
     $players = array();
     $terrain = array();
@@ -24,40 +21,47 @@
             $map = json_decode($string, true);
 
             for ($i = 0; $i<72; $i++){
-                $this->road[$i] = new road($map, $i);
+                global $road;
+                $road[$i] = new road($map, $i);
             }
 
             for ($i = 0; $i<37; $i++){
-                $this->terrain[$i] = new terrain($map, $i);
+                global $terrain;
+                $terrain[$i] = new terrain($map, $i);
             }
 
             for ($i = 0; $i<54; $i++){
-                $this->settlement[$i] = new Settlement($map, $i);
+                global $settlement;
+                $settlement[$i] = new Settlement($map, $i);
             }
 
             for ($i = 0; $i<$numPlayers; $i++){
                 $this->color[$i] = $i;
 
-                $this->players[$i] = new Player($i);
+                global $players;
+                $players[$i] = new Player($i);
             }
         }
 
         function rollingDice($player){
             $diceA = mt_rand(0, 6);
             $diceB = mt_rand(0, 6);
-            $sumofDices = $diceA+$diceB
-            if ($sumofDices == 7) {
-              for($j=0;$j<$numPlayers;$j++){
-                if $player[$j]->$resCard > 7 {
-                  $returnAmount = floor($resCard/2);
-                  //how to choose which card to discard ?
-                      }
-                  }
-              $player->moveBandit($destination);
-          }
-          else {
-          return produceResource($sumofDices);
-          }
+            $sumOfDices = $diceA+$diceB;
+
+            if ($sumOfDices == 7) {
+                global $numPlayers, $resCard;
+                for($j=0;$j<$numPlayers;$j++){
+                    if ($player[$j]->$resCard > 7) {
+                        $returnAmount = floor($resCard/2);
+                        //how to choose which card to discard ?
+                    }
+                }
+
+                $player->moveBandit($destination);
+                // !IMPORTANT!: destination is not defined here
+            } else {
+                return produceResource($sumOfDices);
+            }
         }
 
         function produceResource($sumOfDices){
@@ -70,6 +74,7 @@
         public $color;
         public $victoryPoints;
         public $settlements = array(); // stores indexes of settlement array
+        public $roads = array();
         public $resCard = array();
         public $devCard = array();
         public $longestPath;
@@ -79,7 +84,7 @@
             $this->color = $color;
         }
 
-        function tradeWithBank($tradeInAmount, $tradeInType, $getType, $resCard, $portType){
+        function tradeWithBank($tradeInAmount, $tradeInType, $getType, &$bankResCard, $portType){
             if($portType=="none") $ratio = 4;
             else if($portType=="general") $ratio = 3;
             else if($portType==$getType) $ratio = 2;
@@ -94,7 +99,7 @@
             $enoughRes = false;
             $removeList = array();
 
-            foreach($resCard as &$card){
+            foreach($bankResCard as &$card){
                 $i++;
                 if($card->type==$getType){
                     array_push($removeList, $i);
@@ -111,18 +116,24 @@
 
             // remove resource from bank and add to player
             foreach($removeList as &$index){
-                array_push($this->resCard, $resCard[$index]);
-                unset($resCard[$index]);
-            }
-            $resCard = array_values($resCard);
+                $next = count($this->resCard);
+                $this->resCard[$next] = &$bankResCard[$index];
+                // array_push($this->resCard, $resCard[$index]);
 
-            //remove resource from player and add to bank
+                unset($bankResCard[$index]);
+            }
+            $bankResCard = array_values($bankResCard);
+
+            // remove resource from player and add to bank
             $i = -1;
             $count = 0;
             foreach($this->resCard as &$card){
                 $i++;
                 if($card->type = $tradeInType){
-                    array_push($resCard, $card);
+                    $next = count($bankResCard);
+                    $bankResCard[$next] = &$card;
+                    // array_push($bankResCard, $card);
+
                     unset($this->resCard[$i]);
                     $count++;
                     if($count==$tradeInAmount) break;
@@ -133,7 +144,7 @@
             return true;
         }
 
-        function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio, $other){
+        function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio, &$other){
             // assume player has accepted the trade
             // no decision logic here
 
@@ -162,18 +173,24 @@
 
             // remove resource from the other player and add to this player
             foreach($removeList as &$index){
-                array_push($this->resCard, $other->resCard[$index]);
+                $next = count($this->resCard);
+                $this->resCard[$next] = &$other->resCard[$index];
+
+                // array_push($this->resCard, $other->resCard[$index]);
                 unset($other->resCard[$index]);
             }
             $other->resCard = array_values($other->resCard);
 
-            //remove resource from this player and add to the other player
+            // remove resource from this player and add to the other player
             $i = -1;
             $count = 0;
             foreach($this->resCard as &$card){
                 $i++;
                 if($card->type = $tradeInType){
-                    array_push($other->resCard, $card);
+                    $next = count($other->resCard);
+                    $other->resCard[$next] = $card;
+
+                    // array_push($other->resCard, $card);
                     unset($this->resCard[$i]);
                     $count++;
                     if($count==$tradeInAmount) break;
@@ -183,17 +200,17 @@
 
             return true;
         }
-
-
-        /**
-        * @para $targetPlayer is an instance of Player class
-        * @para $destination is a index of settlement array
-        **/
+        
         function moveBandit($destination){
           $banditLocation = $destination;
           return steal($targetPlayer,$banditLocation);
         }
-        function steal($targetPlayer, $destination){
+        
+        /**
+        * @para $targetPlayer is an instance of Player class
+        * @para $destination is a index of settlement array
+        **/
+        function steal(&$targetPlayer, $destination){
             $hasSettlement = false;
             foreach($targetPlayer->settlements as &$sett){
                 foreach($sett->terrain as &$value){
@@ -209,7 +226,10 @@
             $index = mt_rand(0, $length-1);
 
             // add resource card to this player
-            array_push($this->resCard, $targetPlayer->resCard[$index]);
+            // array_push($this->resCard, $targetPlayer->resCard[$index]);
+            $next = count($this->resCard);
+            $this->resCard[$next] = &$targetPlayer->resCard[$index];
+
             // remove resource card from target player
             unset($targetPlayer->resCard[$index]);
             $targetPlayer->resCard = array_values($targetPlayer->resCard);
@@ -226,10 +246,17 @@
         public $hasBandit;
         public $portType;
 
+        /*
+         *  @para $map is the data read from the JSON file
+         *  @para $i is index of the terrain array in the JSON file
+         */
         function __construct($map, $i){
+            global $settlement;
             $terr = $map['tiles'][$i];
             $sett = $map['settlements'];
 
+            // parse the map
+            // IDE might say undefined constant, it is because they are from JSON file
             $this->id = $terr[tile_id];
             $this->resourceType = $terr[resourceType];
             $this->diceValue = $terr[coordinates];
@@ -246,8 +273,8 @@
                 $hex = $sett[$j][tiles];
                 foreach($hex as &$value){
                     if($value==$terr[tile_id]){
-
-                        array_push($this->settlement, $j);
+                        $next = count($this->settlement);
+                        $this->settlement[$next] = &$settlement[$j];
                         break;
                     }
                 }
@@ -258,13 +285,14 @@
 
     class Settlement{
         public $id;
-        public $index; // index of this object in the settlement array
+        public $index;
         public $control; //Player.color if active, otherwise null
         public $terrain = array();
         public $road = array();
         public $isCity;
 
         function __construct($map, $i){
+            global $terrain, $road;
             $sett = $map['settlements'][$i];
             $hex = $map['tiles'];
             $rds = $map['roads'];
@@ -276,7 +304,8 @@
             foreach($sett[tiles] as &$value){
                 for($j = 0; $j<37; $j++){
                     if($value==$hex[$j][tile_id]){
-                        array_push($this->terrain, $j);
+                        $next = count($this->terrain);
+                        $this->terrain[$next] = &$terrain[$j];
                         break;
                     }
                 }
@@ -285,7 +314,8 @@
             foreach($sett[roads] as &$value){
                 for($j = 0; $j<72; $j++){
                     if($value==$rds[$j][road_id]){
-                        array_push($this->road, $j);
+                        $next = count($this->road);
+                        $this->road[$next] = &$road[$j];
                         break;
                     }
                 }
@@ -295,11 +325,12 @@
         }
 
         /*
-        * @para $player is the player who is building the road
-        * @para $settlement is the settlement array
-        * @para $roads is the roads array
-        */
-        function build($player, $settlement, $roads){
+         * @para $player is the player who is building the road
+         * @para $roads is the roads array
+         * @global $settlement is the settlement array
+         */
+        function build(&$player, $roads){
+            global $settlement;
             if($this->control!=null) return false;
 
             $i = -1;
@@ -329,7 +360,10 @@
             if((!$hasRoad)||($hasAdjacency)) return false;
 
             $this->control = $player->color;
-            array_push($player->settlement, $this->index);
+
+            // array_push($player->settlement, $this);
+            $next = count($player->settlement);
+            $player->settlement[$next] = &$this;
 
             foreach($resRemoveList as &$index){
                 unset($player->resCard[$index]);
@@ -340,7 +374,7 @@
             return true;
         }
 
-        function upgradeToCity($player){
+        function upgradeToCity(&$player){
             if($this->control!=$player->color) return false;
 
             $i = -1;
@@ -372,6 +406,7 @@
         public $settlement = array();
 
         function __construct($map, $i){
+            global $settlement;
             $this->control = null;
             $rd = $map['roads'][$i];
             $sett = $map['settlements'];
@@ -392,16 +427,16 @@
                     break;
                 }
             }
-
-            array_push($this->settlement, $source, $target);
+            
+            $this->settlement[0] = &$settlement[$source];
+            $this->settlement[1] = &$settlement[$target];
         }
 
-<<<<<<< Updated upstream
-        function build($player){
-=======
-        function build($player, $settlement, $road){
+
+        function build(&$player){
             //Pushing the new road element into player's road array
->>>>>>> Stashed changes
+
+            global $settlement, $road;
             if($this->control!=null) return false;
 
             $i = -1;
@@ -434,6 +469,9 @@
             }
 
             $player->resCard = array_values($player->resCard);
+
+            $next = count($player->roads);
+            $player->roads[$next] = &$this;
 
             $this->control = $player->color;
             return true;
@@ -564,8 +602,5 @@
           $player->victoryPoints++;
         }
     }
-
-
-
 
 ?>
