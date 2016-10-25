@@ -587,17 +587,19 @@
 
 
         function Monopoly($currentPlayer, $type){
+            global $player;
+
 
             for($j=0;$j<$numPlayers;j++){
 
-              if $Player[j] != $currentPlayer {
+              if $player[j] != $currentPlayer {
 
                 $count = 0;
                 $i = -1;
                 $enoughRes = false;
                 $removeList = array();
 
-                foreach($Player[j]->resCard as &$card){
+                foreach($player[j]->resCard as &$card){
                     $i++;
                     if($card->type==$type){
                         array_push($removeList, $i);
@@ -606,11 +608,11 @@
 
                 foreach($removeList as &$index){
                         $next = count($currentPlayer->resCard);
-                        $currentPlayer->resCard[$next] = $Player[j]->resCard[$index];
+                        $currentPlayer->resCard[$next] = $player[j]->resCard[$index];
 
-                        unset($Player[j]->resCard[$index]);
+                        unset($player[j]->resCard[$index]);
                 }
-                $Player[j]->resCard = array_values($Player[j]->resCard);
+                $player[j]->resCard = array_values($player[j]->resCard);
               }
           }
         }
