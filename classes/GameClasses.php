@@ -200,12 +200,12 @@
 
             return true;
         }
-        
+
         function moveBandit($destination){
           $banditLocation = $destination;
           return steal($targetPlayer,$banditLocation);
         }
-        
+
         /**
         * @para $targetPlayer is an instance of Player class
         * @para $destination is a index of settlement array
@@ -427,7 +427,7 @@
                     break;
                 }
             }
-            
+
             $this->settlement[0] = &$settlement[$source];
             $this->settlement[1] = &$settlement[$target];
         }
@@ -486,9 +486,14 @@
     }
 
     class DevelopmentCard{
+      public $index;
 
-        function purchaseDevCard($player,$devCard,$resCard){
-            if($this->control!=$player->color) return false; //DevCards can be purchased during player's turn
+        function purchaseDevCard(&$player,&$bankResCard){
+
+
+            global $devCard;
+            if($this->control!=null) return false;
+
 
             $i = -1;
             $resRemoveList = array();
@@ -502,21 +507,21 @@
             }
             if(!empty($requiredRes)) return false;
 
+            $this->control = $player->color;
+
+            $next = count($player->devCard);
+ +          $player->devCard[$next] = &$this;
+
             foreach($resRemoveList as &$index){
                 unset($player->resCard[$index]);
             }
 
             $player->resCard = array_values($player->resCard);//reindexing the player's resCard
 
-            array_push($player->devCard, $devCard);//adding dev card to player's devcards
-
-            unset($devCard[array_search(Game::devCard->type,$devCard)]); //removing the developement card from the bank
-
             return true;
-
         }
 
-        function knight($player,$destination){
+        function knight(&$player,$destination){
           $player->moveBandit($destination);
           $player->knights++;
           if ($player->numKnights > $hasLongestRoad->numKnights){
@@ -524,22 +529,23 @@
           }
         }
 
-        function roadBuilding($player,$settlement,$firstRoad,$secondRoad){
+        function roadBuilding(&$player,$settlement,$firstRoad,$secondRoad){
           if($this->control!=$player->color) return false;
-          $firstRoad->build($player,$settlement);
-          $secondRoad->build($player,$settlement);
+          $firstRoad->build($player);
+          $secondRoad->build($player);
           return true;
         }
 
 
-        function yearOfPlenty($player,$firstType,$secondType,$resCard){
+        function yearOfPlenty(&$player,$firstType,$secondType,&$bankResCard){
+          global $numPlayers;
 
           $count = 0;
           $i = -1;
           $enoughRes = false;
           $removeList = array();
 
-          foreach($resCard as &$card){
+          foreach($bankResCard as &$card){
               $i++;
               if($card->type==$firsttype){
                   array_push($removeList, $i);
@@ -550,7 +556,7 @@
           if(!$enoughRes)
               return false;
 
-          foreach($resCard as &$card){
+          foreach($bankResCard as &$card){
                   $j++;
                   if($card->type==$secondtype){
                       array_push($removeList, $j);
@@ -562,17 +568,18 @@
                   return false;
 
           foreach($removeList as &$index){
-              array_push(Player::$resCard, $resCard[$index]);
-              unset($resCard[$index]);
+            $next = count($this->resCard);
+            $this->resCard[$next] = &$bankResCard[$index];
+
           }
-              $resCard = array_values($resCard);
+              $bankResCard = array_values($bankResCard);
               return true;
         }
 
 
         function Monopoly($currentPlayer, $type){
 
-            for($j=0;$j<Game::$numPlayers;j++){
+            for($j=0;$j<$numPlayers;j++){
 
               if $Player[j] != $currentPlayer {
 
@@ -589,7 +596,9 @@
                 }
 
                 foreach($removeList as &$index){
-                        array_push($currentPlayerplayer->resCard, $Player[j]->resCard[$index]);
+                        $next = count($currentPlayer->resCard);
+                        $currentPlayer->resCard[$next] = $Player[j]->resCard[$index];
+
                         unset($Player[j]->resCard[$index]);
                 }
                 $Player[j]->resCard = array_values($Player[j]->resCard);
@@ -597,7 +606,7 @@
           }
         }
 
-        function VictoryPoints($player){
+        function VictoryPoints(&$player){
           if($this->control!=$player->color) return false;
           $player->victoryPoints++;
         }
