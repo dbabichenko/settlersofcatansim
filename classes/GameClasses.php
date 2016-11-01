@@ -27,6 +27,7 @@ class Game
 
     function __construct($numPlayers)
     {
+        outputToConsole("Constructor of Game class is called with " . $numOfPlayers . " players.");
         global $numOfPlayers;
         $numOfPlayers = $numPlayers;
 
@@ -34,26 +35,33 @@ class Game
         $map = json_decode($string, true);
 
         for ($i = 0; $i < 72; $i++) {
+            outputToConsole("Create road array.");
             global $road;
             $road[$i] = new road($map, $i);
         }
 
         for ($i = 0; $i < 37; $i++) {
+            outputToConsole("Create terrain array");
             global $terrain;
             $terrain[$i] = new terrain($map, $i);
         }
 
         for ($i = 0; $i < 54; $i++) {
+            outputToConsole("Create settlement array");
             global $settlement;
             $settlement[$i] = new Settlement($map, $i);
         }
 
         for ($i = 0; $i < $numPlayers; $i++) {
+            outputToConsole("Create player array.");
             $this->color[$i] = $i;
 
             global $players;
             $players[$i] = new Player($i);
         }
+
+        global $players;
+        $this->currentPlayer = &$players[0];
     }
 
     function rollingDice()
@@ -64,24 +72,45 @@ class Game
         $sumOfDices = $diceA + $diceB;
 
         outputToConsole("" . $sumOfDices . "is rolled.");
-        return produceResource($sumOfDices);
+        return $sumOfDices;
     }
 
     function produceResource($sumOfDices)
     {
-        global $resCard, $players, $terrain;
+        outputToConsole("Produce resource function is called with dice value of " . $sumOfDices);
+        global $players, $terrain;
         if ($sumOfDices == 7) {
+            outputToConsole("7 is rolled.");
             foreach($players as &$player){
-                $totalResCard = count($player->$resCard);
+                $totalResCard = count($player->resCard);
                 if ($totalResCard > 7) {
                     $returnAmount = floor($totalResCard / 2);
                     outputToConsole("" . $player->color . " needs to discard" . $returnAmount . "cards");
-                    //how to choose which card to discard ?
+
+                    $i = -1;
+                    foreach($player->resCard as &$card){
+                        $i++;
+                        outputToConsole("Do you want to discard a " . $card->type . "card?");
+                        $discard = $_POST['value'];
+                        if($discard=="yes")
+                            unset($player->resCard[$i]);
+                    }
                 }
             }
 
-            $player->moveBandit($destination);
-            // !IMPORTANT!: destination is not defined here
+            outputToConsole("Please put in the id of the terrain where you want to move the bandit to.");
+            $destination = $_POST['value']; // get input from HTML form
+            $this->currentPlayer->moveBandit($destination);
+
+            outputToConsole("Please put in the color number of the player who you want to steal from.");
+            $targetColor = $_POST['value'];
+            $targetPlayer = null;
+            foreach($players as &$player){
+                if($player->color == $targetColor)
+                    $targetPlayer = &$player;
+            }
+            $this->currentPlayer->steal($targetPlayer, $destination);
+
         } else {
             foreach ($terrain as &$hex) {
                 if (($hex->diceValue == $sumOfDices) && ($hex->hasBandit)) {
@@ -91,6 +120,8 @@ class Game
                         foreach ($players as &$player) {
                             if ($player->color == $sett->control) {
                                 // create a new resource card, add to current player's resCard array
+                                outputToConsole("Player " . $player->color . " gets " . $hex->resourceType . " resource");
+
                                 $newResCard = new ResCard($hex->resourceType);
                                 $next = count($player->resCard);
                                 $player->resCard[$next] = $newResCard;
@@ -101,7 +132,6 @@ class Game
             }
         }
     }
-
 }
 
 class Player
@@ -117,11 +147,13 @@ class Player
 
     function __construct($color)
     {
+        outputToConsole("Create player with color of " . $color);
         $this->color = $color;
     }
 
     function tradeWithBank($tradeInAmount, $tradeInType, $getType, &$bankResCard, $portType)
     {
+        
         if ($portType == "none") $ratio = 4;
         else if ($portType == "general") $ratio = 3;
         else if ($portType == $getType) $ratio = 2;
@@ -241,14 +273,24 @@ class Player
 
     function moveBandit($destination)
     {
-        // !ask for input here!
+        global $banditLocation, $terrain;
+
+
+        foreach($terrain as &$hex){
+            if($hex->id == $destination){
+                $hex->hasBandit = true;
+            }else if($hex->id == $banditLocation){
+                $hex->hasBandit = false;
+            }
+        }
+
         $banditLocation = $destination;
-        return steal($targetPlayer, $banditLocation);
+        return true;
     }
 
     /**
      * @para $targetPlayer is an instance of Player class
-     * @para $destination is a index of settlement array
+     * @para $destination is an instance of Settlement class
      **/
     function steal(&$targetPlayer, $destination)
     {
@@ -539,6 +581,7 @@ class ResCard
 
 class DevelopmentCard
 {
+    // needs extra comments help me understand this class
     public $index;
 
     // this function needs to change
