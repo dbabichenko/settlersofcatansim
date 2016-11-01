@@ -27,7 +27,7 @@ class Game
 
     function __construct($numPlayers)
     {
-        outputToConsole("Constructor of Game class is called with " . $numOfPlayers . " players.");
+        outputToConsole("Constructor of Game class is called with " . $numPlayers . " players.");
         global $numOfPlayers;
         $numOfPlayers = $numPlayers;
 
@@ -346,6 +346,7 @@ class Terrain
      */
     function __construct($map, $i)
     {
+        outputToConsole("Constructor of terrain is called for terrain #" . $i);
         global $settlement;
         $terr = $map['tiles'][$i];
         $sett = $map['settlements'];
@@ -383,6 +384,7 @@ class Settlement
 
     function __construct($map, $i)
     {
+        outputToConsole("Constructor of terrain is called for settlement #" . $i);
         global $terrain, $road;
         $sett = $map['settlements'][$i];
         $hex = $map['tiles'];
@@ -428,6 +430,8 @@ class Settlement
      */
     function build(&$player, $roads)
     {
+        outputToConsole("Settlement build function is called by player " . $player->color);
+        outputToConsole(" to build settlement #" . $this->id);
         global $settlement;
         if ($this->control != null) return false;
 
@@ -469,11 +473,13 @@ class Settlement
 
         $player->resCard = array_values($player->resCard);
 
+        outputToConsole("Settlement #" . $this->id . " is built.");
         return true;
     }
 
     function upgradeToCity(&$player)
     {
+        outputToConsole("Upgrade to city function is called by player " . $player->color);
         if ($this->control != $player->color) return false;
 
         $i = -1;
@@ -496,6 +502,8 @@ class Settlement
         $player->resCard = array_values($player->resCard);
 
         $this->isCity = true;
+
+        outputToConsole("Successfully upgrade to city.");
         return true;
     }
 }
@@ -504,9 +512,11 @@ class Road
 {
     public $control; //Player.color if active, otherwise null
     public $settlement = array();
+    public $id;
 
     function __construct($map, $i)
     {
+        outputToConsole("Constructor of terrain is called for road #" . $i);
         global $settlement;
         $this->control = null;
         $rd = $map['roads'][$i];
@@ -531,6 +541,7 @@ class Road
 
         $this->settlement[0] = &$settlement[$source];
         $this->settlement[1] = &$settlement[$target];
+        $this->id = $rd[id];
     }
 
 
@@ -538,6 +549,8 @@ class Road
     {
         //Pushing the new road element into player's road array
 
+        outputToConsole("Road build function is called by player " . $player->color);
+        outputToConsole(" to build road #" . $this->id);
         global $settlement, $road;
         if ($this->control != null) return false;
 
@@ -576,6 +589,7 @@ class Road
         $player->roads[$next] = &$this;
 
         $this->control = $player->color;
+        outputToConsole("Road #" . $this->id . " is built.");
         return true;
     }
 }
@@ -586,6 +600,7 @@ class ResCard
 
     function __construct($type)
     {
+        outputToConsole("Constructor of ResCard class is called with resource type of " . $type);
         $this->type = $type;
     }
 }
@@ -640,7 +655,7 @@ class DevelopmentCard
 
     function roadBuilding(&$player, $settlement, $firstRoad, $secondRoad)
     {
-        if ($player->control != $player->color) return false;
+        if ($player->control != $player->color) return false; // ??? player does not have control attributes
         $firstRoad->build($player);
         $secondRoad->build($player);
         return true;
