@@ -56,19 +56,25 @@ class Game
         }
     }
 
-    function rollingDice($player)
+    function rollingDice()
     {
-        outputToConsole("function rolling dice is called by " . $player->color);
+        outputToConsole("function rolling dice is called");
         $diceA = mt_rand(0, 6);
         $diceB = mt_rand(0, 6);
         $sumOfDices = $diceA + $diceB;
 
         outputToConsole("" . $sumOfDices . "is rolled.");
+        return produceResource($sumOfDices);
+    }
+
+    function produceResource($sumOfDices)
+    {
+        global $resCard, $players, $terrain;
         if ($sumOfDices == 7) {
-            global $numPlayers, $resCard;
-            for ($j = 0; $j < $numPlayers; $j++) {
-                if ($player[$j]->$resCard > 7) {
-                    $returnAmount = floor($resCard / 2);
+            foreach($players as &$player){
+                $totalResCard = count($player->$resCard);
+                if ($totalResCard > 7) {
+                    $returnAmount = floor($totalResCard / 2);
                     outputToConsole("" . $player->color . " needs to discard" . $returnAmount . "cards");
                     //how to choose which card to discard ?
                 }
@@ -77,13 +83,23 @@ class Game
             $player->moveBandit($destination);
             // !IMPORTANT!: destination is not defined here
         } else {
-            return produceResource($sumOfDices);
+            foreach ($terrain as &$hex) {
+                if (($hex->diceValue == $sumOfDices) && ($hex->hasBandit)) {
+                    // iterate through the settlements arount the hex
+                    foreach ($hex->settlement as &$sett) {
+                        // find the player who control the current settlement
+                        foreach ($players as &$player) {
+                            if ($player->color == $sett->control) {
+                                // create a new resource card, add to current player's resCard array
+                                $newResCard = new ResCard($hex->resourceType);
+                                $next = count($player->resCard);
+                                $player->resCard[$next] = $newResCard;
+                            }
+                        }
+                    }
+                }
+            }
         }
-    }
-
-    function produceResource($sumOfDices)
-    {
-
     }
 
 }
@@ -135,7 +151,7 @@ class Player
         if (!$enoughRes)
             return false;
 
-        // remove resource from bank and add to player
+        // remove trade out resource from bank and add to player
         foreach ($removeList as &$index) {
             $next = count($this->resCard);
             $this->resCard[$next] = &$bankResCard[$index];
@@ -145,7 +161,7 @@ class Player
         }
         $bankResCard = array_values($bankResCard);
 
-        // remove resource from player and add to bank
+        // remove trade in resource from player and add to bank
         $i = -1;
         $count = 0;
         foreach ($this->resCard as &$card) {
@@ -270,7 +286,6 @@ class Terrain
     public $settlement = array();
     public $diceValue;
     public $hasBandit;
-    public $portType;
 
     /*
      *  @para $map is the data read from the JSON file
@@ -286,14 +301,8 @@ class Terrain
         // IDE might say undefined constant, it is because they are from JSON file
         $this->id = $terr[tile_id];
         $this->resourceType = $terr[resourceType];
-        $this->diceValue = $terr[coordinates];
+        $this->diceValue = $terr[diceValue];
         $this->hasBandit = $terr[hasRobber];
-
-        if ($terr[portType] == "none") {
-            $this->portType = null;
-        } else {
-            $this->portType = $terr[portType];
-        }
 
         for ($j = 0; $j < 54; $j++) {
             $hex = $sett[$j][tiles];
@@ -317,6 +326,7 @@ class Settlement
     public $terrain = array();
     public $road = array();
     public $isCity;
+    public $portType;
 
     function __construct($map, $i)
     {
@@ -325,9 +335,15 @@ class Settlement
         $hex = $map['tiles'];
         $rds = $map['roads'];
 
-        $this->id = $sett[settle_id];
+        $this->id = $sett[id];
         $this->control = null;
         $this->index = $i;
+
+        if ($sett[portType] == "none") {
+            $this->portType = null;
+        } else {
+            $this->portType = $sett[portType];
+        }
 
         foreach ($sett[tiles] as &$value) {
             for ($j = 0; $j < 37; $j++) {
@@ -525,6 +541,7 @@ class DevelopmentCard
 {
     public $index;
 
+    // this function needs to change
     function purchaseDevCard(&$player, &$bankResCard)
     {
         global $devCard;
@@ -543,7 +560,7 @@ class DevelopmentCard
         }
         if (!empty($requiredRes)) return false;
 
-        $this->control = $player->color;
+        $this->control = $player->color; //???
 
         $next = count($player->devCard);
         $player->devCard[$next] = &$this;
