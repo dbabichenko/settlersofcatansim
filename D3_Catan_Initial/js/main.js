@@ -46,7 +46,7 @@ d3.json("js/MapData.json", function(error, mapData) {
     if(error) throw error;
     
     // To make Tile part in the back, nodes & links part in the front, paint tiles firstly
-    // ================ Tiles ================
+    /* ================= Tiles ================== */ 
     tiles = mapData.tiles;
     for(var i=0; i<tiles.length; i++) {
         tile_paint(tiles[i].x, tiles[i].y, tiles[i].z, tiles[i].diceValue, tiles[i].resourceType, tiles[i].hasRobber);
@@ -60,7 +60,8 @@ d3.json("js/MapData.json", function(error, mapData) {
     
     links = mapData.roads;
 
-    // ================ Port ==================
+    /* ================= Ports ================== */ 
+    //Hard code three points for each triangle
     points.push({"x1": nodes[0].x, "y1": nodes[0].y, "x2": nodes[1].x, "y2": nodes[1].y, "x3": center_x-3*radius, "y3": center_y-4.5*radius/h, "type": nodes[0].portType});
     points.push({"x1": nodes[3].x, "y1": nodes[3].y, "x2": nodes[4].x, "y2": nodes[4].y, "x3": center_x+radius, "y3": center_y-4.5*radius/h, "type": nodes[3].portType});
     points.push({"x1": nodes[14].x, "y1": nodes[14].y, "x2": nodes[15].x, "y2": nodes[15].y, "x3": center_x+4*radius, "y3": center_y-3*radius/h, "type": nodes[14].portType});
@@ -74,9 +75,11 @@ d3.json("js/MapData.json", function(error, mapData) {
     var g_ports = svg.append('g').attr('id', 'ports');
     for(var k=0; k<points.length; k++) {
         var each_port_g = g_ports.append('g');
+        
+        //attribute d - M L L L
         each_port_g.append("path")
                 .attr("d", function(d) { return 'M ' + points[k].x1 +' '+ points[k].y1 + ' L ' + points[k].x2 + ' ' + points[k].y2 + ' L ' + points[k].x3 + ' ' + points[k].y3 + ' L ' + points[k].x1 +' '+ points[k].y1;
-    })
+                })
                 .attr("fill", resource_color_map[points[k].type]);
         
         var portTextData = [{"x": points[k].x3, "y": points[k].y3+5}];
@@ -94,7 +97,7 @@ d3.json("js/MapData.json", function(error, mapData) {
                     .attr("fill", "white");
     }
     
-    // ================ Nodes & Links ================
+    /* ================ Settlement & Roads ================== */ 
     //g element including links and nodes
     var g = svg.append('g')
             .attr('class', 'link-node');
