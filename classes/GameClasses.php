@@ -5,10 +5,10 @@ $settlement = array();
 $road = array();
 $resCard = array();
 $devCard = array();
-$numOfPlayers;
-$banditLocation;
-$hasLongestRoad;
-$hasBiggestArmy;
+$numOfPlayers = null;
+$banditLocation = 9;
+$hasLongestRoad = null;
+$hasBiggestArmy = null;
 
 function outputToConsole($data)
 {
@@ -153,7 +153,8 @@ class Player
 
     function tradeWithBank($tradeInAmount, $tradeInType, $getType, &$bankResCard, $portType)
     {
-        
+        outputToConsole("Trade with bank function is called. Trade in " . $tradeInAmount . " " . $tradeInType);
+
         if ($portType == "none") $ratio = 4;
         else if ($portType == "general") $ratio = 3;
         else if ($portType == $getType) $ratio = 2;
@@ -162,6 +163,7 @@ class Player
         if ($tradeInType == $getType) return false;
 
         $getAmount = floor($tradeInAmount / $ratio);
+        outputToConsole("Get " . $getAmount . $getType);
 
         $count = 0;
         $i = -1;
@@ -210,17 +212,20 @@ class Player
         }
         $this->resCard = array_values($this->resCard);
 
+        outputToConsole("Trade successfully.");
         return true;
     }
 
     function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio, &$other)
     {
+        outputToConsole("Trade with player is called. Trade in " . $tradeInAmount . " " . $tradeInType);
         // assume player has accepted the trade
         // no decision logic here
 
         if ($tradeInType == $getType) return false;
 
         $getAmount = floor($tradeInAmount / $askRatio);
+        outputToConsole("Get " . $getAmount . $getType);
 
         $count = 0;
         $i = -1;
@@ -268,13 +273,14 @@ class Player
         }
         $this->resCard = array_values($this->resCard);
 
+        outputToConsole("Trade successfully.");
         return true;
     }
 
     function moveBandit($destination)
     {
+        outputToConsole("Move bandit function is called with destination of " . $destination);
         global $banditLocation, $terrain;
-
 
         foreach($terrain as &$hex){
             if($hex->id == $destination){
@@ -285,6 +291,8 @@ class Player
         }
 
         $banditLocation = $destination;
+
+        outputToConsole("Move bandit successfully.");
         return true;
     }
 
@@ -294,6 +302,8 @@ class Player
      **/
     function steal(&$targetPlayer, $destination)
     {
+        outputToConsole("Steal function is called. Steal from player  " . $targetPlayer);
+        outputToConsole("Destination terrain is " . $destination->id);
         $hasSettlement = false;
         foreach ($targetPlayer->settlements as &$sett) {
             foreach ($sett->terrain as &$value) {
@@ -317,6 +327,7 @@ class Player
         unset($targetPlayer->resCard[$index]);
         $targetPlayer->resCard = array_values($targetPlayer->resCard);
 
+        outputToConsole("Steal successfully");
         return true;
     }
 }
