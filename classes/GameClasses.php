@@ -88,6 +88,8 @@ class Game
                     outputToConsole("" . $player->color . " needs to discard" . $returnAmount . "cards");
 
                     $i = -1;
+                    // discard function
+                    // player input the type of card to discard
                     foreach($player->resCard as &$card){
                         $i++;
                         outputToConsole("Do you want to discard a " . $card->type . "card?");
@@ -608,14 +610,13 @@ class ResCard
 class DevelopmentCard
 {
     // needs extra comments help me understand this class
-    public $index;
+
+    public $type;
 
     // this function needs to change
-    function purchaseDevCard(&$player, &$bankResCard)
+    function purchaseDevCard(&$player)
     {
         global $devCard;
-        if ($player->control != null) return false;
-
 
         $i = -1;
         $resRemoveList = array();
@@ -629,10 +630,12 @@ class DevelopmentCard
         }
         if (!empty($requiredRes)) return false;
 
-        $this->control = $player->color; //???
 
         $next = count($player->devCard);
         $player->devCard[$next] = &$this;
+
+        // remove devCard from the bank
+        unset($devCard[array_search($devCard->type, $devCard)]);
 
         foreach ($resRemoveList as &$index) {
             unset($player->resCard[$index]);
@@ -653,9 +656,8 @@ class DevelopmentCard
         }
     }
 
-    function roadBuilding(&$player, $settlement, $firstRoad, $secondRoad)
+    function roadBuilding(&$player, $firstRoad, $secondRoad)
     {
-        if ($player->control != $player->color) return false; // ??? player does not have control attributes
         $firstRoad->build($player);
         $secondRoad->build($player);
         return true;
