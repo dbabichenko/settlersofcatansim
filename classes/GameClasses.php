@@ -60,6 +60,21 @@ class Game
             $players[$i] = new Player($i);
         }
 
+        // 2 roadBuilding 2 yearOfPlenty 2 monopoly
+        // 15 knight 15 roadBuilding
+        $devCardIndex = -1;
+        $devCardType = array("roadBuilding", "yearOfPlenty", "monopoly", "knight", "roadBuilding");
+        for($i = 0; $i<5; $i++){
+            outputToConsole("Create resources cards");
+            global $devCard;
+            if($i<3) $cardNum = 2;
+            else $cardNum = 15;
+            for($j = 0; $j<$cardNum; $j++){
+                $devCardIndex++;
+                $devCard[$devCardIndex] = new DevelopmentCard($devCardType[i]);
+            }
+        }
+
         global $players;
         $this->currentPlayer = &$players[0];
     }
@@ -147,8 +162,7 @@ class Player
     public $longestPath;
     public $numKnights;
 
-    function __construct($color)
-    {
+    function __construct($color){
         outputToConsole("Create player with color of " . $color);
         $this->color = $color;
     }
@@ -330,6 +344,46 @@ class Player
         $targetPlayer->resCard = array_values($targetPlayer->resCard);
 
         outputToConsole("Steal successfully");
+        return true;
+    }
+
+    function purchaseDevCard()
+    {
+        global $devCard;
+
+        outputToConsole("Purchase dev card function is called by player ".$this->color);
+        $i = -1;
+        $resRemoveList = array();
+        $requiredRes = array("Ore", "Wool", "Grain");
+        foreach ($this->resCard as &$card) {
+            $i++;
+            if (in_array($card->type, $requiredRes)) {
+                array_push($resRemoveList, $i);
+                unset($requiredRes[array_search($card->type, $requiredRes)]);
+            }
+        }
+        if (!empty($requiredRes)) {
+            outputToConsole("Player does not have enough resources");
+            return false;
+        }
+
+        $next = count($this->devCard);
+        $this->devCard[$next] = $devCard[0];
+        outputToConsole("Player gets ".$devCard[0]->type);
+
+        // remove devCard from the bank
+        unset($devCard[0]);
+        $devCard = array_values($devCard);
+        outputToConsole("Dev card ".$this->devCard[$next]->type."has been removed from bank");
+
+
+        foreach ($resRemoveList as &$index) {
+            unset($this->resCard[$index]);
+        }
+        $this->resCard = array_values($this->resCard);//reindexing the player's resCard
+        outputToConsole("Resources cards have been removed from player's cards");
+
+        outputToConsole("Purchase resources card successfully");
         return true;
     }
 }
@@ -613,37 +667,25 @@ class DevelopmentCard
 
     public $type;
 
-    // this function needs to change
-    function purchaseDevCard(&$player)
+    function DevelopmentCard($type)
     {
-        global $devCard;
+        $this->type = $type;
+    }
 
-        $i = -1;
-        $resRemoveList = array();
-        $requiredRes = array("Ore", "Wool", "Grain");
-        foreach ($player->resCard as &$card) {
-            $i++;
-            if (in_array($card->type, $requiredRes)) {
-                array_push($resRemoveList, $i);
-                unset($requiredRes[array_search($card->type, $requiredRes)]);
-            }
+    function playDevCard(&$player)
+    {
+        if($this->type=="knight") {
+            $destination = $_POST['value'];
+            $this->knight($player, $destination);
+        }else if($this->type=="roadBuilding") {
+            $this->roadBuilding($player);
+        }else if($this->type=="yearOfPlenty"){
+            $this->yearOfPlenty($player);
+        }else if($this->type=="monopoly"){
+            $this->monopoly($player);
+        }else if($this->type=="victoryPoints"){
+            $this->victoryPoints($player);
         }
-        if (!empty($requiredRes)) return false;
-
-
-        $next = count($player->devCard);
-        $player->devCard[$next] = &$this;
-
-        // remove devCard from the bank
-        unset($devCard[array_search($devCard->type, $devCard)]);
-
-        foreach ($resRemoveList as &$index) {
-            unset($player->resCard[$index]);
-        }
-
-        $player->resCard = array_values($player->resCard);//reindexing the player's resCard
-
-        return true;
     }
 
     function knight(&$player, $destination)
@@ -651,88 +693,90 @@ class DevelopmentCard
         global $hasLongestRoad;
         $player->moveBandit($destination);
         $player->knights++;
-        if ($player->numKnights > $hasLongestRoad->numKnights) {
-            $hasLongestRoad = $player;
-        }
-    }
-
-    function roadBuilding(&$player, $firstRoad, $secondRoad)
-    {
-        $firstRoad->build($player);
-        $secondRoad->build($player);
-        return true;
-    }
-
-
-    function yearOfPlenty(&$player, $firstType, $secondType, &$bankResCard)
-    {
-        $i = -1;
-        $enoughRes = false;
-        $removeList = array();
-
-        foreach ($bankResCard as &$card) {
-            $i++;
-            if ($card->type == $firstType) {
-                array_push($removeList, $i);
-                $enoughRes = true;
-                break;
+        if($hasLongestRoad==null){
+            if($player->numKnights>=3){
+                $hasLongestRoad = &$player;
             }
+        }else if ($player->numKnights > $hasLongestRoad->numKnights) {
+            $hasLongestRoad = &$player;
         }
-        if (!$enoughRes)
-            return false;
-
-        $j = -1;
-        foreach ($bankResCard as &$card) {
-            $j++;
-            if ($card->type == $secondType) {
-                array_push($removeList, $j);
-                $enoughRes = true;
-                break;
-            }
-        }
-        if (!$enoughRes)
-            return false;
-
-        foreach ($removeList as &$index) {
-            $next = count($player->resCard);
-            $player->resCard[$next] = &$bankResCard[$index];
-
-        }
-        $bankResCard = array_values($bankResCard);
-        return true;
     }
 
-
-    function Monopoly($currentPlayer, $type)
+    function roadBuilding(&$player)
     {
-        global $numOfPlayers;
-        for ($j = 0; $j < $numOfPlayers; $j++) {
-            global $players;
-            if ($players[$j] != $currentPlayer) {
-                $i = -1;
-                $removeList = array();
+        $i = 0;
+        while($i<2){
+            $rdNum = $_POST['value'];
 
-                foreach ($players[$j]->resCard as &$card) {
-                    $i++;
-                    if ($card->type == $type) {
-                        array_push($removeList, $i);
+            global $road;
+            $size = count($road);
+            for($j=0;$j<$size;$j++){
+                if($road[$j]==$rdNum){
+                    if($road[$j]->control==null){
+                        if($road[$j]->build($player))
+                            outputToConsole("Successfully build rd#".$rdNum);
+                        $i++;
+                        break;
+                    }
+                    else{
+                        outputToConsole("This road is occupied.");
+                        break;
                     }
                 }
+            }
+        }
+        return true;
+    }
 
-                foreach ($removeList as &$index) {
-                    $next = count($currentPlayer->resCard);
-                    $currentPlayer->resCard[$next] = $players[$j]->resCard[$index];
+    function yearOfPlenty(&$player)
+    {
+        $i = 0;
+        global $resCard;
 
-                    unset($players[$j]->resCard[$index]);
+        while($i<2) {
+            outputToConsole("What type of res card do you want?");
+            $type = $_POST['value'];
+            $j = -1;
+            foreach ($resCard as &$card) {
+                $j++;
+                if ($card->type == $type) {
+                    $next = count($player->resCard);
+                    $player->resCard[$next] = &$card;
+                    unset($resCard[$j]);
+                    $resCard = array_values($resCard);
+                    $i++;
+                    break;
                 }
-                $players[$j]->resCard = array_values($players[$j]->resCard);
+            }
+        }
+
+    }
+
+    function monopoly(&$player)
+    {
+        global $numOfPlayers, $players;
+        outputToConsole("What type of resources do you want?");
+        $askType = $_POST['value'];
+
+        foreach($players as &$other) {
+            if($other->color!=$player->color){
+                $i = -1;
+                foreach($other->resCard as &$card){
+                    $i++;
+                    if($card->type==$askType){
+                        $next = count($player->resCard);
+                        $player[$next] = &$card;
+
+                        unset($other->recard[$i]);
+                    }
+                }
+                $other->resCard = array_values($other->resCard);
             }
         }
     }
 
-    function VictoryPoints(&$player)
+    function victoryPoints(&$player)
     {
-        if ($player->control != $player->color) return false;
         $player->victoryPoints++;
     }
 }
