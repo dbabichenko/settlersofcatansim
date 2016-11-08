@@ -61,19 +61,22 @@ class Game
         }
 
         // 2 roadBuilding 2 yearOfPlenty 2 monopoly
-        // 15 knight 15 roadBuilding
+        // 14 knight 5 roadBuilding
         $devCardIndex = -1;
-        $devCardType = array("roadBuilding", "yearOfPlenty", "monopoly", "knight", "roadBuilding");
+        $cardNum = 0;
+        $devCardType = array("roadBuilding", "yearOfPlenty", "monopoly", "knight", "victoryPoints");
         for($i = 0; $i<5; $i++){
             outputToConsole("Create resources cards");
             global $devCard;
             if($i<3) $cardNum = 2;
-            else $cardNum = 15;
+            else if($i==3) $cardNum = 14;
+            else if($i==4) $cardNum = 5;
             for($j = 0; $j<$cardNum; $j++){
                 $devCardIndex++;
-                $devCard[$devCardIndex] = new DevelopmentCard($devCardType[i]);
+                $devCard[$devCardIndex] = new DevelopmentCard($devCardType[$i]);
             }
         }
+        shuffle($devCard);
 
         global $players;
         $this->currentPlayer = &$players[0];
@@ -646,6 +649,18 @@ class Road
 
         $this->control = $player->color;
         outputToConsole("Road #" . $this->id . " is built.");
+
+        // !!! add longest road
+        global $hasLongestRoad;
+        if($hasLongestRoad==null){
+            if(count($player->roads)>=3){
+                $hasLongestRoad = $player;
+            }
+        }
+        else if(count($player->roads)>count($hasLongestRoad->roads)){
+            $hasLongestRoad = &$player;
+        }
+
         return true;
     }
 }
@@ -663,8 +678,6 @@ class ResCard
 
 class DevelopmentCard
 {
-    // needs extra comments help me understand this class
-
     public $type;
 
     function DevelopmentCard($type)
@@ -690,15 +703,15 @@ class DevelopmentCard
 
     function knight(&$player, $destination)
     {
-        global $hasLongestRoad;
+        global $hasBiggestArmy;
         $player->moveBandit($destination);
         $player->knights++;
-        if($hasLongestRoad==null){
+        if($hasBiggestArmy==null){
             if($player->numKnights>=3){
-                $hasLongestRoad = &$player;
+                $hasBiggestArmy = &$player;
             }
-        }else if ($player->numKnights > $hasLongestRoad->numKnights) {
-            $hasLongestRoad = &$player;
+        }else if ($player->numKnights > $hasBiggestArmy->numKnights) {
+            $hasBiggestArmy = &$player;
         }
     }
 
