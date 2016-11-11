@@ -13,9 +13,11 @@ $hasBiggestArmy = null;
 if($_SERVER['REQUEST_METHOD']=="GET") {
     $class = $_GET['class'];
     $function = $_GET['call'];
+    // $value = $_GET['value'];
     if(method_exists($class, $function)) {
         call_user_func(newGame);
-        call_user_func(array(__NAMESPACE__ .$class, $function), 10);
+        $value = &$players[0];
+        call_user_func(array(__NAMESPACE__ .$class, $function), $value);
     } else {
         echo 'Function Not Exists!!';
     }
@@ -117,7 +119,7 @@ class Game
                     foreach($player->resCard as &$card){
                         $i++;
                         echo ("Do you want to discard a " . $card->type . "card?");
-                        $discard = $_POST['value'];
+                        $discard = $_GET['value'];
                         if($discard=="yes")
                             unset($player->resCard[$i]);
                     }
@@ -125,11 +127,11 @@ class Game
             }
 
             echo ("Please put in the id of the terrain where you want to move the bandit to.");
-            $destination = $_POST['value']; // get input from HTML form
+            $destination = $_GET['value']; // get input from HTML form
             $this->currentPlayer->moveBandit($destination);
 
             echo ("Please put in the color number of the player who you want to steal from.");
-            $targetColor = $_POST['value'];
+            $targetColor = $_GET['value'];
             $targetPlayer = null;
             foreach($players as &$player){
                 if($player->color == $targetColor)
@@ -696,7 +698,7 @@ class DevelopmentCard
     function playDevCard(&$player)
     {
         if($this->type=="knight") {
-            $destination = $_POST['value'];
+            $destination = $_GET['value'];
             $this->knight($player, $destination);
         }else if($this->type=="roadBuilding") {
             $this->roadBuilding($player);
@@ -727,7 +729,7 @@ class DevelopmentCard
     {
         $i = 0;
         while($i<2){
-            $rdNum = $_POST['value'];
+            $rdNum = $_GET['value'];
 
             global $road;
             $size = count($road);
@@ -756,7 +758,7 @@ class DevelopmentCard
 
         while($i<2) {
             echo ("What type of res card do you want?");
-            $type = $_POST['value'];
+            $type = $_GET['value'];
             $j = -1;
             foreach ($resCard as &$card) {
                 $j++;
@@ -776,8 +778,9 @@ class DevelopmentCard
     function monopoly(&$player)
     {
         global $numOfPlayers, $players;
-        echo ("What type of resources do you want?");
-        $askType = $_POST['value'];
+        echo ("What type of resources do you want?\n");
+        $askType = $_GET['value'];
+        echo ("The player wants " . $askType);
 
         foreach($players as &$other) {
             if($other->color!=$player->color){
