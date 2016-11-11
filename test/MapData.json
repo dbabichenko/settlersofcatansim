@@ -1,0 +1,1131 @@
+{
+    "tiles": [
+        {
+            "tile_id": "A",
+            "x":0, "y":3, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "B",
+            "x":1, "y":2, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "C",
+            "x":2, "y":1, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "D",
+            "x":3, "y":0, "z":-3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "E",
+            "x":-1, "y":3, "z":-2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 0,
+            "x":0, "y":2, "z":-2,
+            "diceValue":10,
+            "resourceType": "Ore",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 1,
+            "x":1, "y":1, "z":-2,
+            "diceValue":2,
+            "resourceType": "Wool",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 2,
+            "x":2, "y":0, "z":-2,
+            "diceValue":9,
+            "resourceType": "Lumber",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "F",
+            "x":3, "y":-1, "z":-2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "G",
+            "x":-2, "y":3, "z":-1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 3,
+            "x":-1, "y":2, "z":-1,
+            "diceValue":12,
+            "resourceType": "Grain",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 4,
+            "x":0, "y":1, "z":-1,
+            "diceValue":6,
+            "resourceType": "Brick",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 5,
+            "x":1, "y":0, "z":-1,
+            "diceValue":4,
+            "resourceType": "Wool",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 6,
+            "x":2, "y":-1, "z":-1,
+            "diceValue":10,
+            "resourceType": "Brick",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "H",
+            "x":3, "y":-2, "z":-1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "I",
+            "x":-3, "y":3, "z":0,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 7,
+            "x":-2, "y":2, "z":0,
+            "diceValue":9,
+            "resourceType": "Grain",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 8,
+            "x":-1, "y":1, "z":0,
+            "diceValue":11,
+            "resourceType": "Lumber",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 9,
+            "x":0, "y":0, "z":0,
+            "diceValue":7,
+            "resourceType": "Nothing",
+            "hasRobber": true
+        },
+        {
+            "tile_id": 10,
+            "x":1, "y":-1, "z":0,
+            "diceValue":3,
+            "resourceType": "Lumber",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 11,
+            "x":2, "y":-2, "z":0,
+            "diceValue":8,
+            "resourceType": "Ore",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "J",
+            "x":3, "y":-3, "z":0,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "K",
+            "x":-3, "y":2, "z":1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 12,
+            "x":-2, "y":1, "z":1,
+            "diceValue":8,
+            "resourceType": "Lumber",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 13,
+            "x":-1, "y":0, "z":1,
+            "diceValue":3,
+            "resourceType": "Ore",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 14,
+            "x":0, "y":-1, "z":1,
+            "diceValue":4,
+            "resourceType": "Grain",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 15,
+            "x":1, "y":-2, "z":1,
+            "diceValue":5,
+            "resourceType": "Wool",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "L",
+            "x":2, "y":-3, "z":1,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "M",
+            "x":-3, "y":1, "z":2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 16,
+            "x":-2, "y":0, "z":2,
+            "diceValue":5,
+            "resourceType": "Brick",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 17,
+            "x":-1, "y":-1, "z":2,
+            "diceValue":6,
+            "resourceType": "Grain",
+            "hasRobber": false
+        },
+        {
+            "tile_id": 18,
+            "x":0, "y":-2, "z":2,
+            "diceValue":11,
+            "resourceType": "Wool",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "N",
+            "x":1, "y":-3, "z":2,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "O",
+            "x":-3, "y":0, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "P",
+            "x":-2, "y":-1, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "Q",
+            "x":-1, "y":-2, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        },
+        {
+            "tile_id": "R",
+            "x":0, "y":-3, "z":3,
+            "diceValue":null,
+            "resourceType": "Ocean",
+            "hasRobber": false
+        }
+    ],
+    "settlements": [
+        {
+            "id":101,
+            "tiles":["A", "E", 0],
+            "roads":[101, 201],
+            "isCity": false,
+            "color": "red",
+            "portType": "General"
+        },
+        {
+            "id":102,
+            "tiles":["A", "B", 0],
+            "roads":[101, 102],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":103,
+            "tiles":["B",0,1],
+            "roads":[102, 103],
+            "isCity": true,
+            "color": "red",
+            "portType": "none"
+        },
+        {
+            "id":104,
+            "tiles":["B", "C", 1],
+            "roads":[103, 104],
+            "isCity": false,
+            "color": "none",
+            "portType": "Grain"
+        },
+        {
+            "id":105,
+            "tiles":["C", 1, 2],
+            "roads":[104, 105],
+            "isCity": false,
+            "color": "none",
+            "portType": "Grain"
+        },
+        {
+            "id":106,
+            "tiles":["C", "D", 2],
+            "roads":[105, 106],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":107,
+            "tiles":["D", 2, "F"],
+            "roads":[106, 204],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":201,
+            "tiles":["E", "G", 3],
+            "roads":[301, 401],
+            "isCity": false,
+            "color": "none",
+            "portType": "Lumber"
+        },
+        {
+            "id":202,
+            "tiles":["E", 0, 3],
+            "roads":[201, 301, 302],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":203,
+            "tiles":[0,3,4],
+            "roads":[302, 303, 402],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":204,
+            "tiles":[0, 1, 4],
+            "roads":[202, 303, 304],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":205,
+            "tiles":[1,4,5],
+            "roads":[304, 305, 403],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":206,
+            "tiles":[1,2,5],
+            "roads":[203, 305, 306],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":207,
+            "tiles":[2,5,6],
+            "roads":[306, 307, 404],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":208,
+            "tiles":[2, "F", 6],
+            "roads":[204, 307, 308],
+            "isCity": false,
+            "color": "none",
+            "portType": "Ore"
+        },
+        {
+            "id":209,
+            "tiles":["F", 6, "H"],
+            "roads":[308, 405],
+            "isCity": false,
+            "color": "none",
+            "portType": "Ore"
+        },
+        {
+            "id":301,
+            "tiles":["G", "I", 7],
+            "roads":[501, 601],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":302,
+            "tiles":["G",3,7],
+            "roads":[401, 501, 502],
+            "isCity": false,
+            "color": "none",
+            "portType": "Lumber"
+        },
+        {
+            "id":303,
+            "tiles":[3,7,8],
+            "roads":[502, 503, 602],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":304,
+            "tiles":[3,4,8],
+            "roads":[402, 503, 504],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":305,
+            "tiles":[4,8,9],
+            "roads":[504, 505, 603],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":306,
+            "tiles":[4,5,9],
+            "roads":[403, 505, 506],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":307,
+            "tiles":[5,9,10],
+            "roads":[506, 507, 604],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":308,
+            "tiles":[5,6,10],
+            "roads":[404, 507, 508],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":309,
+            "tiles":[6,10,11],
+            "roads":[508, 509, 605],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":310,
+            "tiles":[6,"H",11],
+            "roads":[405, 509, 510],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":311,
+            "tiles":["H", 11, "J"],
+            "roads":[510, 606],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":401,
+            "tiles":["I", 7, "K"],
+            "roads":[601, 701],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":402,
+            "tiles":[7, "K", 12],
+            "roads":[701, 702, 801],
+            "isCity": false,
+            "color": "none",
+            "portType": "Brick"
+        },
+        {
+            "id":403,
+            "tiles":[7, 8, 12],
+            "roads":[602, 702, 703],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":404,
+            "tiles":[8, 12, 13],
+            "roads":[703, 704, 802],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":405,
+            "tiles":[8, 9, 13],
+            "roads":[603, 704, 705],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":406,
+            "tiles":[9, 13, 14],
+            "roads":[705, 706, 803],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":407,
+            "tiles":[9, 10, 14],
+            "roads":[604, 706, 707],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":408,
+            "tiles":[10, 14, 15],
+            "roads":[707, 708, 804],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":409,
+            "tiles":[10, 11, 15],
+            "roads":[605, 708, 709],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":410,
+            "tiles":[11, 15, "L"],
+            "roads":[709, 710, 805],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":411,
+            "tiles":[11, "J", "L"],
+            "roads":[606, 710],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":501,
+            "tiles":["K", 12, "M"],
+            "roads":[801, 901],
+            "isCity": false,
+            "color": "none",
+            "portType": "Brick"
+        },
+        {
+            "id":502,
+            "tiles":[12, "M", 16],
+            "roads":[901, 902, 1001],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":503,
+            "tiles":[12, 13, 16],
+            "roads":[802, 902, 903],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":504,
+            "tiles":[13, 16, 17],
+            "roads":[903, 904, 1002],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":505,
+            "tiles":[13, 14, 17],
+            "roads":[803, 904, 905],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":506,
+            "tiles":[14, 17, 18],
+            "roads":[905, 906, 1003],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":507,
+            "tiles":[14, 15, 18],
+            "roads":[804, 906, 907],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":508,
+            "tiles":[15, 18, "N"],
+            "roads":[907, 908, 1004],
+            "isCity": false,
+            "color": "none",
+            "portType": "Wool"
+        },
+        {
+            "id":509,
+            "tiles":[15, "L", "N"],
+            "roads":[805, 908],
+            "isCity": false,
+            "color": "none",
+            "portType": "Wool"
+        },
+        {
+            "id":601,
+            "tiles":["M", 16, "O"],
+            "roads":[1001, 1101],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":602,
+            "tiles":[16, "O", "P"],
+            "roads":[1101, 1102],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":603,
+            "tiles":[16, 17, "P"],
+            "roads":[1002, 1102, 1103],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":604,
+            "tiles":[17, "P", "Q"],
+            "roads":[1003, 1104],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":605,
+            "tiles":[17, 18, "Q"],
+            "roads":[1003, 1104, 1105],
+            "isCity": false,
+            "color": "none",
+            "portType": "General"
+        },
+        {
+            "id":606,
+            "tiles":[18, "Q", "R"],
+            "roads":[1005, 1106],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        },
+        {
+            "id":607,
+            "tiles":[18, "N", "R"],
+            "roads":[1004, 1106],
+            "isCity": false,
+            "color": "none",
+            "portType": "none"
+        }
+    ],
+    "roads": [
+        {
+            "id": 101,
+            "source":101,
+            "target":102,
+            "color": "red"
+        },
+        {
+            "id": 102,
+            "source":102,
+            "target":103,
+            "color": "red"
+        },
+        {
+            "id": 103,
+            "source":103,
+            "target":104,
+            "color": "none"
+        },
+        {
+            "id": 104,
+            "source":104,
+            "target":105,
+            "color": "none"
+        },
+        {
+            "id": 105,
+            "source":105,
+            "target":106,
+            "color": "none"
+        },
+        {
+            "id": 106,
+            "source":106,
+            "target":107,
+            "color": "none"
+        },
+        {
+            "id": 201,
+            "source":101,
+            "target":202,
+            "color": "none"
+        },
+        {
+            "id": 202,
+            "source":103,
+            "target":204,
+            "color": "none"
+        },
+        {
+            "id": 203,
+            "source":105,
+            "target":206,
+            "color": "none"
+        },
+        {
+            "id": 204,
+            "source":107,
+            "target":208,
+            "color": "none"
+        },
+        {
+            "id": 301,
+            "source":201,
+            "target":202,
+            "color": "none"
+        },
+        {
+            "id": 302,
+            "source":202,
+            "target":203,
+            "color": "none"
+        },
+        {
+            "id": 303,
+            "source":203,
+            "target":204,
+            "color": "none"
+        },
+        {
+            "id": 304,
+            "source":204,
+            "target":205,
+            "color": "none"
+        },
+        {
+            "id": 305,
+            "source":205,
+            "target":206,
+            "color": "none"
+        },
+        {
+            "id": 306,
+            "source":206,
+            "target":207,
+            "color": "none"
+        },
+        {
+            "id": 307,
+            "source":207,
+            "target":208,
+            "color": "none"
+        },
+        {
+            "id": 308,
+            "source":208,
+            "target":209,
+            "color": "none"
+        },
+        {
+            "id": 401,
+            "source":201,
+            "target":302,
+            "color": "none"
+        },
+        {
+            "id": 402,
+            "source":203,
+            "target":304,
+            "color": "none"
+        },
+        {
+            "id": 403,
+            "source":205,
+            "target":306,
+            "color": "none"
+        },
+        {
+            "id": 404,
+            "source":207,
+            "target":308,
+            "color": "none"
+        },
+        {
+            "id": 405,
+            "source":209,
+            "target":310,
+            "color": "none"
+        },
+        {
+            "id": 501,
+            "source":301,
+            "target":302,
+            "color": "none"
+        },
+        {
+            "id": 502,
+            "source":302,
+            "target":303,
+            "color": "none"
+        },
+        {
+            "id": 503,
+            "source":303,
+            "target":304,
+            "color": "none"
+        },
+        {
+            "id": 504,
+            "source":304,
+            "target":305,
+            "color": "none"
+        },
+        {
+            "id": 505,
+            "source":305,
+            "target":306,
+            "color": "none"
+        },
+        {
+            "id": 506,
+            "source":306,
+            "target":307,
+            "color": "none"
+        },
+        {
+            "id": 507,
+            "source":307,
+            "target":308,
+            "color": "none"
+        },
+        {
+            "id": 508,
+            "source":308,
+            "target":309,
+            "color": "none"
+        },
+        {
+            "id": 509,
+            "source":309,
+            "target":310,
+            "color": "none"
+        },
+        {
+            "id": 510,
+            "source":310,
+            "target":311,
+            "color": "none"
+        },
+        {
+            "id": 601,
+            "source":301,
+            "target":401,
+            "color": "none"
+        },
+        {
+            "id": 602,
+            "source":303,
+            "target":403,
+            "color": "none"
+        },
+        {
+            "id": 603,
+            "source":305,
+            "target":405,
+            "color": "none"
+        },
+        {
+            "id": 604,
+            "source":307,
+            "target":407,
+            "color": "none"
+        },
+        {
+            "id": 605,
+            "source":309,
+            "target":409,
+            "color": "none"
+        },
+        {
+            "id": 606,
+            "source":311,
+            "target":411,
+            "color": "none"
+        },
+        {
+            "id": 701,
+            "source":401,
+            "target":402,
+            "color": "none"
+        },
+        {
+            "id": 702,
+            "source":402,
+            "target":403,
+            "color": "none"
+        },
+        {
+            "id": 703,
+            "source":403,
+            "target":404,
+            "color": "none"
+        },
+        {
+            "id": 704,
+            "source":404,
+            "target":405,
+            "color": "none"
+        },
+        {
+            "id": 705,
+            "source":405,
+            "target":406,
+            "color": "none"
+        },
+        {
+            "id": 706,
+            "source":406,
+            "target":407,
+            "color": "none"
+        },
+        {
+            "id": 707,
+            "source":407,
+            "target":408,
+            "color": "none"
+        },
+        {
+            "id": 708,
+            "source":408,
+            "target":409,
+            "color": "none"
+        },
+        {
+            "id": 709,
+            "source":409,
+            "target":410,
+            "color": "none"
+        },
+        {
+            "id": 710,
+            "source":410,
+            "target":411,
+            "color": "none"
+        },
+        {
+            "id": 801,
+            "source":402,
+            "target":501,
+            "color": "none"
+        },
+        {
+            "id": 802,
+            "source":404,
+            "target":503,
+            "color": "none"
+        },
+        {
+            "id": 803,
+            "source":406,
+            "target":505,
+            "color": "none"
+        },
+        {
+            "id": 804,
+            "source":408,
+            "target":507,
+            "color": "none"
+        },
+        {
+            "id": 805,
+            "source":410,
+            "target":509,
+            "color": "none"
+        },
+        {
+            "id": 901,
+            "source":501,
+            "target":502,
+            "color": "none"
+        },
+        {
+            "id": 902,
+            "source":502,
+            "target":503,
+            "color": "none"
+        },
+        {
+            "id": 903,
+            "source":503,
+            "target":504,
+            "color": "none"
+        },
+        {
+            "id": 904,
+            "source":504,
+            "target":505,
+            "color": "none"
+        },
+        {
+            "id": 905,
+            "source":505,
+            "target":506,
+            "color": "none"
+        },
+        {
+            "id": 906,
+            "source":506,
+            "target":507,
+            "color": "none"
+        },
+        {
+            "id": 907,
+            "source":507,
+            "target":508,
+            "color": "none"
+        },
+        {
+            "id": 908,
+            "source":508,
+            "target":509,
+            "color": "none"
+        },
+        {
+            "id": 1001,
+            "source":502,
+            "target":601,
+            "color": "none"
+        },
+        {
+            "id": 1002,
+            "source":504,
+            "target":603,
+            "color": "none"
+        },
+        {
+            "id": 1003,
+            "source":506,
+            "target":605,
+            "color": "none"
+        },
+        {
+            "id": 1004,
+            "source":508,
+            "target":607,
+            "color": "none"
+        },
+        {
+            "id": 1101,
+            "source":601,
+            "target":602,
+            "color": "none"
+        },
+        {
+            "id": 1102,
+            "source":602,
+            "target":603,
+            "color": "none"
+        },
+        {
+            "id": 1103,
+            "source":603,
+            "target":604,
+            "color": "none"
+        },
+        {
+            "id": 1104,
+            "source":604,
+            "target":605,
+            "color": "none"
+        },
+        {
+            "id": 1105,
+            "source":605,
+            "target":606,
+            "color": "none"
+        },
+        {
+            "id": 1106,
+            "source":606,
+            "target":607,
+            "color": "none"
+        }
+    ]
+}

@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Test Move Bandit</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
     <script>
         $(document).ready(function(){
             $.ajax({
-                url: 'RollingDice.php',
+                url: 'moveBandit.php',
                 type: "GET",
-                data: "call=rollingDice",
+                data: "call=moveBandit",
 
                 success: function (response) {
                     console.log(response)
