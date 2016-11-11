@@ -9,9 +9,9 @@
     <script>
         $(document).ready(function(){
             $.ajax({
-                url: 'moveBandit.php',
+                url: 'GameClasses.php',
                 type: "GET",
-                data: "call=moveBandit",
+                data: {class: "Player", call: "moveBandit"},
 
                 success: function (response) {
                     console.log(response)

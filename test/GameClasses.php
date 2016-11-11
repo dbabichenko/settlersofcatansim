@@ -10,14 +10,20 @@ $banditLocation = 9;
 $hasLongestRoad = null;
 $hasBiggestArmy = null;
 
-function outputToConsole($data)
-{
-    if (is_array($data))
-        $output = "<script>console.log( 'Debug Objects: " . implode(',', $data) . "' );</script>";
-    else
-        $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+if($_SERVER['REQUEST_METHOD']=="GET") {
+    $class = $_GET['class'];
+    $function = $_GET['call'];
+    if(method_exists($class, $function)) {
+        call_user_func(newGame);
+        call_user_func(array(__NAMESPACE__ .$class, $function), 10);
+    } else {
+        echo 'Function Not Exists!!';
+    }
+}
 
-    echo $output;
+function newGame()
+{
+    $g = new Game(3);
 }
 
 class Game
@@ -27,7 +33,7 @@ class Game
 
     function __construct($numPlayers)
     {
-        outputToConsole("Constructor of Game class is called with " . $numPlayers . " players.");
+        echo ("Constructor of Game class is called with " . $numPlayers . " players.");
         global $numOfPlayers;
         $numOfPlayers = $numPlayers;
 
@@ -35,25 +41,25 @@ class Game
         $map = json_decode($string, true);
 
         for ($i = 0; $i < 72; $i++) {
-            outputToConsole("Create road array.");
+            echo ("Create road array.\n");
             global $road;
             $road[$i] = new road($map, $i);
         }
 
         for ($i = 0; $i < 37; $i++) {
-            outputToConsole("Create terrain array");
+            echo ("Create terrain array\n");
             global $terrain;
             $terrain[$i] = new terrain($map, $i);
         }
 
         for ($i = 0; $i < 54; $i++) {
-            outputToConsole("Create settlement array");
+            echo ("Create settlement array\n");
             global $settlement;
             $settlement[$i] = new Settlement($map, $i);
         }
 
         for ($i = 0; $i < $numPlayers; $i++) {
-            outputToConsole("Create player array.");
+            echo ("Create player array.\n");
             $this->color[$i] = $i;
 
             global $players;
@@ -66,7 +72,7 @@ class Game
         $cardNum = 0;
         $devCardType = array("roadBuilding", "yearOfPlenty", "monopoly", "knight", "victoryPoints");
         for($i = 0; $i<5; $i++){
-            outputToConsole("Create resources cards");
+            echo ("Create resources cards\n");
             global $devCard;
             if($i<3) $cardNum = 2;
             else if($i==3) $cardNum = 14;
@@ -84,33 +90,33 @@ class Game
 
     function rollingDice()
     {
-        outputToConsole("function rolling dice is called");
+        echo ("function rolling dice is called");
         $diceA = mt_rand(0, 6);
         $diceB = mt_rand(0, 6);
         $sumOfDices = $diceA + $diceB;
 
-        outputToConsole("" . $sumOfDices . "is rolled.");
+        echo ("" . $sumOfDices . "is rolled.");
         return $sumOfDices;
     }
 
     function produceResource($sumOfDices)
     {
-        outputToConsole("Produce resource function is called with dice value of " . $sumOfDices);
+        echo ("Produce resource function is called with dice value of " . $sumOfDices);
         global $players, $terrain;
         if ($sumOfDices == 7) {
-            outputToConsole("7 is rolled.");
+            echo ("7 is rolled.");
             foreach($players as &$player){
                 $totalResCard = count($player->resCard);
                 if ($totalResCard > 7) {
                     $returnAmount = floor($totalResCard / 2);
-                    outputToConsole("" . $player->color . " needs to discard" . $returnAmount . "cards");
+                    echo ("" . $player->color . " needs to discard" . $returnAmount . "cards");
 
                     $i = -1;
                     // discard function
                     // player input the type of card to discard
                     foreach($player->resCard as &$card){
                         $i++;
-                        outputToConsole("Do you want to discard a " . $card->type . "card?");
+                        echo ("Do you want to discard a " . $card->type . "card?");
                         $discard = $_POST['value'];
                         if($discard=="yes")
                             unset($player->resCard[$i]);
@@ -118,11 +124,11 @@ class Game
                 }
             }
 
-            outputToConsole("Please put in the id of the terrain where you want to move the bandit to.");
+            echo ("Please put in the id of the terrain where you want to move the bandit to.");
             $destination = $_POST['value']; // get input from HTML form
             $this->currentPlayer->moveBandit($destination);
 
-            outputToConsole("Please put in the color number of the player who you want to steal from.");
+            echo ("Please put in the color number of the player who you want to steal from.");
             $targetColor = $_POST['value'];
             $targetPlayer = null;
             foreach($players as &$player){
@@ -140,7 +146,7 @@ class Game
                         foreach ($players as &$player) {
                             if ($player->color == $sett->control) {
                                 // create a new resource card, add to current player's resCard array
-                                outputToConsole("Player " . $player->color . " gets " . $hex->resourceType . " resource");
+                                echo ("Player " . $player->color . " gets " . $hex->resourceType . " resource");
 
                                 $newResCard = new ResCard($hex->resourceType);
                                 $next = count($player->resCard);
@@ -166,13 +172,13 @@ class Player
     public $numKnights;
 
     function __construct($color){
-        outputToConsole("Create player with color of " . $color);
+        echo ("Create player with color of " . $color);
         $this->color = $color;
     }
 
     function tradeWithBank($tradeInAmount, $tradeInType, $getType, &$bankResCard, $portType)
     {
-        outputToConsole("Trade with bank function is called. Trade in " . $tradeInAmount . " " . $tradeInType);
+        echo ("Trade with bank function is called. Trade in " . $tradeInAmount . " " . $tradeInType);
 
         if ($portType == "none") $ratio = 4;
         else if ($portType == "general") $ratio = 3;
@@ -182,7 +188,7 @@ class Player
         if ($tradeInType == $getType) return false;
 
         $getAmount = floor($tradeInAmount / $ratio);
-        outputToConsole("Get " . $getAmount . $getType);
+        echo ("Get " . $getAmount . $getType);
 
         $count = 0;
         $i = -1;
@@ -231,20 +237,20 @@ class Player
         }
         $this->resCard = array_values($this->resCard);
 
-        outputToConsole("Trade successfully.");
+        echo ("Trade successfully.");
         return true;
     }
 
     function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio, &$other)
     {
-        outputToConsole("Trade with player is called. Trade in " . $tradeInAmount . " " . $tradeInType);
+        echo ("Trade with player is called. Trade in " . $tradeInAmount . " " . $tradeInType);
         // assume player has accepted the trade
         // no decision logic here
 
         if ($tradeInType == $getType) return false;
 
         $getAmount = floor($tradeInAmount / $askRatio);
-        outputToConsole("Get " . $getAmount . $getType);
+        echo ("Get " . $getAmount . $getType);
 
         $count = 0;
         $i = -1;
@@ -292,18 +298,19 @@ class Player
         }
         $this->resCard = array_values($this->resCard);
 
-        outputToConsole("Trade successfully.");
+        echo ("Trade successfully.");
         return true;
     }
 
     function moveBandit($destination)
     {
-        outputToConsole("Move bandit function is called with destination of " . $destination);
+        echo ("Move bandit function is called with destination of " . $destination . "\n");
         global $banditLocation, $terrain;
 
         foreach($terrain as &$hex){
             if($hex->id == $destination){
                 $hex->hasBandit = true;
+                echo ("Bandit has been moved to terrain id# " . $hex->id . "\n");
             }else if($hex->id == $banditLocation){
                 $hex->hasBandit = false;
             }
@@ -311,8 +318,9 @@ class Player
 
         $banditLocation = $destination;
 
-        outputToConsole("Move bandit successfully.");
-        return true;
+        echo ("Move bandit successfully.\n");
+
+        // return true;
     }
 
     /**
@@ -321,8 +329,8 @@ class Player
      **/
     function steal(&$targetPlayer, $destination)
     {
-        outputToConsole("Steal function is called. Steal from player  " . $targetPlayer);
-        outputToConsole("Destination terrain is " . $destination->id);
+        echo ("Steal function is called. Steal from player  " . $targetPlayer);
+        echo ("Destination terrain is " . $destination->id);
         $hasSettlement = false;
         foreach ($targetPlayer->settlements as &$sett) {
             foreach ($sett->terrain as &$value) {
@@ -346,7 +354,7 @@ class Player
         unset($targetPlayer->resCard[$index]);
         $targetPlayer->resCard = array_values($targetPlayer->resCard);
 
-        outputToConsole("Steal successfully");
+        echo ("Steal successfully");
         return true;
     }
 
@@ -354,7 +362,7 @@ class Player
     {
         global $devCard;
 
-        outputToConsole("Purchase dev card function is called by player ".$this->color);
+        echo ("Purchase dev card function is called by player ".$this->color);
         $i = -1;
         $resRemoveList = array();
         $requiredRes = array("Ore", "Wool", "Grain");
@@ -366,27 +374,27 @@ class Player
             }
         }
         if (!empty($requiredRes)) {
-            outputToConsole("Player does not have enough resources");
+            echo ("Player does not have enough resources");
             return false;
         }
 
         $next = count($this->devCard);
         $this->devCard[$next] = $devCard[0];
-        outputToConsole("Player gets ".$devCard[0]->type);
+        echo ("Player gets ".$devCard[0]->type);
 
         // remove devCard from the bank
         unset($devCard[0]);
         $devCard = array_values($devCard);
-        outputToConsole("Dev card ".$this->devCard[$next]->type."has been removed from bank");
+        echo ("Dev card ".$this->devCard[$next]->type."has been removed from bank");
 
 
         foreach ($resRemoveList as &$index) {
             unset($this->resCard[$index]);
         }
         $this->resCard = array_values($this->resCard);//reindexing the player's resCard
-        outputToConsole("Resources cards have been removed from player's cards");
+        echo ("Resources cards have been removed from player's cards");
 
-        outputToConsole("Purchase resources card successfully");
+        echo ("Purchase resources card successfully");
         return true;
     }
 }
@@ -405,7 +413,7 @@ class Terrain
      */
     function __construct($map, $i)
     {
-        outputToConsole("Constructor of terrain is called for terrain #" . $i);
+        echo ("Constructor of terrain is called for terrain #" . $i);
         global $settlement;
         $terr = $map['tiles'][$i];
         $sett = $map['settlements'];
@@ -443,7 +451,7 @@ class Settlement
 
     function __construct($map, $i)
     {
-        outputToConsole("Constructor of terrain is called for settlement #" . $i);
+        echo ("Constructor of terrain is called for settlement #" . $i);
         global $terrain, $road;
         $sett = $map['settlements'][$i];
         $hex = $map['tiles'];
@@ -489,8 +497,8 @@ class Settlement
      */
     function build(&$player, $roads)
     {
-        outputToConsole("Settlement build function is called by player " . $player->color);
-        outputToConsole(" to build settlement #" . $this->id);
+        echo ("Settlement build function is called by player " . $player->color);
+        echo (" to build settlement #" . $this->id);
         global $settlement;
         if ($this->control != null) return false;
 
@@ -532,13 +540,13 @@ class Settlement
 
         $player->resCard = array_values($player->resCard);
 
-        outputToConsole("Settlement #" . $this->id . " is built.");
+        echo ("Settlement #" . $this->id . " is built.");
         return true;
     }
 
     function upgradeToCity(&$player)
     {
-        outputToConsole("Upgrade to city function is called by player " . $player->color);
+        echo ("Upgrade to city function is called by player " . $player->color);
         if ($this->control != $player->color) return false;
 
         $i = -1;
@@ -562,7 +570,7 @@ class Settlement
 
         $this->isCity = true;
 
-        outputToConsole("Successfully upgrade to city.");
+        echo ("Successfully upgrade to city.");
         return true;
     }
 }
@@ -575,7 +583,7 @@ class Road
 
     function __construct($map, $i)
     {
-        outputToConsole("Constructor of terrain is called for road #" . $i);
+        echo ("Constructor of terrain is called for road #" . $i);
         global $settlement;
         $this->control = null;
         $rd = $map['roads'][$i];
@@ -608,8 +616,8 @@ class Road
     {
         //Pushing the new road element into player's road array
 
-        outputToConsole("Road build function is called by player " . $player->color);
-        outputToConsole(" to build road #" . $this->id);
+        echo ("Road build function is called by player " . $player->color);
+        echo (" to build road #" . $this->id);
         global $settlement, $road;
         if ($this->control != null) return false;
 
@@ -648,7 +656,7 @@ class Road
         $player->roads[$next] = &$this;
 
         $this->control = $player->color;
-        outputToConsole("Road #" . $this->id . " is built.");
+        echo ("Road #" . $this->id . " is built.");
 
         // !!! add longest road
         global $hasLongestRoad;
@@ -671,7 +679,7 @@ class ResCard
 
     function __construct($type)
     {
-        outputToConsole("Constructor of ResCard class is called with resource type of " . $type);
+        echo ("Constructor of ResCard class is called with resource type of " . $type);
         $this->type = $type;
     }
 }
@@ -727,12 +735,12 @@ class DevelopmentCard
                 if($road[$j]==$rdNum){
                     if($road[$j]->control==null){
                         if($road[$j]->build($player))
-                            outputToConsole("Successfully build rd#".$rdNum);
+                            echo ("Successfully build rd#".$rdNum);
                         $i++;
                         break;
                     }
                     else{
-                        outputToConsole("This road is occupied.");
+                        echo ("This road is occupied.");
                         break;
                     }
                 }
@@ -747,7 +755,7 @@ class DevelopmentCard
         global $resCard;
 
         while($i<2) {
-            outputToConsole("What type of res card do you want?");
+            echo ("What type of res card do you want?");
             $type = $_POST['value'];
             $j = -1;
             foreach ($resCard as &$card) {
@@ -768,7 +776,7 @@ class DevelopmentCard
     function monopoly(&$player)
     {
         global $numOfPlayers, $players;
-        outputToConsole("What type of resources do you want?");
+        echo ("What type of resources do you want?");
         $askType = $_POST['value'];
 
         foreach($players as &$other) {
