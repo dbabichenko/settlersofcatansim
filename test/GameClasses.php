@@ -497,8 +497,9 @@ class Settlement
      * @para $roads is the roads array
      * @global $settlement is the settlement array
      */
-    function build(&$player, $roads)
+    function build(&$player)
     {
+        global $roads;
         echo ("Settlement build function is called by player " . $player->color);
         echo (" to build settlement #" . $this->id);
         global $settlement;
