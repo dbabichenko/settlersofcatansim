@@ -18,14 +18,13 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
 
 function rollingDice()
 {
-
+    echo ("function rolling dice is called\n");
     $diceA = mt_rand(0, 6);
     $diceB = mt_rand(0, 6);
     $sumOfDices = $diceA + $diceB;
 
-
-    echo $sumOfDices;
-    echo "\nRolling Dice function called.";
+    echo ("" . $sumOfDices . " is rolled.\n");
+    return $sumOfDices;
 }
 
 ?>
