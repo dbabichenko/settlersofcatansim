@@ -25,6 +25,7 @@ function rollingDice()
 
 
     echo $sumOfDices;
+    echo "\nRolling Dice function called.";
 }
 
 ?>
