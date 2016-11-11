@@ -22,7 +22,7 @@ for ($i = 0; $i < 37; $i++) {
 if($_SERVER['REQUEST_METHOD']=="GET") {
     $function = $_GET['call'];
     if(function_exists($function)) {
-        call_user_func($function(10));
+        call_user_func($function, 10);
     } else {
         echo 'Function Not Exists!!';
     }
@@ -36,6 +36,7 @@ function moveBandit($destination)
     foreach($terrain as &$hex){
         if($hex->id == $destination){
             $hex->hasBandit = true;
+            echo ("Bandit has been moved to terrain id# " . $hex->id . "\n");
         }else if($hex->id == $banditLocation){
             $hex->hasBandit = false;
         }
@@ -44,7 +45,8 @@ function moveBandit($destination)
     $banditLocation = $destination;
 
     echo ("Move bandit successfully.\n");
-    return true;
+
+    // return true;
 }
 
 class Terrain
