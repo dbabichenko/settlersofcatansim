@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Upgrade to City</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'GameClasses.php',
+                type: "GET",
+                data: {class: "Settlement", call: "upgradeToCity"},
+
+                success: function (response) {
+                    console.log(response)
+                }
+            });
+        });
+    </script>
+</body>
+</html>
