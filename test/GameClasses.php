@@ -20,14 +20,22 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
             $value = $_GET['value'];
         else if($type=="player")
             $value = &$players[0];
-        if($class!="Game"){
-            if($function!="tradeWithBank")
-                call_user_func(array(__NAMESPACE__ .$class, $function), $value);
-            else
-                call_user_func_array(array($players[0], $function), $value);
-        }
-        else
+
+        if($class=="Game"){
             call_user_func(array($g, $function), $value);
+        }else if($class=="Player"){
+            if($function=="tradeWithBank")
+                call_user_func_array(array($players[0], $function), $value);
+            else if($function=="tradeWithPlayer"){
+                $next = count($value);
+                $value[$next] = &$players[1];
+                call_user_func_array(array($players[0], $function), $value);
+            } else if($function == "purchaseDevCard"){
+                call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+            }
+        }else
+            call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+
     } else {
         echo 'Function Not Exists!!';
     }
@@ -306,14 +314,15 @@ class Player
 
     function tradeWithPlayer($tradeInAmount, $tradeInType, $getType, $askRatio, &$other)
     {
-        echo ("Trade with player is called. Trade in " . $tradeInAmount . " " . $tradeInType . ". \n");
+        echo ("Trade with player is called. \n");
+        echo ("Player " . $this->color . " trade in " . $tradeInAmount . " " . $tradeInType . " with player " . $other->color . " \n");
         // assume player has accepted the trade
         // no decision logic here
 
         if ($tradeInType == $getType) return false;
 
         $getAmount = floor($tradeInAmount / $askRatio);
-        echo ("Get " . $getAmount . $getType);
+        echo ("Get " . $getAmount . " " . $getType . "\n");
 
         $count = 0;
         $i = -1;
@@ -332,7 +341,10 @@ class Player
             }
         }
 
-        if (!$enoughRes) return false;
+        if (!$enoughRes) {
+            echo "Player " . $other->color . "does not enough resources";
+            return false;
+        };
 
         // remove resource from the other player and add to this player
         foreach ($removeList as &$index) {
@@ -349,7 +361,7 @@ class Player
         $count = 0;
         foreach ($this->resCard as &$card) {
             $i++;
-            if ($card->type = $tradeInType) {
+            if ($card->type == $tradeInType) {
                 $next = count($other->resCard);
                 $other->resCard[$next] = $card;
 
@@ -360,6 +372,12 @@ class Player
             }
         }
         $this->resCard = array_values($this->resCard);
+
+        $result = print_r($this->resCard, true);
+        echo "Player " . $this->color . " now has : \n" . $result . "\n";
+
+        $result = print_r($other->resCard, true);
+        echo "Player " . $other->color . " now has : \n" . $result . "\n";
 
         echo ("Trade successfully. \n");
         return true;
@@ -437,7 +455,7 @@ class Player
     {
         global $devCard;
 
-        echo ("Purchase dev card function is called by player ".$this->color . "\n");
+        echo ("Purchase dev card function is called by player ". $this->color . "\n");
         $i = -1;
         $resRemoveList = array();
         $requiredRes = array("Ore", "Wool", "Grain");
