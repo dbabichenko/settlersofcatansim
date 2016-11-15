@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DevCard - Knight</title>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'GameClasses.php',
+                type: 'GET',
+                data: {class: "DevelopmentCard", call: "knight", value: ""},
+
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
