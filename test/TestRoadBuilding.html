@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DevCard - RoadBuilding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function(){
+
+        $.ajax({
+            url: 'GameClasses.php',
+            type: 'GET',
+            data: {class: "DevelopmentCard", call: "roadBuilding", type: "player", value: "14"},
+
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

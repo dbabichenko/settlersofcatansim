@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>DevCard - Knight</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
     <script>
         $(document).ready(function(){
+
             $.ajax({
                 url: 'GameClasses.php',
                 type: 'GET',
-                data: {class: "DevelopmentCard", call: "knight", value: ""},
+                data: {class: "DevelopmentCard", call: "knight", type: "double", value: "14"},
 
                 success: function(response) {
                     console.log(response);

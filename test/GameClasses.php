@@ -20,8 +20,13 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
             $value = $_GET['value'];
         else if($type=="player")
             $value = &$players[0];
+        else if($type=="double") {
+            $get_para = $_GET['value'];
+            $object_para = &$players[1];
+            $value = array($object_para, $get_para);
+        }
         if($class!="Game")
-            call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+            call_user_func_array(array(__NAMESPACE__ .$class, $function), array(&$value));
         else
             call_user_func(array($g, $function), $value);
     } else {
@@ -805,6 +810,7 @@ class DevelopmentCard
     function victoryPoints(&$player)
     {
         $player->victoryPoints++;
+        echo("The player " . $player . " has " . $player->victoryPoints . " victory points.");
     }
 }
 
