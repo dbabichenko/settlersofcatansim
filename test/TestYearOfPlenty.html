@@ -6,20 +6,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-<script>
-    $(document).ready(function(){
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'GameClasses.php',
+                type: 'GET',
+                data: {class: "DevelopmentCard", call: "yearOfPlenty", type: "player", value: "Grain"},
 
-        $.ajax({
-            url: 'GameClasses.php',
-            type: 'GET',
-            data: {class: "DevelopmentCard", call: "yearOfPlenty", type: "player", value: "Grain"},
-
-            success: function(response) {
-                console.log(response);
-            }
+                success: function(response) {
+                    console.log(response);
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>

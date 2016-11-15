@@ -17,13 +17,15 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
     if(method_exists($class, $function)) {
         $g = new Game(3);
         if($type=="para")
-            $value = $_GET['value'];
+            $value = array($_GET['value']);
         else if($type=="player")
-            $value = &$players[0];
+            $value = array(&$players[0]);
         else if($type=="double") {
-            $get_para = $_GET['value'];
-            $object_para = &$players[1];
-            $value = array($object_para, $get_para);
+            $value = [];
+            $value[] = &$players[1];
+            $value[] = $_GET['value'];
+            $res = print_r($value, true);
+            echo $res . "\n";
         }
 
         if($class=="Game"){
@@ -39,7 +41,7 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
                 call_user_func(array($players[0], $function), $value);
             }
         }else
-            call_user_func_array(array(__NAMESPACE__ .$class, $function), array(&$value));
+            call_user_func_array(array(__NAMESPACE__ .$class, $function), $value);
 
     } else {
         echo 'Function Not Exists!!';
@@ -829,7 +831,8 @@ class DevelopmentCard
     {
         global $hasBiggestArmy;
         $player->moveBandit($destination);
-        $player->knights++;
+        echo "Move bandit to " . $destination . " \n";
+        $player->numKnights++;      //knights -> numKnights
         if($hasBiggestArmy==null){
             if($player->numKnights>=3){
                 $hasBiggestArmy = &$player;
@@ -887,6 +890,10 @@ class DevelopmentCard
             }
         }
 
+        echo "Player " . $player->color . " resource card array : ";
+        $result = print_r($player->resCard, true);
+        echo $result . "\n";
+
     }
 
     function monopoly(&$player)
@@ -924,7 +931,7 @@ class DevelopmentCard
     function victoryPoints(&$player)
     {
         $player->victoryPoints++;
-        echo("The player " . $player . " has " . $player->victoryPoints . " victory points.");
+        echo "The player " . $player->color . " has " . $player->victoryPoints . " victory points.";
     }
 }
 
