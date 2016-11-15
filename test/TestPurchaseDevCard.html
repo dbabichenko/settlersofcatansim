@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Whole</title>
+    <title>Test Trade With Player</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
@@ -11,7 +11,7 @@
         $.ajax({
             url: 'GameClasses.php',
             type: "GET",
-            data: "call=newGame",
+            data: {class: "Player", call: "purchaseDevCard", type: "para", value: 0},
 
             success: function (response) {
                 console.log(response)
