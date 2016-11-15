@@ -91,14 +91,28 @@ class Game
     }
 
     function initialize(){
-        global $players;
+        global $players, $terrain;
         for($i = 0; $i<3; $i++){
             $players[$i] = new Player($i);
             for($j = 0; $j<3; $j++){
                 $players[$i]->resCard[$j] = new ResourceCard("Wool");
             }
+            for($j = 3; $j<6; $j++){
+                $players[$i]->resCard[$j] = new ResourceCard("Lumber");
+            }
+            for($j = 6; $j<9; $j++){
+                $players[$i]->resCard[$j] = new ResourceCard("Brick");
+            }
         }
         $this->currentPlayer = &$players[0];
+
+        foreach($terrain as &$terr){
+            if($terr->id == "10"){
+                $players[1]->settlements[0] = &$terr->settlement[0];
+                $terr->settlement[0]->color = 1;
+                break;
+            }
+        }
     }
 
     function rollingDice()
@@ -122,19 +136,36 @@ class Game
                 $totalResCard = count($player->resCard);
                 if ($totalResCard > 7) {
                     $returnAmount = floor($totalResCard / 2);
-                    echo ("" . $player->color . " needs to discard" . $returnAmount . "cards\n");
+                    echo ("" . $player->color . " needs to discard " . $returnAmount . " cards\n");
 
-
-                    $i = -1;
+                    // $i = -1;
                     // discard function
                     // player input the type of card to discard
-                    foreach($player->resCard as &$card){
+                    /*foreach($player->resCard as &$card){
                         $i++;
                         echo ("Do you want to discard a " . $card->type . "card? \n");
                         $discard = $_GET['value'];
                         if($discard=="yes")
                             unset($player->resCard[$i]);
+                    }*/
+
+                    $i = -1;
+                    echo "What type of resources card do you want to discard?\n";
+                    $resType = $_GET['resType'];
+                    echo "Player discard type of " . $resType . "\n\n";
+                    global $resCard;
+                    foreach($player->resCard as &$card){
+                        $i++;
+                        if($card->type==$resType){
+                            $next = count($resCard);
+                            $resCard[$next] = &$card;
+
+                            unset($player->resCard[$i]);
+                        }
                     }
+                    $player->resCard = array_values($player->resCard);
+                    $result = print_r($player->resCard, true);
+                    echo $result;
                 }
             }
 
@@ -153,7 +184,8 @@ class Game
 
         } else {
             foreach ($terrain as &$hex) {
-                if (($hex->diceValue == $sumOfDices) && ($hex->hasBandit)) {
+                if (($hex->diceValue == $sumOfDices) && (!$hex->hasBandit)) {
+                    echo "Terrain " . $hex->id . " has dice value of " . $hex->diceValue . "\n";
                     // iterate through the settlements arount the hex
                     foreach ($hex->settlement as &$sett) {
                         // find the player who control the current settlement
@@ -162,9 +194,8 @@ class Game
                                 // create a new resource card, add to current player's resCard array
                                 echo ("Player " . $player->color . " gets " . $hex->resourceType . " resource \n");
 
-                                $newResCard = new ResCard($hex->resourceType);
                                 $next = count($player->resCard);
-                                $player->resCard[$next] = $newResCard;
+                                $player->resCard[$next] = new ResourceCard($hex->resourceType);
                             }
                         }
                     }
@@ -339,34 +370,46 @@ class Player
 
     /**
      * @para $targetPlayer is an instance of Player class
-     * @para $destination is an instance of Settlement class
+     * @para $destination is integer, settlement id
      **/
     function steal(&$targetPlayer, $destination)
     {
-        echo ("Steal function is called. Steal from player  " . $targetPlayer . "\n");
-        echo ("Destination terrain is " . $destination->id . "\n");
+        echo ("Steal function is called. Steal from player  " . $targetPlayer->color . "\n");
+        echo ("Destination terrain is " . $destination . "\n");
         $hasSettlement = false;
         foreach ($targetPlayer->settlements as &$sett) {
-            foreach ($sett->terrain as &$value) {
-                if ($value == $destination)
+            foreach ($sett->terrain as &$terr) {
+                if ($terr->id == $destination)
                     $hasSettlement = true;
             }
         }
 
-        if (!$hasSettlement)
+        if (!$hasSettlement) {
+            echo "Player does not have settlement around the destination\n";
             return false;
+        }
 
         $length = count($targetPlayer->resCard);
         $index = mt_rand(0, $length - 1);
+
+        echo "Player " . $targetPlayer->color . " lost a resources card of " . $targetPlayer->resCard[$index]->type . "\n";
 
         // add resource card to this player
         // array_push($this->resCard, $targetPlayer->resCard[$index]);
         $next = count($this->resCard);
         $this->resCard[$next] = &$targetPlayer->resCard[$index];
 
+        $result = print_r($this->resCard, true);
+        echo "Player " . $this->color . "'s resource card: \n";
+        echo $result . "\n";
+
         // remove resource card from target player
         unset($targetPlayer->resCard[$index]);
         $targetPlayer->resCard = array_values($targetPlayer->resCard);
+
+        $result = print_r($targetPlayer->resCard, true);
+        echo "Player " . $targetPlayer->color . "'s resource card: \n";
+        echo $result . "\n";
 
         echo ("Steal successfully \n");
         return true;
@@ -436,7 +479,10 @@ class Terrain
         // IDE might say undefined constant, it is because they are from JSON file
         $this->id = $terr[tile_id];
         $this->resourceType = $terr[resourceType];
-        $this->diceValue = $terr[diceValue];
+        if($terr[diceValue]!=null)
+            $this->diceValue = $terr[diceValue];
+        else
+            $this->diceValue = -1;
         $this->hasBandit = $terr[hasRobber];
 
         for ($j = 0; $j < 54; $j++) {
@@ -449,6 +495,8 @@ class Terrain
                 }
             }
         }
+
+        echo "Dice value is " . $this->diceValue . "\n\n";
     }
 
 }
@@ -472,7 +520,7 @@ class Settlement
         $rds = $map['roads'];
 
         $this->id = $sett[id];
-        $this->control = null;
+        $this->control = -1;
         $this->index = $i;
 
         if ($sett[portType] == "none") {
@@ -770,7 +818,7 @@ class DevelopmentCard
         global $resCard;
 
         while($i<2) {
-            echo ("What type of res card do you want? \n");
+            echo ("What type of resource card do you want? \n");
             $type = $_GET['value'];
             $j = -1;
             foreach ($resCard as &$card) {
@@ -809,13 +857,13 @@ class DevelopmentCard
                 }
                 $other->resCard = array_values($other->resCard);
 
-                echo "Player " . $other->color . " res card array : ";
+                echo "Player " . $other->color . " resource card array : ";
                 $result = print_r($other->resCard, true);
                 echo $result . "\n";
             }
         }
 
-        echo "Player " . $player->color . " res card array : ";
+        echo "Player " . $player->color . " resource card array : ";
         $result = print_r($player->resCard, true);
         echo $result . "\n";
     }
