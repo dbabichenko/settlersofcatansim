@@ -22,8 +22,8 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
             $value = array(&$players[0]);
         else if($type=="double") {
             $value = [];
-            $value[] = &$players[1];
-            $value[] = $_GET['value'];
+            $value[0] = &$players[1];
+            $value[1] = $_GET['value'];
             $res = print_r($value, true);
             echo $res . "\n";
         }
@@ -40,7 +40,12 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
             } else if($function == "purchaseDevCard"){
                 call_user_func(array($players[0], $function), $value);
             }
-        }else
+        }else if($class=="Road"){
+            if($function=="build"){
+                call_user_func(array($road[0], $function), $players[0]);
+            }
+
+        } else
             call_user_func_array(array(__NAMESPACE__ .$class, $function), $value);
 
     } else {
