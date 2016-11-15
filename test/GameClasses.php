@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
                 $value[$next] = &$players[1];
                 call_user_func_array(array($players[0], $function), $value);
             } else if($function == "purchaseDevCard"){
-                call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+                call_user_func(array($players[0], $function), $value);
             }
         }else
             call_user_func(array(__NAMESPACE__ .$class, $function), $value);
@@ -116,6 +116,8 @@ class Game
             for($j = 6; $j<10; $j++){
                 $players[$i]->resCard[$j] = new ResourceCard("Brick");
             }
+            $players[$i]->resCard[10] = new ResourceCard("Ore");
+            $players[$i]->resCard[11] = new ResourceCard("Grain");
         }
         $this->currentPlayer = &$players[0];
 
@@ -467,6 +469,7 @@ class Player
             }
         }
         if (!empty($requiredRes)) {
+            echo(print_r($requiredRes, true) . "\n");
             echo ("Player does not have enough resources \n");
             return false;
         }
@@ -478,7 +481,7 @@ class Player
         // remove devCard from the bank
         unset($devCard[0]);
         $devCard = array_values($devCard);
-        echo ("Dev card ".$this->devCard[$next]->type."has been removed from bank. \n");
+        echo ("Dev card ".$this->devCard[$next]->type." has been removed from bank. \n");
 
 
         foreach ($resRemoveList as &$index) {
@@ -486,6 +489,15 @@ class Player
         }
         $this->resCard = array_values($this->resCard);//reindexing the player's resCard
         echo ("Resources cards have been removed from player's cards. \n");
+
+        $result = print_r($this->resCard, true);
+        echo "Player " . $this->color . " now has resource card :\n" . $result;
+
+        $result = print_r($this->devCard, true);
+        echo "Player " . $this->color . " now has development card :\n" . $result;
+
+        $result = print_r($devCard, true);
+        echo "Bank now has development card :\n" . $result;
 
         echo ("Purchase resources card successfully. \n");
         return true;
