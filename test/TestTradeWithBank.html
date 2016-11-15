@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Trade With Bank</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: 'GameClasses.php',
+            type: "GET",
+            data: {class: "Player", call: "tradeWithBank", type: "para", value: [4, "Brick", "Wool", "none"]},
+
+            success: function (response) {
+                console.log(response)
+            }
+        });
+    });
+</script>
+</body>
+</html>

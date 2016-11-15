@@ -20,8 +20,12 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
             $value = $_GET['value'];
         else if($type=="player")
             $value = &$players[0];
-        if($class!="Game")
-            call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+        if($class!="Game"){
+            if($function!="tradeWithBank")
+                call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+            else
+                call_user_func_array(array($players[0], $function), $value);
+        }
         else
             call_user_func(array($g, $function), $value);
     } else {
@@ -91,7 +95,8 @@ class Game
     }
 
     function initialize(){
-        global $players, $terrain;
+        global $players, $terrain, $resCard;
+        $resCard[0] = new ResourceCard("Wool");
         for($i = 0; $i<3; $i++){
             $players[$i] = new Player($i);
             for($j = 0; $j<3; $j++){
@@ -100,7 +105,7 @@ class Game
             for($j = 3; $j<6; $j++){
                 $players[$i]->resCard[$j] = new ResourceCard("Lumber");
             }
-            for($j = 6; $j<9; $j++){
+            for($j = 6; $j<10; $j++){
                 $players[$i]->resCard[$j] = new ResourceCard("Brick");
             }
         }
@@ -109,7 +114,7 @@ class Game
         foreach($terrain as &$terr){
             if($terr->id == "10"){
                 $players[1]->settlements[0] = &$terr->settlement[0];
-                $terr->settlement[0]->color = 1;
+                $terr->settlement[0]->control = 1;
                 break;
             }
         }
@@ -196,6 +201,9 @@ class Game
 
                                 $next = count($player->resCard);
                                 $player->resCard[$next] = new ResourceCard($hex->resourceType);
+
+                                $result = print_r($player->resCard, true);
+                                echo $result . "\n";
                             }
                         }
                     }
@@ -221,9 +229,11 @@ class Player
         $this->color = $color;
     }
 
-    function tradeWithBank($tradeInAmount, $tradeInType, $getType, &$bankResCard, $portType)
+    function tradeWithBank($tradeInAmount, $tradeInType, $getType, $portType)
     {
-        echo ("Trade with bank function is called. Trade in " . $tradeInAmount . " " . $tradeInType . ". \n");
+        global $resCard;
+        echo ("Trade with bank function is called.\n");
+        echo ("Player " . $this->color . " trade in " . $tradeInAmount . " " . $tradeInType . ". \n");
 
         if ($portType == "none") $ratio = 4;
         else if ($portType == "general") $ratio = 3;
@@ -233,14 +243,14 @@ class Player
         if ($tradeInType == $getType) return false;
 
         $getAmount = floor($tradeInAmount / $ratio);
-        echo ("Get " . $getAmount . $getType);
+        echo ("Get " . $getAmount . " " . $getType . "\n");
 
         $count = 0;
         $i = -1;
         $enoughRes = false;
         $removeList = array();
 
-        foreach ($bankResCard as &$card) {
+        foreach ($resCard as &$card) {
             $i++;
             if ($card->type == $getType) {
                 array_push($removeList, $i);
@@ -252,28 +262,30 @@ class Player
             }
         }
 
-        if (!$enoughRes)
+        if (!$enoughRes){
+            echo "Bank does not have enough resources\n";
             return false;
+        }
 
         // remove trade out resource from bank and add to player
         foreach ($removeList as &$index) {
             $next = count($this->resCard);
-            $this->resCard[$next] = &$bankResCard[$index];
+            $this->resCard[$next] = &$resCard[$index];
             // array_push($this->resCard, $resCard[$index]);
 
-            unset($bankResCard[$index]);
+            unset($resCard[$index]);
         }
-        $bankResCard = array_values($bankResCard);
+        $resCard = array_values($resCard);
 
         // remove trade in resource from player and add to bank
         $i = -1;
         $count = 0;
         foreach ($this->resCard as &$card) {
             $i++;
-            if ($card->type = $tradeInType) {
-                $next = count($bankResCard);
-                $bankResCard[$next] = &$card;
-                // array_push($bankResCard, $card);
+            if ($card->type == $tradeInType) {
+                $next = count($resCard);
+                $resCard[$next] = &$card;
+                // array_push($resCard, $card);
 
                 unset($this->resCard[$i]);
                 $count++;
@@ -281,6 +293,12 @@ class Player
             }
         }
         $this->resCard = array_values($this->resCard);
+
+        $result = print_r($resCard, true);
+        echo "Bank resources left: \n" . $result;
+
+        $result = print_r($this->resCard, true);
+        echo "Player " . $this->color . " now has : \n" . $result;
 
         echo ("Trade successfully. \n");
         return true;
