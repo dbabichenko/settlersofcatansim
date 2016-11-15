@@ -45,7 +45,17 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
                 call_user_func(array($road[0], $function), $players[0]);
             }
 
-        } else
+        }
+        else if ($class=="Settlement"){
+          if($function=="build"){
+            call_user_func(array($settlement[0],$function), $players[0]);
+          }
+        }
+        else if ($class=="Settlement"){
+          if($function=="upgradeToCity"){
+            call_user_func(array($settlement[0],$function), $players[0]);
+          }
+        }else
             call_user_func_array(array(__NAMESPACE__ .$class, $function), $value);
 
     } else {
