@@ -11,7 +11,7 @@
             $.ajax({
                 url: 'GameClasses.php',
                 type: "GET",
-                data: {class: "Player", call: "moveBandit", value: "10"},
+                data: {class: "Player", call: "moveBandit", type:"para", value: "10"},
 
                 success: function (response) {
                     console.log(response)

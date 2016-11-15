@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Produce Resource</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: 'GameClasses.php',
+            type: "GET",
+            data: {class: "Game", call: "produceResource", type: "para", value: "7"},
+
+            success: function (response) {
+                console.log(response)
+            }
+        });
+    });
+</script>
+</body>
+</html>

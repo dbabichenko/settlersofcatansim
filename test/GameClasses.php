@@ -13,19 +13,20 @@ $hasBiggestArmy = null;
 if($_SERVER['REQUEST_METHOD']=="GET") {
     $class = $_GET['class'];
     $function = $_GET['call'];
-    // $value = $_GET['value'];
+    $type = $_GET['type'];
     if(method_exists($class, $function)) {
-        call_user_func(newGame);
-        $value = &$players[0];
-        call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+        $g = new Game(3);
+        if($type=="para")
+            $value = $_GET['value'];
+        else if($type=="player")
+            $value = &$players[0];
+        if($class!="Game")
+            call_user_func(array(__NAMESPACE__ .$class, $function), $value);
+        else
+            call_user_func(array($g, $function), $value);
     } else {
         echo 'Function Not Exists!!';
     }
-}
-
-function newGame()
-{
-    $g = new Game(3);
 }
 
 class Game
@@ -92,26 +93,26 @@ class Game
 
     function rollingDice()
     {
-        echo ("function rolling dice is called");
+        echo ("function rolling dice is called\n");
         $diceA = mt_rand(0, 6);
         $diceB = mt_rand(0, 6);
         $sumOfDices = $diceA + $diceB;
 
-        echo ("" . $sumOfDices . "is rolled.");
+        echo ("" . $sumOfDices . " is rolled.\n");
         return $sumOfDices;
     }
 
     function produceResource($sumOfDices)
     {
-        echo ("Produce resource function is called with dice value of " . $sumOfDices);
+        echo ("Produce resource function is called with dice value of " . $sumOfDices . "\n");
         global $players, $terrain;
         if ($sumOfDices == 7) {
-            echo ("7 is rolled.");
+            echo ("7 is rolled.\n");
             foreach($players as &$player){
                 $totalResCard = count($player->resCard);
                 if ($totalResCard > 7) {
                     $returnAmount = floor($totalResCard / 2);
-                    echo ("" . $player->color . " needs to discard" . $returnAmount . "cards");
+                    echo ("" . $player->color . " needs to discard" . $returnAmount . "cards\n");
 
                     $i = -1;
                     // discard function
@@ -126,11 +127,11 @@ class Game
                 }
             }
 
-            echo ("Please put in the id of the terrain where you want to move the bandit to.");
+            echo ("Please put in the id of the terrain where you want to move the bandit to.\n");
             $destination = $_GET['value']; // get input from HTML form
             $this->currentPlayer->moveBandit($destination);
 
-            echo ("Please put in the color number of the player who you want to steal from.");
+            echo ("Please put in the color number of the player who you want to steal from.\n");
             $targetColor = $_GET['value'];
             $targetPlayer = null;
             foreach($players as &$player){
@@ -322,7 +323,7 @@ class Player
 
         echo ("Move bandit successfully.\n");
 
-        // return true;
+        return true;
     }
 
     /**
