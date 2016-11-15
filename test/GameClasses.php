@@ -87,7 +87,17 @@ class Game
         }
         shuffle($devCard);
 
+        $this->initialize();
+    }
+
+    function initialize(){
         global $players;
+        for($i = 0; $i<3; $i++){
+            $players[$i] = new Player($i);
+            for($j = 0; $j<3; $j++){
+                $players[$i]->resCard[$j] = new ResCard("Wool");
+            }
+        }
         $this->currentPlayer = &$players[0];
     }
 
@@ -128,11 +138,11 @@ class Game
             }
 
             echo ("Please put in the id of the terrain where you want to move the bandit to.\n");
-            $destination = $_GET['value']; // get input from HTML form
+            $destination = $_GET['destination']; // get input from HTML form
             $this->currentPlayer->moveBandit($destination);
 
             echo ("Please put in the color number of the player who you want to steal from.\n");
-            $targetColor = $_GET['value'];
+            $targetColor = $_GET['color'];
             $targetPlayer = null;
             foreach($players as &$player){
                 if($player->color == $targetColor)
@@ -175,7 +185,7 @@ class Player
     public $numKnights;
 
     function __construct($color){
-        echo ("Create player with color of " . $color);
+        echo ("Create player with color of " . $color . "\n");
         $this->color = $color;
     }
 
@@ -332,8 +342,8 @@ class Player
      **/
     function steal(&$targetPlayer, $destination)
     {
-        echo ("Steal function is called. Steal from player  " . $targetPlayer);
-        echo ("Destination terrain is " . $destination->id);
+        echo ("Steal function is called. Steal from player  " . $targetPlayer . "\n");
+        echo ("Destination terrain is " . $destination->id . "\n");
         $hasSettlement = false;
         foreach ($targetPlayer->settlements as &$sett) {
             foreach ($sett->terrain as &$value) {
@@ -416,7 +426,7 @@ class Terrain
      */
     function __construct($map, $i)
     {
-        echo ("Constructor of terrain is called for terrain #" . $i);
+        echo ("Constructor of terrain is called for terrain #" . $i . "\n");
         global $settlement;
         $terr = $map['tiles'][$i];
         $sett = $map['settlements'];
@@ -454,7 +464,7 @@ class Settlement
 
     function __construct($map, $i)
     {
-        echo ("Constructor of terrain is called for settlement #" . $i);
+        echo ("Constructor of settlement is called for settlement #" . $i . "\n");
         global $terrain, $road;
         $sett = $map['settlements'][$i];
         $hex = $map['tiles'];
@@ -683,7 +693,7 @@ class ResCard
 
     function __construct($type)
     {
-        echo ("Constructor of ResCard class is called with resource type of " . $type);
+        echo ("Constructor of ResCard class is called with resource type of " . $type . "\n");
         $this->type = $type;
     }
 }
@@ -779,10 +789,10 @@ class DevelopmentCard
 
     function monopoly(&$player)
     {
-        global $numOfPlayers, $players;
+        global $players;
         echo ("What type of resources do you want?\n");
         $askType = $_GET['value'];
-        echo ("The player wants " . $askType);
+        echo ("The player wants " . $askType . "\n");
 
         foreach($players as &$other) {
             if($other->color!=$player->color){
@@ -791,14 +801,22 @@ class DevelopmentCard
                     $i++;
                     if($card->type==$askType){
                         $next = count($player->resCard);
-                        $player[$next] = &$card;
+                        $player->resCard[$next] = &$card;
 
-                        unset($other->recard[$i]);
+                        unset($other->resCard[$i]);
                     }
                 }
                 $other->resCard = array_values($other->resCard);
+
+                echo "Player " . $other->color . " res card array : ";
+                $result = print_r($other->resCard, true);
+                echo $result . "\n";
             }
         }
+
+        echo "Player " . $player->color . " res card array : ";
+        $result = print_r($player->resCard, true);
+        echo $result . "\n";
     }
 
     function victoryPoints(&$player)
