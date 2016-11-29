@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DevCard - VictoryPoints</title>
+    <title>DevCard - YearOfPlenty</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
@@ -11,7 +11,7 @@
             $.ajax({
                 url: 'GameClasses.php',
                 type: 'GET',
-                data: {class: "DevelopmentCard", call: "yearOfPlenty", type: "player", value: "Grain"},
+                data: {class: "DevelopmentCard", call: "yearOfPlenty", type: "player", value: ["Grain", "Wool"]},
 
                 success: function(response) {
                     console.log(response);

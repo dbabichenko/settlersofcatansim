@@ -10,22 +10,25 @@ $banditLocation = 9;
 $hasLongestRoad = null;
 $hasBiggestArmy = null;
 
+//Add exception for input parameters
 if($_SERVER['REQUEST_METHOD']=="GET") {
     $class = $_GET['class'];
     $function = $_GET['call'];
     $type = $_GET['type'];
+
+    echo "class: " . $class. " function: " . $function. " type: " . $type ."\n";
     if(method_exists($class, $function)) {
         $g = new Game(3);
         if($type=="para")
             $value = array($_GET['value']);
-        else if($type=="player")
+        else if($type=="player") {
+            echo "parameter type is player. \n";
             $value = array(&$players[0]);
+        }
         else if($type=="double") {
             $value = [];
             $value[0] = &$players[1];
             $value[1] = $_GET['value'];
-            $res = print_r($value, true);
-            echo $res . "\n";
         }
 
         if($class=="Game"){
@@ -45,8 +48,11 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
                 call_user_func(array($road[0], $function), $players[0]);
             }
 
-        } else
+        } else {
+            echo "Called successfully! \n";
             call_user_func_array(array(__NAMESPACE__ .$class, $function), $value);
+        }
+
 
     } else {
         echo 'Function Not Exists!!';
@@ -845,46 +851,75 @@ class DevelopmentCard
         }else if ($player->numKnights > $hasBiggestArmy->numKnights) {
             $hasBiggestArmy = &$player;
         }
+
+        if($hasBiggestArmy != $player) {
+            echo "Tested player doesn't own the biggestArmy. \n";
+        }
     }
 
     function roadBuilding(&$player)
     {
         $i = 0;
-        while($i<2){
-            $rdNum = $_GET['value'];
+        $rdNum = $_GET['value'];
+        echo "Two roads are ". $rdNum[0] . " and " . $rdNum[1] . ". \n";
 
-            global $road;
-            $size = count($road);
-            for($j=0;$j<$size;$j++){
-                if($road[$j]==$rdNum){
-                    if($road[$j]->control==null){
-                        if($road[$j]->build($player))
-                            echo ("Successfully build rd#".$rdNum . "\n");
-                        $i++;
-                        break;
-                    }
-                    else{
-                        echo ("This road is occupied. \n");
-                        break;
-                    }
+        global $road;
+        $size = count($road);  //no-stop loop
+
+        //Build the first road.
+        for($j=0;$j<$size;$j++){
+            if($road[$j]->id==$rdNum[0]){
+                if($road[$j]->control==null){
+                    if($road[$j]->build($player))
+                        echo ("Successfully build rd#".$rdNum[0] . "\n");
+                    break;
                 }
+                else{
+                    echo "The road #" . $rdNum[0] . " is occupied, please select another road. \n";
+                    break;
+                }
+            } else {
+                echo "Invalid road number #" . $rdNum[0] . "\n";
+                break;
             }
         }
+
+        //Build the second road
+        for($j=0;$j<$size;$j++){
+            if($road[$j]->id==$rdNum[1]){
+                if($road[$j]->control==null){
+                    if($road[$j]->build($player))
+                        echo ("Successfully build rd#". $rdNum[1] . "\n");
+                    break;
+                }
+                else{
+                    echo ("The road #" . $rdNum[1] . " is occupied, please select another road. \n");
+                    break;
+                }
+            } else {
+                echo "Invalid road number #" . $rdNum[1] . "\n";
+                break;
+            }
+        }
+
         return true;
     }
 
     function yearOfPlenty(&$player)
     {
+        echo "yearOfPlenty is called \n";
         $i = 0;
         global $resCard;
 
+        $type = $_GET['value'];
+
         while($i<2) {
-            echo ("What type of resource card do you want? \n");
-            $type = $_GET['value'];
+            echo "What type of resource card do you want? \n";
+            echo $type[$i] . ". \n";
             $j = -1;
             foreach ($resCard as &$card) {
                 $j++;
-                if ($card->type == $type) {
+                if ($card->type == $type[$i]) {
                     $next = count($player->resCard);
                     $player->resCard[$next] = &$card;
                     unset($resCard[$j]);
