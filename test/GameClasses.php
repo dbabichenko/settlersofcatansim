@@ -867,7 +867,18 @@ class DevelopmentCard
     {
         $i = 0;
         $rdNum = $_GET['value'];
-        echo "Two roads are ". $rdNum[0] . " and " . $rdNum[1] . ". \n";
+
+        //Validating the input values
+        if(is_array($rdNum)) {
+            if($rdNum[0] < 101 || $rdNum[0] > 1106 || $rdNum[1] < 101 || $rdNum[1] > 1106) {
+                echo "Invalid road number. Please input road id between 101 and 1106. You could refer to json file. \n";
+                return false;
+            }
+        } else {
+            echo "Please input two road numbers!";
+            return false;
+        }
+
 
         global $road;
         $size = count($road);  //no-stop loop
@@ -918,6 +929,12 @@ class DevelopmentCard
         global $resCard;
 
         $type = $_GET['value'];
+
+        //Validating the input resource types
+        if(!is_array($type)) {
+            echo "Invalid input values. Please input any two kinds of resources instead!";
+            return;
+        }
 
         while($i<2) {
             echo "What type of resource card do you want? \n";
