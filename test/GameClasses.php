@@ -10,21 +10,16 @@ $banditLocation = 9;
 $hasLongestRoad = null;
 $hasBiggestArmy = null;
 
-//Add exception for input parameters
 if($_SERVER['REQUEST_METHOD']=="GET") {
     $class = $_GET['class'];
     $function = $_GET['call'];
     $type = $_GET['type'];
-
-    echo "class: " . $class. " function: " . $function. " type: " . $type ."\n";
     if(method_exists($class, $function)) {
         $g = new Game(3);
         if($type=="para")
-            $value = array($_GET['value']);
-        else if($type=="player") {
-            echo "parameter type is player. \n";
+            $value = $_GET['value'];
+        else if($type=="player")
             $value = array(&$players[0]);
-        }
         else if($type=="double") {
             $value = [];
             $value[0] = &$players[1];
@@ -42,23 +37,24 @@ if($_SERVER['REQUEST_METHOD']=="GET") {
                 call_user_func_array(array($players[0], $function), $value);
             } else if($function == "purchaseDevCard"){
                 call_user_func(array($players[0], $function), $value);
-            }
+            } else
+                call_user_func(array($players[0], $function), $value);
         }else if($class=="Road"){
             if($function=="build"){
                 call_user_func(array($road[0], $function), $players[0]);
             }
-        } else if ($class=="Settlement"){
-          if($function=="upgradeToCity"){
-            call_user_func(array($settlement[0],$function), $players[0]);
-          }
+        }
+        else if ($class=="Settlement"){
           if($function=="build"){
             call_user_func(array($settlement[0],$function), $players[0]);
           }
-        } else {
-            echo "Called successfully! \n";
-            call_user_func_array(array(__NAMESPACE__ .$class, $function), $value);
         }
-
+        else if ($class=="Settlement"){
+          if($function=="upgradeToCity"){
+            call_user_func(array($settlement[0],$function), $players[0]);
+          }
+        }else
+            call_user_func_array(array(__NAMESPACE__ .$class, $function), $value);
     } else {
         echo 'Function Not Exists!!';
     }
@@ -126,7 +122,7 @@ class Game
     }
 
     function initialize(){
-        global $players, $terrain, $resCard;
+        global $players, $terrain, $resCard, $settlement;
         $resCard[0] = new ResourceCard("Wool");
         for($i = 0; $i<3; $i++){
             $players[$i] = new Player($i);
@@ -151,10 +147,27 @@ class Game
                 break;
             }
         }
+
+        foreach($settlement as &$sett){
+            if($sett->id == "105"){
+                $players[0]->settlements[0] = $sett;
+                $sett->control = $players[0]->color;
+            }
+        }
+
+
+
     }
 
     function rollingDice()
     {
+        // activate all development card when each round begins
+        global $players;
+        foreach($players as &$player){
+            foreach($player->devCard as &$card){
+                $card->isActivated = true;
+            }
+        }
         echo ("function rolling dice is called\n");
         $diceA = mt_rand(0, 6);
         $diceB = mt_rand(0, 6);
@@ -187,23 +200,35 @@ class Game
                             unset($player->resCard[$i]);
                     }*/
 
-                    $i = -1;
-                    echo "What type of resources card do you want to discard?\n";
-                    $resType = $_GET['resType'];
-                    echo "Player discard type of " . $resType . "\n\n";
+                    echo "Enter one number for each type of resources card to discard (Brick, Grain, Lumber, Ore, Wool)\n";
+                    $discard = $_GET['discard'];
+                    $discardType = ["Brick", "Grain", "Lumber", "Ore", "Wool"];
                     global $resCard;
-                    foreach($player->resCard as &$card){
-                        $i++;
-                        if($card->type==$resType){
-                            $next = count($resCard);
-                            $resCard[$next] = &$card;
 
-                            unset($player->resCard[$i]);
+                    for($i=0; $i<5; $i++) {
+                        $j = -1;
+                        $count = 0;
+                        foreach ($player->resCard as &$card) {
+                            $j++;
+                            if ($card->type == $discardType[$i]) {
+                                $next=count($resCard);
+                                $resCard[$next] = $player->resCard[$j];
+
+                                unset($player->resCard[$j]);
+                                $count++;
+                            }
+
+                            if ($count == $discard[$i])
+                                break;
                         }
+                        if($count!=$discard[$i])
+                            echo "Not enough cards of " . $discardType[$i] . " to discard.";
+
+                        echo "Player " . $player->color . " discards " . $discard[$i] . " " . $discardType[$i] . " cards.";
+                        $player->resCard = array_values($player->resCard);
+                        $result = print_r($player->resCard, true);
+                        echo $result;
                     }
-                    $player->resCard = array_values($player->resCard);
-                    $result = print_r($player->resCard, true);
-                    echo $result;
                 }
             }
 
@@ -260,6 +285,7 @@ class Player
     function __construct($color){
         echo ("Create player with color of " . $color . "\n");
         $this->color = $color;
+        $this->victoryPoints = 0;
     }
 
     function tradeWithBank($tradeInAmount, $tradeInType, $getType, $portType)
@@ -673,6 +699,7 @@ class Settlement
         }
 
         $player->resCard = array_values($player->resCard);
+        $player->victoryPoints++;
 
         echo ("Settlement #" . $this->id . " is built.\n");
         return true;
@@ -681,7 +708,6 @@ class Settlement
     function upgradeToCity(&$player)
     {
         echo ("Upgrade to city function is called by player " . $player->color);
-        echo("to upgrade settlement #" . $this->id . "\n");
         if ($this->control != $player->color) return false;
 
         $i = -1;
@@ -704,6 +730,7 @@ class Settlement
         $player->resCard = array_values($player->resCard);
 
         $this->isCity = true;
+        $player->victoryPoints++;
 
         echo ("Successfully upgrade to city. \n");
         return true;
@@ -727,18 +754,26 @@ class Road
         $source = -1;
         $target = -1;
 
+        echo "This road should starts at " . $rd[source] . "\n";
+        echo "This road should end at " . $rd[target] . "\n";
         for ($j = 0; $j < 54; $j++) {
-            if ($rd[source] == $sett[$j][settle_id]) {
+            echo "Currently checking " . $sett[$j][id] . "\n";
+            if ($rd[source] == $sett[$j][id]) {
+                echo "Road source found at " . $j . "\n";
                 $source = $j;
                 break;
             }
         }
 
         for ($j = 0; $j < 54; $j++) {
-            if ($rd[target] == $sett[$j][settle_id]) {
+            if ($rd[target] == $sett[$j][id]) {
+                echo "Road target found at " . $j . "\n";
                 $target = $j;
                 break;
             }
+        }
+        if(($source==-1)&&($target==-1)){
+            echo "Road building error with road " . $this->id . "\n";
         }
 
         $this->settlement[0] = &$settlement[$source];
@@ -772,14 +807,19 @@ class Road
         $hasRoad = false;
         $hasSettlement = false;
 
-        foreach ($this->settlement as &$setIndex) {
-            if ($settlement[$setIndex]->control == $player->color) $hasSettlement = true;
-            foreach ($settlement[$setIndex]->road as &$rdIndex) {
-                if ($road[$rdIndex]->control == $player->color) $hasRoad = true;
+
+        foreach ($this->settlement as &$sett) {
+            if ($sett->control == $player->color) $hasSettlement = true;
+
+            foreach ($sett->road as &$rd) {
+                if ($rd->control == $player->color) $hasRoad = true;
             }
         }
 
-        if ((!$hasRoad) && (!$hasSettlement)) return false;
+        if ((!$hasRoad) && (!$hasSettlement)) {
+            echo "Cannot build the road of " . $this->id . " because the player " . $player->color . " do not have required settlement and roads connect to it.\n";
+            return false;
+        }
 
         foreach ($resRemoveList as &$index) {
             unset($player->resCard[$index]);
@@ -797,10 +837,13 @@ class Road
         global $hasLongestRoad;
         if($hasLongestRoad==null){
             if(count($player->roads)>=3){
+                $player->victoryPoints += 2;
                 $hasLongestRoad = $player;
             }
         }
         else if(count($player->roads)>count($hasLongestRoad->roads)){
+            $hasLongestRoad->victoryPoints -= 2;
+            $player->victoryPoints += 2;
             $hasLongestRoad = &$player;
         }
 
@@ -822,123 +865,93 @@ class ResourceCard
 class DevelopmentCard
 {
     public $type;
+    public $isActivated;
 
     function DevelopmentCard($type)
     {
         $this->type = $type;
+        $this->isActivated = false;
+        if(($this->type=="yearOfPlenty")||($this->type=="victoryPoints"))
+            $this->isActivated = true;
     }
 
     function playDevCard(&$player)
     {
-        if($this->type=="knight") {
-            $destination = $_GET['value'];
-            $this->knight($player, $destination);
-        }else if($this->type=="roadBuilding") {
-            $this->roadBuilding($player);
-        }else if($this->type=="yearOfPlenty"){
-            $this->yearOfPlenty($player);
-        }else if($this->type=="monopoly"){
-            $this->monopoly($player);
-        }else if($this->type=="victoryPoints"){
-            $this->victoryPoints($player);
+        if($this->isActivated!=false) {
+            if ($this->type == "knight") {
+                $destination = $_GET['value'];
+                $this->knight($player, $destination);
+            } else if ($this->type == "roadBuilding") {
+                $this->roadBuilding($player);
+            } else if ($this->type == "yearOfPlenty") {
+                $this->yearOfPlenty($player);
+            } else if ($this->type == "monopoly") {
+                $this->monopoly($player);
+            } else if ($this->type == "victoryPoints") {
+                $this->victoryPoints($player);
+            }
+        }else{
+            echo "This card of " . $this->type . " can not be played in this turn.";
         }
     }
 
     function knight(&$player, $destination)
     {
+        echo "A knight card is played by Player" . $player->color . "\n";
         global $hasBiggestArmy;
         $player->moveBandit($destination);
-        echo "Move bandit to " . $destination . " \n";
+
         $player->numKnights++;      //knights -> numKnights
         if($hasBiggestArmy==null){
             if($player->numKnights>=3){
+                $player->victoryPoints += 2;
                 $hasBiggestArmy = &$player;
+                echo "Player " . $player->color . "has the largest army\n";
             }
+            else echo "Currently no one has largest army\n";
         }else if ($player->numKnights > $hasBiggestArmy->numKnights) {
+            $hasBiggestArmy->victoryPoints -= 2;
+            $player->victoryPoints += 2;
             $hasBiggestArmy = &$player;
-        }
-
-        if($hasBiggestArmy != $player) {
-            echo "Tested player doesn't own the biggestArmy. \n";
-        }
+            echo "Player " . $player->color . "has the largest army\n";
+        }else echo "Player" . $hasBiggestArmy->color .  "has the largest army\n";
+        echo "End of play knight card";
     }
 
     function roadBuilding(&$player)
     {
         $i = 0;
         $rdNum = $_GET['value'];
-
-        //Validating the input values
-        if(is_array($rdNum)) {
-            if($rdNum[0] < 101 || $rdNum[0] > 1106 || $rdNum[1] < 101 || $rdNum[1] > 1106) {
-                echo "Invalid road number. Please input road id between 101 and 1106. You could refer to json file. \n";
-                return false;
-            }
-        } else {
-            echo "Please input two road numbers!";
-            return false;
-        }
-
-
-        global $road;
-        $size = count($road);  //no-stop loop
-
-        //Build the first road.
-        for($j=0;$j<$size;$j++){
-            if($road[$j]->id==$rdNum[0]){
-                if($road[$j]->control==null){
-                    if($road[$j]->build($player))
-                        echo ("Successfully build rd#".$rdNum[0] . "\n");
-                    break;
+        while($i<2){
+            global $road;
+            $size = count($road);
+            for($j=0;$j<$size;$j++){
+                if($road[$j]->id==$rdNum[$i]){
+                    if($road[$j]->control==null){
+                        if($road[$j]->build($player))
+                            echo ("Successfully build rd# ".$rdNum[$i] . "\n");
+                        $i++;
+                        break;
+                    }
+                    else{
+                        echo ("This road is occupied. \n");
+                        break;
+                    }
                 }
-                else{
-                    echo "The road #" . $rdNum[0] . " is occupied, please select another road. \n";
-                    break;
-                }
-            } else {
-                echo "Invalid road number #" . $rdNum[0] . "\n";
-                break;
             }
         }
-
-        //Build the second road
-        for($j=0;$j<$size;$j++){
-            if($road[$j]->id==$rdNum[1]){
-                if($road[$j]->control==null){
-                    if($road[$j]->build($player))
-                        echo ("Successfully build rd#". $rdNum[1] . "\n");
-                    break;
-                }
-                else{
-                    echo ("The road #" . $rdNum[1] . " is occupied, please select another road. \n");
-                    break;
-                }
-            } else {
-                echo "Invalid road number #" . $rdNum[1] . "\n";
-                break;
-            }
-        }
-
         return true;
     }
 
     function yearOfPlenty(&$player)
     {
-        echo "yearOfPlenty is called \n";
+        echo "Year of plenty function is called\n";
         $i = 0;
         global $resCard;
-
         $type = $_GET['value'];
 
-        //Validating the input resource types
-        if(!is_array($type)) {
-            echo "Invalid input values. Please input any two kinds of resources instead!";
-            return;
-        }
-
         while($i<2) {
-            echo "What type of resource card do you want? \n";
-            echo $type[$i] . ". \n";
+            echo ("What type of resource card do you want? \n");
             $j = -1;
             foreach ($resCard as &$card) {
                 $j++;
@@ -946,11 +959,11 @@ class DevelopmentCard
                     $next = count($player->resCard);
                     $player->resCard[$next] = &$card;
                     unset($resCard[$j]);
-                    $resCard = array_values($resCard);
                     $i++;
                     break;
                 }
             }
+            $resCard = array_values($resCard);
         }
 
         echo "Player " . $player->color . " resource card array : ";
@@ -993,8 +1006,18 @@ class DevelopmentCard
 
     function victoryPoints(&$player)
     {
-        $player->victoryPoints++;
-        echo "The player " . $player->color . " has " . $player->victoryPoints . " victory points.";
+        $count = 0;
+        foreach($player->devCard as &$card){
+            if($this->type=="victoryPoints")
+                $count++;
+        }
+        if($count+$player->victoryPoints==10){
+            echo "The player " . $player->color . " played " . $player->victoryPoints . " victory points card.";
+            echo "The player " . $player->color . " wins the game.";
+        }else{
+            echo "The player " . $player->color . " cannot play victory points card at this moment.";
+        }
+
     }
 }
 
